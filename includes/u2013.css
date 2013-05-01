@@ -1,5 +1,23 @@
 body {
-	background-color: EE00EE;	
+	background-color: #9977EE;
+}
+
+section.container {
+	background: url(../images/harringtonU.png) no-repeat;
+	margin: 2%;
+	border: 1px;
+}
+
+section.container div p {
+	font: bold 12px/12px 'Combo', cursive;
+}
+/*
+ * <script type="text/javascript" src="http://fast.fonts.com/jsapi/cd1b5a03-8982-46b5-9f03-379dbccb66f7.js"></script>
+font-family:'Paddington LT W01';
+ */
+
+.container {
+	position: relative;
 }
 
 
