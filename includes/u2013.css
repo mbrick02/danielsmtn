@@ -3,14 +3,30 @@ body {
 }
 
 section.container {
-	background: url(../images/harringtonU.png) no-repeat;
+	height: 200px;
+	/* background: url(../images/harringtonU.png) no-repeat; */
 	margin: 2%;
 	border: 1px;
+	position: relative;
 }
 
-section.container div p {
-	font: bold 12px/12px 'Combo', cursive;
+section.container img {
+	float: left;
+	height: 100%;
+	border:#000000 solid 5px;
 }
+
+
+section.container div.inviteText p {
+	font: bold 12px/12px 'Combo', cursive;
+	margin-left: 10%;
+	/* ??? float ??? */
+}
+
+div.inviteText H2 {
+	font: bold 15px/15px 'Combo', cursive;
+}
+
 /*
  * <script type="text/javascript" src="http://fast.fonts.com/jsapi/cd1b5a03-8982-46b5-9f03-379dbccb66f7.js"></script>
 font-family:'Paddington LT W01';
