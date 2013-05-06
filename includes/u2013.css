@@ -1,39 +1,69 @@
 body {
-	background-color: #9977EE;
+	background-color: #FFFF00;
 }
 
 section.container {
-	height: 200px;
-	/* background: url(../images/harringtonU.png) no-repeat; */
+	height: 95%;
+	background-color: rgb(237,228,214);
+	height:70em;
 	margin: 2%;
 	border: 1px;
 	position: relative;
 }
 
 section.container img {
-	float: left;
-	height: 100%;
+	position:absolute;
+	top: 0;
+	left: 0;
+	height: 43em;
 	border:#000000 solid 5px;
 }
-
-
-section.container div.inviteText p {
-	font: bold 12px/12px 'Combo', cursive;
-	margin-left: 10%;
-	/* ??? float ??? */
-}
-
-div.inviteText H2 {
-	font: bold 15px/15px 'Combo', cursive;
-}
-
-/*
- * <script type="text/javascript" src="http://fast.fonts.com/jsapi/cd1b5a03-8982-46b5-9f03-379dbccb66f7.js"></script>
-font-family:'Paddington LT W01';
- */
 
 .container {
 	position: relative;
 }
+
+section.container div.inviteText {
+	position: absolute;
+	top: 2.7em;
+	left: 4.3em;	
+}
+div.inviteText h1.sufruct {
+	font: bold 1.5em/4em 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 5em;
+	text-align:center;
+}
+div.inviteText H2 {
+	font: bold 1.2em/.5em 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 4em;
+	text-align:center;
+}
+
+div.inviteText H3 {
+	font: normal 1em/.2em 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 4em;
+	text-align:center;
+}
+
+section.container div.inviteText p {
+	font: normal .8em/.3em 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 3em;
+	text-align:center;
+}
+
+/*section.container div.inviteText p.endSection {
+	font: normal .9em/.5em 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 3em;
+	text-align:center;
+}*/
+
+footer {
+	clear: both;
+}
+
+/*
+ * 
+font-family:'Paddington LT W01';
+ */
 
 
