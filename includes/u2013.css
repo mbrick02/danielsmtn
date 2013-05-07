@@ -3,10 +3,11 @@ body {
 }
 
 section.container {
-	height: 95%;
+	/* does nothing:  height: 95%; */
 	background-color: rgb(237,228,214);
-	height:70em;
 	margin: 2%;
+	height:100%;
+	min-height: 40em;
 	border: 1px;
 	position: relative;
 }
@@ -15,7 +16,8 @@ section.container img {
 	position:absolute;
 	top: 0;
 	left: 0;
-	height: 43em;
+	/* height: 43em; */
+	height: 100%;
 	border:#000000 solid 5px;
 }
 
@@ -25,12 +27,12 @@ section.container img {
 
 section.container div.inviteText {
 	position: absolute;
-	top: 2.7em;
-	left: 4.3em;	
+	top: 2.3em;
+	left: 4.2em;	
 }
 div.inviteText h1.sufruct {
-	font: bold 1.5em/4em 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 5em;
+	font: bold 1.5em/5em 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 6em;
 	text-align:center;
 }
 div.inviteText H2 {
