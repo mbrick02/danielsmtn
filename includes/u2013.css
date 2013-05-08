@@ -1,3 +1,19 @@
+/*global styles - don't change */
+/*aside, article, section, header, footer, nav{
+ * 	display:block;
+ * }
+ */
+
+/* probably don't need these since I'm using Normalize.css 
+html, body{
+	margin: 0;
+	padding: 0; 
+}
+*/
+
+html{
+}
+
 body {
 	background-color: #FFFF00;
 	max-width: 1024px;
@@ -5,20 +21,42 @@ body {
 	font: 100% 'Paddington LT W01', 'Combo', cursive;
 }
 
-@media screen and (min-width: 25em) {
-		body{font-size: 150%;}
+
+/* mobile styles */
+@media only screen and (max-width: 480px){
+	body{
+		width: 320px;
+	}
 }
 
-@media screen and (min-width: 700px) {
-	body{font-size: 200%}
+/* tablet styles */
+@media only screen and (min-width: 481px) and (max-width: 768px){
+	body{
+		width: 80%;
+	}
 }
 
+/* desktop styles */
+@media only screenand (min-width: 769px){
+	body{
+		width: 700px;
+	}
+}
+
+@media only screen and (min-width: 25em) {
+		body{font-size: 140%;}
+}
+
+@media only screen and (min-width: 700px) {
+	body{font-size: 180%}
+}
+
+/* style that change */
 section.container {
-	/* does nothing:  height: 95%; */
-	background-color: rgb(10,228,214);
-	margin-left: 2%;
-	height:70%;
-	min-height: 40%;
+	background-color: rgb(237,228,214);
+	margin: 2%;
+	height:98%;
+	min-height: 30em;
 	position: relative;
 }
 
@@ -26,7 +64,6 @@ section.container img {
 	position:absolute;
 	top: 0;
 	left: 0;
-	/* height: 43em; */
 	max-width: 80%;
 	border:#000000 solid 30%;
 }
@@ -42,8 +79,8 @@ section.container div.inviteText {
 }
 
 div.inviteText h1.sufruct {
-	font: bold 110%/500% 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 42%;
+	font: bold 110%/400% 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 45%;
 	text-align:center;
 }
 
