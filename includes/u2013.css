@@ -15,10 +15,10 @@ body {
 
 section.container {
 	/* does nothing:  height: 95%; */
-	background-color: rgb(237,228,214);
-	margin: 2%;
+	background-color: rgb(10,228,214);
+	margin-left: 2%;
 	height:70%;
-	min-height: 40em;
+	min-height: 40%;
 	position: relative;
 }
 
@@ -28,7 +28,7 @@ section.container img {
 	left: 0;
 	/* height: 43em; */
 	max-width: 80%;
-	border:#000000 solid .3em;
+	border:#000000 solid 30%;
 }
 
 .container {
@@ -41,38 +41,32 @@ section.container div.inviteText {
 	left: 18%;	
 }
 
-div.inviteText h1.sufruct2 {
-	font: bold 1.1em/5em 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 45%;
-	text-align:center;
-}
-
 div.inviteText h1.sufruct {
 	font: bold 110%/500% 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 45%;
+	margin-left: 42%;
 	text-align:center;
 }
 
 div.inviteText H2 {
-	font: bold .8em/.5em 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 2em;
+	font: bold 80%/50% 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 20%;
 	text-align:center;
 }
 
 div.inviteText H3 {
-	font: normal .7em/.2em 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 4em;
+	font: normal 70%/20% 'Paddington LT W01', 'Combo', cursive;
+	margin-left: 20%;
 	text-align:center;
 }
 
 section.container div.inviteText p {
 	font: normal .5em/.3em 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 3em;
+	margin-left: 20%;
 	text-align:center;
 }
 
 section.container div.inviteText p.spacer{
-	line-height: 1.5em;
+	line-height: 40%;
 }
 
 /*section.container div.inviteText p.endSection {
