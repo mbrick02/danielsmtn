@@ -1,5 +1,7 @@
 /*global styles - don't change */
-/*aside, article, section, header, footer, nav{
+/*
+ * *** Probably won't use these???????? ******* 
+ *aside, article, section, header, footer, nav{
  * 	display:block;
  * }
  */
@@ -11,7 +13,16 @@ html, body{
 }
 */
 
+section.container img {
+	position:absolute;
+	top: 0;
+	left: 0;
+	max-width: 80%;
+	border:#000000 solid 30%;
+}
+
 html{
+	/* ?????? */
 }
 
 body {
@@ -26,6 +37,13 @@ body {
 @media only screen and (max-width: 480px){
 	body{
 		width: 320px;
+		font-size: 80%;
+	}
+	
+	div.inviteText H2 {
+		font: bold 50%/20% 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 10%;
+		text-align:center;
 	}
 }
 
@@ -33,16 +51,35 @@ body {
 @media only screen and (min-width: 481px) and (max-width: 768px){
 	body{
 		width: 80%;
+		font-size: 120%;
 	}
+	
+	div.inviteText H2 {
+		font: bold 70%/40% 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 20%;
+		text-align:center;
+	}
+	
+	
+	
 }
 
 /* desktop styles */
 @media only screenand (min-width: 769px){
 	body{
 		width: 700px;
+		font-size: 180%
 	}
+	
+	div.inviteText H2 {
+		font: bold 80%/50% 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 20%;
+		text-align:center;
+	}
+	
 }
 
+/*  delete
 @media only screen and (min-width: 25em) {
 		body{font-size: 140%;}
 }
@@ -50,6 +87,7 @@ body {
 @media only screen and (min-width: 700px) {
 	body{font-size: 180%}
 }
+*/
 
 /* style that change */
 section.container {
@@ -60,37 +98,20 @@ section.container {
 	position: relative;
 }
 
-section.container img {
-	position:absolute;
-	top: 0;
-	left: 0;
-	max-width: 80%;
-	border:#000000 solid 30%;
-}
-
-.container {
-	position: relative;
-}
-
 section.container div.inviteText {
 	position: absolute;
 	top: 2.8%;
 	left: 18%;	
 }
 
-div.inviteText h1.sufruct {
+section.container div.inviteText h1.sufruct {
 	font: bold 110%/400% 'Paddington LT W01', 'Combo', cursive;
 	margin-left: 45%;
 	text-align:center;
 }
 
-div.inviteText H2 {
-	font: bold 80%/50% 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 20%;
-	text-align:center;
-}
 
-div.inviteText H3 {
+section.container div.inviteText H3 {
 	font: normal 70%/20% 'Paddington LT W01', 'Combo', cursive;
 	margin-left: 20%;
 	text-align:center;
