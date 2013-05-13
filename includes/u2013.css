@@ -14,11 +14,6 @@ html, body{
 */
 
 section.container img {
-	position:absolute;
-	top: 0;
-	left: 0;
-	max-width: 80%;
-	border:#000000 solid 30%;
 }
 
 html{
@@ -65,16 +60,82 @@ body {
 }
 
 /* desktop styles */
-@media only screenand (min-width: 769px){
+@media only screen and (min-width: 769px){
 	body{
 		width: 700px;
-		font-size: 180%
+		font-size: 100%;
 	}
 	
-	div.inviteText H2 {
-		font: bold 80%/50% 'Paddington LT W01', 'Combo', cursive;
-		margin-left: 20%;
+	section.container {
+		background-color: rgb(237,228,214);
+		background: url("../images/harringtonU.png") no-repeat;
+		margin: 100px 20px;
+		height: 611px;
+		position: relative;
+	}
+	
+	section.container img{
+		position: absolute;
+	}
+
+	section.container #peacock{
+		width: 80px;
+		top: 40px;
+		left: 110px;
+	}
+	
+	section.container img#pig{
+		width: 85px;
+		top: 40px;
+		left: 310px;
+	}
+	
+	section.container img#butterfly{
+		width: 80px;
+		top: 480px;
+		left: 150px;
+	}
+
+	section.container div.inviteText {
+		position: absolute;
+		top: 72px;
+		left: 142px;
 		text-align:center;
+	}
+	
+	section.container div.inviteText h1.sufruct {
+		font: bold 1.2em/.5em 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 40px;
+	}
+	
+	section.container div.inviteText h1.number {
+		font: bold 3em/.1em 'Paddington LT W01', 'Combo', cursive;
+	}
+			
+	div.inviteText H2 {
+		font: bold .75em/.9em 'Paddington LT W01', 'Combo', cursive;
+	}
+	
+	section.container div.inviteText H3 {
+		font: normal .7em/.8em 'Paddington LT W01', 'Combo', cursive;
+	}
+	
+	section.container div.inviteText p {
+		font: normal .6em/.5em 'Paddington LT W01', 'Combo', cursive;
+	}
+	
+	section.container div.inviteText p.spacer{
+		line-height: 10px;
+	}
+	
+	/*section.container div.inviteText p.endSection {
+		font: normal .9em/.5em 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 3em;
+		text-align:center;
+	}*/
+	
+	footer {
+		clear: both;
 	}
 	
 }
@@ -90,52 +151,6 @@ body {
 */
 
 /* style that change */
-section.container {
-	background-color: rgb(237,228,214);
-	margin: 2%;
-	height:98%;
-	min-height: 30em;
-	position: relative;
-}
-
-section.container div.inviteText {
-	position: absolute;
-	top: 2.8%;
-	left: 18%;	
-}
-
-section.container div.inviteText h1.sufruct {
-	font: bold 110%/400% 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 45%;
-	text-align:center;
-}
-
-
-section.container div.inviteText H3 {
-	font: normal 70%/20% 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 20%;
-	text-align:center;
-}
-
-section.container div.inviteText p {
-	font: normal .5em/.3em 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 20%;
-	text-align:center;
-}
-
-section.container div.inviteText p.spacer{
-	line-height: 40%;
-}
-
-/*section.container div.inviteText p.endSection {
-	font: normal .9em/.5em 'Paddington LT W01', 'Combo', cursive;
-	margin-left: 3em;
-	text-align:center;
-}*/
-
-footer {
-	clear: both;
-}
 
 /*
  * 
