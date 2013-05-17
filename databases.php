@@ -6,7 +6,7 @@
     }
     
     // 2. Select a database to use
-    $db_select = mysql_select_db("widget_corp",$connection);
+    $db_select = mysql_select_db("widget_corp", $connection);
     if (!$db_select) {
     	die("Database selection failed" . mysql_error());
     }
@@ -24,11 +24,9 @@
 		die("Database query failed" . mysql_error());
 	}
 	
-	echo "stone";
-	
 	// 4. Use returned data
 	while ($row = mysql_fetch_array($result)) {
-		echo "stone" . $row[1];
+		echo $row["menu_name"]." ".$row["position"]."<br />";
 	}
 	?>
 </body>
