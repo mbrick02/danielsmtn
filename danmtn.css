@@ -1,0 +1,33 @@
+BODY {
+	font:10pt/12pt Arial, Helvetica, sans-serif;
+}
+H2 {
+	font : bold 18pt/20pt Arial, Helvetica, sans-serif;
+}
+H3 {
+	font : bold 15pt/17pt Arial, Helvetica, sans-serif;
+}
+.questParenthet {
+	font : 10pt/12pt Arial, Helvetica, sans-serif;
+}
+.questCateg {
+	font : 13pt/15pt Arial, Helvetica, sans-serif;
+}
+P {
+	font : normal 10pt/12pt Arial, Helvetica, sans-serif;
+}
+P.introQuest {
+	font : bold 10pt/12pt Arial, Helvetica, sans-serif;
+}
+
+.qnaireQuest{
+	font: normal 10pt/12pt Arial, Helvetica, sans-serif;
+}
+
+.poem{
+	font: italic 10pt/12pt Arial, Helvetica, sans-serif;
+}
+
+.capitonPic{
+	font: normal 9pt/10pt Arial, Helvetica, sans-serif;
+}
