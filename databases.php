@@ -1,6 +1,7 @@
 <?php
+    // *****NOTE: this needs to be translated to "mysqli"
     // 1. Create a database connection
-    $connection = mysql_connect("localhost","root", "Job4Fau");
+    $connection = mysql_connect("localhost","root", "Jxx#Xxu");
     if (!$connection) {
     	die("Database connection failed" . mysql_error());
     }
