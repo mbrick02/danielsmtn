@@ -23,26 +23,33 @@
 </head>
 
 <body>
+  <!-- ? php require_once("../includes/db_connection.php"); ? -->
+  <!-- ? php require_once("../includes/function.php"); ? -->
+  <!-- ? php require_once("../includes/header.php"); ? -->
+  <!-- ? php ????find_selected_page() for navigation ??? ? -->
   <div id="main">
     <header>
       <h1>addDish</h1>
     </header>
     <nav>
+      <!-- php echo navigation($currentDMtnSect, $currentPage) **replace below** -->
       <p><a href="/">Home</a></p>
       
     </nav>
 
-    <div>
-        <form method="get" action="">
-            <p><label for ="Text1">Field 1: </label>
-                <input name="Text1" type="text" id="Text1" 
-                placeholder="Placeholder Text 1"/></p>
-            <p><label for ="Text1">Field 1: </label>
+    <div id="main_section">
+        <form action="create_dish.php" method="post">
+            <p><label for ="username">username: </label>
+                <input name="username" type="text" id="username" 
+                placeholder="placeholder username"/></p>
+            <p><label for ="Text1">Field 1 lbl: </label>
                 <input name="Text2" type="email" id="Text2" 
                 placeholder="Placeholder Text 2"/></p>
             <p><label for ="Text1">Field 1: </label>
                 <input name="Text3" type="url" id="Text3" 
                 placeholder="Placeholder Text 3"/></p>
+                
+            <input type="submit" value="Create Dish">
         </form>
     </div>
 
