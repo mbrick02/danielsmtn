@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  <div>
+  <div id="main">
     <header>
       <h1>addDish</h1>
     </header>
