@@ -23,10 +23,12 @@
 </head>
 
 <body>
+  <!--  form called from current Usufruct Invite page request to bring dish -->
   <!-- ? php require_once("../includes/db_connection.php"); ? -->
   <!-- ? php require_once("../includes/function.php"); ? -->
   <!-- ? php require_once("../includes/header.php"); ? -->
   <!-- ? php ????find_selected_page() for navigation ??? ? -->
+  <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
   <div id="main">
     <header>
       <h1>addDish</h1>
@@ -38,7 +40,7 @@
     </nav>
 
     <div id="main_section">
-        <form action="create_dish.php" method="post">
+        <form action="createDish.php" method="post">
             <p><label for ="username">username: </label>
                 <input name="username" type="text" id="username" 
                 placeholder="placeholder username"/></p>
