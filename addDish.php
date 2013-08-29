@@ -51,7 +51,7 @@
                 <input name="Text3" type="url" id="Text3" 
                 placeholder="Placeholder Text 3"/></p>
                 
-            <input type="submit" value="Create Dish">
+            <input type="submit" name="submit" value="Create Dish">
             
         </form>
     </div>
