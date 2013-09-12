@@ -19,7 +19,7 @@
 		
 		?>
 			<li>
-				<?php echo $dish["lname"] . ": " . $dish["dish"] ?>
+				<?php echo $dish["lName"] . ": " . $dish["dish"] ?>
 			</li>
 		<?php } ?>
 		</ul>
