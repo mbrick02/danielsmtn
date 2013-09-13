@@ -37,11 +37,11 @@ name {
 
 dish {
 	font: normal 2em/3em arial, sans-serif;
-	background-color: yellow;
+	background-color: green;
 }
 
-ul.name {
-	list-style-type: none;
+ul.dishes {
+	list-style: none;
 }
 
 ul.name li {

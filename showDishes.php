@@ -12,7 +12,7 @@
 		&nbsp;
 	</navigation>
 	<content id="page">
-		<ul class="dish">
+		<ul class="dishes">
 		<?php 
 			while ($dish = mysqli_fetch_assoc($result)){
 				
