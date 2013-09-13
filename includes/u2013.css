@@ -31,6 +31,22 @@ body {
 	font: 100% 'Paddington LT W01', 'Combo', cursive;
 }
 
+name {
+	font: normal 2em/3em arial, sans-serif;
+}
+
+dish {
+	font: normal 2em/3em arial, sans-serif;
+	background-color: yellow;
+}
+
+ul.name {
+	list-style-type: none;
+}
+
+ul.name li {
+	padding: 0em;
+}
 
 /* mobile styles */
 @media only screen and (max-width: 480px){
@@ -132,6 +148,7 @@ body {
 		line-height: 10px;
 	}
 	
+
 	/*section.container div.inviteText p.endSection {
 		font: normal .9em/.5em 'Paddington LT W01', 'Combo', cursive;
 		margin-left: 3em;

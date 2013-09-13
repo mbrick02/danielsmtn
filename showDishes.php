@@ -12,14 +12,14 @@
 		&nbsp;
 	</navigation>
 	<content id="page">
-		<ul>
+		<ul class="dish">
 		<?php 
 			while ($dish = mysqli_fetch_assoc($result)){
 				
 		
 		?>
 			<li>
-				<?php echo $dish["lName"] . ": " . $dish["dish"] ?>
+				<name><?php echo $dish["lName"] ?></name><dish><?php echo ": " . $dish["dish"] ?></dish>
 			</li>
 		<?php } ?>
 		</ul>

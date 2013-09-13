@@ -7,8 +7,6 @@ define("DB_NAME", "usufructdish");
 $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 if(mysqli_connect_errno()){
 	die("DB connect failed: " . mysqli_connect_error() . " (" . mysqli_connect_errno() . ")");
-} else {
-	echo "DMDB connected";
 }
 
 ?>
