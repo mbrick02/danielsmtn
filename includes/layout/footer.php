@@ -1,6 +1,6 @@
 <?php
 
 ?>
-	<div id="footer">Copyright 20xx</div>
+	<footer>Copyright 20xx</footer>
 </body>
 </html>
