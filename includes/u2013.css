@@ -75,6 +75,13 @@ ul.name li {
 	padding: 0em;
 }
 
+footer {
+	clear: both;
+	height: 2em; margin: 0; padding: 1em;
+	text-align: center;
+	background: #1A446C; color: #D4E6F4;
+}
+
 /* mobile styles */
 @media only screen and (max-width: 480px){
 	body{
