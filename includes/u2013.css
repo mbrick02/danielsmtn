@@ -31,6 +31,33 @@ body {
 	font: 100% 'Paddington LT W01', 'Combo', cursive;
 }
 
+header {
+	height: 70px;
+	margin: 0; padding: 0;
+}
+
+nav {
+	float: left;
+	width: 150px; height: 100%;
+	margin: 0; padding: 0 2em;
+	color: #8D0D19; background: #1A446C;
+}
+
+nav a {
+	color: #D4E6F4;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #FFFFFF;
+}
+
+#page {
+	float: left; height: 100%;
+	padding-left: 2em; vertical-align: top;
+	background: #EEE4B9;
+}
+
 name {
 	font: normal 2em/3em arial, sans-serif;
 }

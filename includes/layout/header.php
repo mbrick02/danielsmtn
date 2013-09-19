@@ -1,5 +1,7 @@
 <?php
-
+	// for now we will keep the title: Daniel's Mountain
+	// but later we may need to capture the page title on the header.php call
+	$hdTitle = htmlentities("Daniel's Mountain");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,3 +11,6 @@
 <title>Usufruct Dishes</title>
 </head>
 <body>
+<header>
+	<h1><?php echo $hdTitle; ?></h1>
+</header>
