@@ -52,6 +52,10 @@ nav a:hover {
 	color: #FFFFFF;
 }
 
+nav ul {
+	list-style-type: none;
+}
+
 #page {
 	float: left; height: 100%;
 	padding-left: 2em; vertical-align: top;
