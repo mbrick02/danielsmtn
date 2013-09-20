@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 //Édetermine if email exists -- may or may not enter dish if no email??? may warn???
 	$dish = mysqli_real_escape_string($connection, $dish);  
                     // or clean up with func: mysql_prep() and put in _POST capture
-	$query = "INSERT INTO dishes (";
+	$query = "INSERT INTO dish (";
 	$query .= " fname, lname, dish, email";
 	$query .= ") VALUES(";
 	$query .= " '{fname}', '{lname}', '{dish}',  '{email}'";
