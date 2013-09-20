@@ -4,4 +4,11 @@
 		header("Location: " .$newLocation);
 	}
 	
+	function mysqlPrep($string) {
+		global $connection;
+		
+		$escapedString = mysqli_real_escape_string($connection, $string);
+		return $escapedString;
+	}
+	
 ?>
