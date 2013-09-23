@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 	}
 } else {
 	// This is probably a _GET request	
-	redirectTo("addDish.php")
+	redirectTo("addDish.php");
 }
 ?>
 
