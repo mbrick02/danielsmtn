@@ -24,7 +24,7 @@
                 <input name="email" type="email" id="Text2" 
                 placeholder="Enter Email address"/></p>
             <p><label for ="dish">Dish: </label>
-                <input name="dish" type="url" id="dish" 
+                <input name="dish" type="text" id="dish" 
                 placeholder="Enter the dish you will bring"/></p>
                 
             <input type="submit" name="submit" value="Submit Dish">
