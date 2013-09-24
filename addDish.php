@@ -30,6 +30,4 @@
             <input type="submit" name="submit" value="Submit Dish">
             
         </form>
-<?php mysqli_free_result($result); ?>
-<?php mysqli_close($connection); ?>
 <?php include("./includes/layout/footer.php");	?>
