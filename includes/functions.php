@@ -1,7 +1,7 @@
 <?php
-	
 	function redirectTo($newLocation) {
-		header("Location: " .$newLocation);
+		header("Location: " . $newLocation);
+		exit;
 	}
 	
 	function mysqlPrep($string) {
