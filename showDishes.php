@@ -14,7 +14,7 @@
 		<li><a href="./index.htm">Home</a></li> <!-- probably need this to go to Usfruct for year -->
 		<li><a href="./showDishes.php">Show Dishes</a></li>
 		<li><a href="./showDishes.php">Edit&#x2F;Delete Dish</a></li>
-		<li><a href="./showDishes.php">&#43; Add Dish</a></li> 
+		<li><a href="./addDish.php">&#43; Add Dish</a></li> 
 	</ul>
 	</nav>
 	<div id="page">
