@@ -56,6 +56,8 @@ nav ul {
 	list-style-type: none;
 }
 
+.selected { font-weight: bold; background: gold; }
+
 #page {
 	float: left; height: 100%;
 	padding-left: 2em; vertical-align: top;

@@ -2,17 +2,34 @@
 <?php require_once("./includes/functions.php");	?>
 <?php require_once("./includes/connection.php"); ?>
   <!--  *** note this editDish form is for entering data will edit chosen record of dbDish -->
-<?php find_selected_dish(); // ****not created yet ?>
 <?php 
-	if (!$currentDish){
+	if (isset($_GET["dishID"])) {
+		$selectedDishID = htmlentities($_GET["dishID"]);
+		$selectedLName = null;
+	} elseif (isset($_GET["lName"])) {  // ***??? probably wont use this
+		$selectedLName = htmlentities($_GET["lName"]);
+		$selectedDishID = null;
+	} else {
+		$selectedDishID = null;
+		$selectedLName = null;
+	}
+	
+	/* 
+	 * not sure if I want to show all dishes or not -- see showDishes.php
+	 *   if so Ill use function listAllDishes with parameter $selectedDishID
+	 * */
+?>
+<?php 
+	if (!$selectedDishID){
 		// dish ID was missing or invalid or
 		// dish couldn't be found in db
+		// *** currenly no code for handling no dishID or only a $selectedName
 		redirectTo("showDishes.php"); 
 	}
 ?>
 <?php include("../includes/layouts/header.php"); ?>
 
-    <div id="main_section"> // **** these need to be populated **********
+    <div id="main_section"> // **** these need to be populated  using, findDishByID(dishID) test for null********
         <h2>What dish you will bring to the Usufruct</h2>
         <form action="createDish.php" method="post">
             <p><label for ="fName">fName: </label>
