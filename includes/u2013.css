@@ -58,6 +58,12 @@ nav ul {
 
 .selected { font-weight: bold; background: gold; }
 
+div.message {
+    border: 2px solid #8D0D19;
+    color: #8D0D19; font-weight: bold;
+    margin: 1em 0 ; padding: 1em;
+}
+
 #page {
 	float: left; height: 100%;
 	padding-left: 2em; vertical-align: top;

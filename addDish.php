@@ -1,3 +1,4 @@
+<?php require_once("./includes/session.php"); ?>
 <?php require_once("./includes/functions.php");	?>
 <?php require_once("./includes/connection.php"); ?> 
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
@@ -12,6 +13,9 @@
     </nav>
 
     <div id="main_section">
+        <?php 
+			echo message();
+        ?>
         <h2>What dish you will bring to the Usufruct</h2>
         <form action="createDish.php" method="post">
             <p><label for ="fName">fName: </label>

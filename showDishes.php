@@ -1,3 +1,4 @@
+<?php require_once("./includes/session.php"); ?>
 <?php require_once("./includes/functions.php");	?>
 <?php require_once("./includes/connection.php"); ?>
 
@@ -8,6 +9,9 @@
 		<?php echo navigation(); ?>
 	</nav>
 	<div id="page">
+		<?php echo message(); ?>
+		<?php $errors = errors(); ?>
+		<?php echo formErrors($errors); ?>
 		<?php 
 			$dishesSet = findAllDishes();
 			$selectedDishID = null;

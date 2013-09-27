@@ -17,10 +17,27 @@ function confirmQuery($resultSet) {
 	}
 }
 
+function formErrors($errors){
+	$output = "";
+	if (!empty($errors)) {
+		$output = "<div class=\"error\">";
+		$output .= "Please fix the following errors:";
+		$output .= "<ul>";
+		foreach ($errors as $key => $error) {
+			$output .= "<li>{error}</li>";
+		}
+		$output .= "</ul>";
+		$output .= "</div>";
+	}
+
+	return $output;
+}
+
 function findAllDishes() {
 	global $connection;
 	$query = "SELECT * ";
 	$query .= "FROM dish ";
+	// $query .= "ORDER BY dish ASC";
 	// echo $query;
 	$dishesSet = mysqli_query($connection, $query);
 	confirmQuery($dishesSet);
@@ -30,16 +47,23 @@ function findAllDishes() {
 
 function findDishByID($dishID){
 	global $connection;
+	
+	$safe_dishID = mysqli_real_escape_string($connection, $dishID);
+	
 	$query = "SELECT * ";
 	$query .= "FROM dish ";
-	$query .= "WHERE dishID = " . $dishID;
+	$query .= "WHERE dishID = {$safe_dishID} ";
+	$query .= "LIMIT 1";
 
-	// ???LIMIT 1 ????
-	
 	$dishesSet = mysqli_query($connection, $query);
+	// echo $query;
 	confirmQuery($dishesSet);
 	
-	return $dishesSet;	
+	if ($dish = mysqli_fetch_assoc($dishesSet)) {
+		return $dish;
+	} else {
+		return null;
+	}	
 }
 
 function navigation(){
