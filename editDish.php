@@ -4,7 +4,7 @@
 <?php require_once("./includes/validationFunctions.php"); ?>
 <?php 
 	if (isset($_GET["dishID"])) {
-		$selectedDishID = mysqli_real_escape_string($connection, $_GET["dishID"]);
+		$selectedDishID = mysqlPrep($_GET["dishID"]);
 		$selectedLName = null;
 	} elseif (isset($_GET["lName"])) {  // ***??? probably wont use this
 		$selectedLName = htmlentities($_GET["lName"]);
@@ -34,23 +34,33 @@
 <?php 
 	if (isset($_POST['submit'])) {
 		// Process the form
-		
-		// Perform Update
+
 		$dishID = $selectedDishID;
 		$fName = mysqlPrep($_POST["fName"]);
 		$lName = mysqlPrep($_POST["lName"]);
 		$email = mysqlPrep($_POST["email"]);
 		$dish = mysqlPrep($_POST["dish"]);
 		
-		$query = "UPDATE dish SET ";
-		$query .= "fName = '{$fName}', ";
-		$query .= "lName = '{$lName}', ";
-		$query .= "email = '{$email}', ";
-		$query .= "dish = '{$dish}', ";
-		$query .= "WHERE dishID = {$dishID} ";
-		$query .= "LIMIT 1";
+		// validations
+		$requiredFields = array("lName", "email", "dish");
+		validatePresences($requiredFields);
 		
-		$result = mysqli_query($connection, $query);
+		$fieldsWithMaxLengths = array("fName" => 16, "lName" => 16, "email" => 25,  "dish" => 25);
+		validateMaxLengths($fieldsWithMaxLengths);
+		
+		if (empty($errors)) {
+			
+			// Perform Update		
+			$query = "UPDATE dish SET ";
+			$query .= "fName = '{$fName}', ";
+			$query .= "lName = '{$lName}', ";
+			$query .= "email = '{$email}', ";
+			$query .= "dish = '{$dish}' ";
+			$query .= "WHERE dishID = {$dishID} ";
+			$query .= "LIMIT 1";
+			
+			$result = mysqli_query($connection, $query);
+		}
 		
 		if ($result && mysqli_affected_rows($connection) == 1) {
 			// Success
@@ -58,9 +68,8 @@
 			redirectTo("showDishes.php");
 		} else {
 			// Failure
-			$message = "Dish edit failed.";
+			$message = "***Query = {$query} <br> BUT.......... <br> Dish edit failed.";
 		}
-		
 	} else { 
 		// Probably a GET request rather than submit
 	} // end: if (isset($_POST['submit']))
@@ -72,7 +81,6 @@
 				echo "<div class=\"message\">" . $message ."</div>";
 			}
         ?>
-        <?php $errors = errors(); ?>
         <?php echo formErrors($errors); ?>
         
         <h2>Change dish (<?php echo $dishRec["dish"] ?>) you will bring to the Usufruct</h2>
@@ -93,27 +101,6 @@
             <a href="showDishes.php">Cancel</a>
         </form>
 <?php include("./includes/layout/footer.php");	?>
-<?php if (isset($_POST['submit'])) {	// Process the formÉ.
-	$fName = mysqlPrep($_POST["fName"]);
-	$lName = mysqlPrep($_POST["lName"]);
-	$dish = mysqlPrep($_POST["dish"]);
-	$email = mysqlPrep($_POST["email"]); //Édetermine if email exists 
-	     // -- may or may not enter dish if no email??? may warn???
-	$query = "INSERT INTO dish (";
-	$query .= " fName, lName, dish, email";
-	$query .= ") VALUES(";
-	$query .= " '{$fName}', '{$lName}', '{$dish}',  '{$email}'";
-	$query .= ")";
-	$result = mysqli_query($connection, $query);
-	if ($result) {	// Success - show added dish
-		redirectTo("showDishes.php");
-	} else {	// Failure
-		redirectTo("addDish.php"); //  - redo
-	}
-} else {	// This is probably a _GET request	
-	// redirectTo("addDish.php"); //  - user must use 'submit' button
-}
-?>
 <?php // *****WHY DOES THIS PRODUCE 
 	//       "Warning: mysqli_close() [function.mysqli-close]: Couldn't fetch mysqli in..."
 	 /* if (isset($connection)) {
