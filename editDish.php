@@ -34,7 +34,6 @@
 <?php 
 	if (isset($_POST['submit'])) {
 		// Process the form
-
 		$dishID = $selectedDishID;
 		$fName = mysqlPrep($_POST["fName"]);
 		$lName = mysqlPrep($_POST["lName"]);
@@ -45,7 +44,7 @@
 		$requiredFields = array("lName", "email", "dish");
 		validatePresences($requiredFields);
 		
-		$fieldsWithMaxLengths = array("fName" => 16, "lName" => 16, "email" => 25,  "dish" => 25);
+		$fieldsWithMaxLengths = array("fName" => 16, "lName" => 16, "email" => 25, "dish" => 25);
 		validateMaxLengths($fieldsWithMaxLengths);
 		
 		if (empty($errors)) {
@@ -67,15 +66,15 @@
 			$_SESSION["message"] = "Dish edited successfully.";
 			redirectTo("showDishes.php");
 		} else {
-			// Failure
-			$message = "***Query = {$query} <br> BUT.......... <br> Dish edit failed.";
+			// Failure // **debug {$query} <br>
+			$message = "Dish edit failed. ";
 		}
 	} else { 
 		// Probably a GET request rather than submit
 	} // end: if (isset($_POST['submit']))
 ?>
 <?php include("./includes/layout/header.php"); ?>
-    <div id="main_section"> 
+    <div id="main"> 
         <?php  // $message is just a variable, no need to use SESSION
 			if (!empty($message)) {
 				echo "<div class=\"message\">" . $message ."</div>";
@@ -100,10 +99,5 @@
             <input type="submit" name="submit" value="Edit Dish Info"><br>
             <a href="showDishes.php">Cancel</a>
         </form>
+       </div> <!-- end main -->
 <?php include("./includes/layout/footer.php");	?>
-<?php // *****WHY DOES THIS PRODUCE 
-	//       "Warning: mysqli_close() [function.mysqli-close]: Couldn't fetch mysqli in..."
-	 /* if (isset($connection)) {
-		mysqli_close($connection); 
-	} */
-?>

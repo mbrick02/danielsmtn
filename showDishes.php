@@ -34,5 +34,4 @@
 	</div>
 </div>
 <?php mysqli_free_result($dishesSet); ?>
-<?php mysqli_close($connection); ?>
 <?php include("./includes/layout/footer.php");	?>
