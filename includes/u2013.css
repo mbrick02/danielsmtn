@@ -71,16 +71,17 @@ div.message {
 }
 
 name {
-	font: normal 2em/3em arial, sans-serif;
+	font: normal 1.5em/2em arial, sans-serif;
 }
 
 dish {
-	font: normal 2em/3em arial, sans-serif;
+	font: normal 1em/2em arial, sans-serif;
 	background-color: green;
 }
 
 ul.dishes {
 	list-style: none;
+	font-weight: normal;
 }
 
 ul.name li {
