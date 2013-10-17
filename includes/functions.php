@@ -33,6 +33,39 @@ function formErrors($errors){
 	return $output;
 }
 
+function findAllAdmins() {
+	global $connection;
+	$query = "SELECT * ";
+	$query .= "FROM admins ";
+	// $query .= "ORDER BY adminLName ASC";
+	// echo $query;
+	$adminSet = mysqli_query($connection, $query);
+	confirmQuery($adminSet);
+	
+	return $adminSet;
+}
+
+function findAdminByID($adminID) {
+	global $connection;
+	
+	$safeAdminID = mysqli_real_escape_string($connection, $adminID);
+	
+	$query = "SELECT * ";
+	$query .= "FROM admins ";
+	$query .= "WHERE adminID = {$safeAdminID} ";
+	$query .= "LIMIT 1";
+	
+	$adminsSet = mysqli_query($connection, $query);
+	// echo $query;
+	confirmQuery($adminsSet);
+	
+	if ($admin = mysqli_fetch_assoc($adminsSet)) {
+		return $admin;
+	} else {
+		return null;
+	}	
+}
+
 function findAllDishes() {
 	global $connection;
 	$query = "SELECT * ";
