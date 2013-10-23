@@ -66,6 +66,15 @@ function findAdminByID($adminID) {
 	}	
 }
 
+function dishAnchorPreTag($layoutContext, $dishID){
+	if (($layoutContext == admin) || ($dishID == $currentDishID)) {  // ****MUST determin currentDishID BEFORE CALL
+		$dishAPreTag = "<a href=\'editDish.php?dishID=" . urlencode($dishID) . "\'>";
+	}  else {
+		$dishAPreTag = "";
+	}
+}
+function dishAnchorPostTag($layoutContext);
+
 function findAllDishes() {
 	global $connection;
 	$query = "SELECT * ";

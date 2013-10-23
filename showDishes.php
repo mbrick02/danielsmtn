@@ -23,11 +23,19 @@
 		<?php 
 			while ($dish = mysqli_fetch_assoc($dishesSet)){	
 		?>
+			<!--  *******WAS testing here 10/23/13 4PM -->
+			<?php 
+				$sessionDishID = $fix***THIS
+				$specLayoutContext = ($dish['dishID'] == $sessionDishID) ? "thisChef" : $layoutContext;
+				$anchorPre = dishAnchorPreTag($layoutContext, $dish['dishID']);
+				$anchorPost = ($anchorPre == "") ? "" : "</a>";
+			?>
 			<li<?php if ($dish['dishID'] == $selectedDishID) {
 				echo " class=\"selected\"";
 			} ?>><name><?php echo $dish["lName"] . ": " ?></name>
-				<a href="editDish.php?dishID=<?php echo urlencode($dish['dishID']); ?>">
-				     <dish><?php echo $dish["dish"] ?></dish></a>
+			 	<?php echo $anchorPre ?>
+				<dish><?php echo $dish["dish"] ?></dish>
+				<?php echo $anchorPost ?>
 			</li>
 		<?php } ?>
 		</ul>
