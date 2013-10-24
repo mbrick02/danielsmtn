@@ -67,13 +67,13 @@ function findAdminByID($adminID) {
 }
 
 function dishAnchorPreTag($layoutContext, $dishID){
-	if (($layoutContext == admin) || ($dishID == $currentDishID)) {  // ****MUST determin currentDishID BEFORE CALL
+	if (($layoutContext == "admin") || ($layoutContext == "thisChef")) {  // if admin or dish of this chef, make editable
 		$dishAPreTag = "<a href=\'editDish.php?dishID=" . urlencode($dishID) . "\'>";
 	}  else {
 		$dishAPreTag = "";
 	}
+	return $dishAPreTag;
 }
-function dishAnchorPostTag($layoutContext);
 
 function findAllDishes() {
 	global $connection;

@@ -1,7 +1,9 @@
 <?php require_once("./includes/session.php"); ?>
 <?php require_once("./includes/functions.php");	?>
 <?php require_once("./includes/connection.php"); ?>
-
+<?php 
+	$layoutContext = $_SESSION["layoutContext"] ?: "public"; // ***10/24 TEST
+?>
 <?php include("./includes/layout/header.php");	?>
 <div id="main">
 <!-- . or .. within header file (e.g. ./includes/u2013.css )??? for localhost I had to use 1 but on server 2 -->
@@ -14,8 +16,8 @@
 		<?php echo formErrors($errors); ?>
 		<?php 
 			$dishesSet = findAllDishes();
-			$selectedDishID = null;
-			$selectedLName = null;
+			$selectedDishID = null;  // ***10/24 not sure if this is usable now
+			$selectedLName = null;  // ***10/24 not sure if this is usable now
 		?>
 		<!-- ***??? 9/24/13 turn below into function listAllDishes($selectedDishID) -->
 		<ul class="dishes">
@@ -25,9 +27,9 @@
 		?>
 			<!--  *******WAS testing here 10/23/13 4PM -->
 			<?php 
-				$sessionDishID = $fix***THIS
+				$sessionDishID = $_SESSION["currentDishID"] ?: -1;  // if currentDishID is set use it otherwise set to non-existant number
 				$specLayoutContext = ($dish['dishID'] == $sessionDishID) ? "thisChef" : $layoutContext;
-				$anchorPre = dishAnchorPreTag($layoutContext, $dish['dishID']);
+				$anchorPre = dishAnchorPreTag($specLayoutContext, $dish['dishID']);
 				$anchorPost = ($anchorPre == "") ? "" : "</a>";
 			?>
 			<li<?php if ($dish['dishID'] == $selectedDishID) {
