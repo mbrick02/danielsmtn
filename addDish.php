@@ -1,9 +1,9 @@
 <?php require_once("./includes/session.php"); ?>
 <?php require_once("./includes/functions.php");	?>
-<?php require_once("./includes/connection.php"); ?> 
+<?php require_once("./includes/connection.php"); ?>
 <?php if (!isset($_SESSION['userID'])){
 		$_SESSION["message"] = "You must log in before you may add a dish";
-		redirectTo("loginDM.php");
+		redirectTo("./priv/loginDM.php");
 }?>
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
   <?php include("./includes/layout/header.php"); ?>
