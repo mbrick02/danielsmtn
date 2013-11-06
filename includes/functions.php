@@ -108,6 +108,12 @@ function findDishByID($dishID){
 	}	
 }
 
+function checkUEmail($givenEmail){
+	$validEmail = $givenEmail; // in future we will check the email against tbGuest of AccessDB
+	return $validEmail;
+	
+}
+
 function navigation(){
 	$output = "<ul>";
 	$output .= "<li><a href=\"./index.htm\">Home</a></li>";
