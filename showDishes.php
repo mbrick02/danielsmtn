@@ -1,10 +1,7 @@
 <?php require_once("./includes/session.php"); ?>
 <?php require_once("./includes/functions.php");	?>
-<?php require_once("./includes/connection.php"); ?>
-<?php 
-	$layoutContext = $_SESSION["layoutContext"] ?: "public"; // ***10/24 TEST
-?>
 <?php include("./includes/layout/header.php");	?>
+<?php require_once("./includes/connection.php"); ?>
 <div id="main">
 <!-- . or .. within header file (e.g. ./includes/u2013.css )??? for localhost I had to use 1 but on server 2 -->
 	<nav id="navigation">
