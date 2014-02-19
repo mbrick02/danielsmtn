@@ -3,6 +3,27 @@
 	// but later we may need to capture the page title on the header.php call
 	$hdTitle = htmlentities("Daniel's Mountain");
 ?>
+<?php 
+	if (!isset($layoutContext )) {
+		$layoutContext = "public";
+	}
+	
+	switch ($layoutContext) {
+		case 'admin':
+			$titleSuffix = " - Admin Page";
+			break;
+			
+		case 'chef':
+				$titleSuffix = " - Chef Page";
+				break;
+				
+		default:
+			$titleSuffix = " (**" . $layoutContext . " context)";
+	}
+	
+	$hdTitle = $hdTitle . htmlentities($titleSuffix);
+ ?>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -66,6 +66,15 @@ function findAdminByID($adminID) {
 	}	
 }
 
+function dishAnchorPreTag($layoutContext, $dishID){
+	if (($layoutContext == "admin") || ($layoutContext == "thisChef")) {  // if admin or dish of this chef, make editable
+		$dishAPreTag = "<a href=\'editDish.php?dishID=" . urlencode($dishID) . "\'>";
+	}  else {
+		$dishAPreTag = "";
+	}
+	return $dishAPreTag;
+}
+
 function findAllDishes() {
 	global $connection;
 	$query = "SELECT * ";
@@ -99,13 +108,18 @@ function findDishByID($dishID){
 	}	
 }
 
+function checkUEmail($givenEmail){
+	$validEmail = $givenEmail; // in future we will check the email against tbGuest of AccessDB
+	return $validEmail;
+	
+}
+
 function navigation(){
 	$output = "<ul>";
 	$output .= "<li><a href=\"./index.htm\">Home</a></li>";
 	$output .= "<!-- probably need this to go to Usfruct for year -->";
 	$output .= "<li><a href=\"./showDishes.php\">Show Dishes</a></li>";
-	$output .= "<li><a href=\"./showDishes.php\">Edit&#x2F;Delete Dish</a></li>";
-	$output .= "<li><a href=\"./addDish.php\">&#43; Add Dish</a></li>";
+	$output .= "<li><a href=\"./priv/loginDM.php\">&#43; Add, Edit or Delete Dish</a></li>";
 	$output .= "</ul>";
 	
 	return $output;
