@@ -11,6 +11,7 @@ defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 $currentComputer = "workMac";
 // $currentComputer = "workPC";
 // $currentComputer = "homePC";
+// had addendum from hope PC that is not showing up in Git
 // $currentComputer = "homeCentOS";
 // $currentComputer = ...android, phone, iPad...
 
