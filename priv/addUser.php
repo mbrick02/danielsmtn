@@ -5,12 +5,21 @@
 <?php if (isset($_POST['submit'])) {	// Process the formÉ.
 	$fName = mysqlPrep($_POST["fName"]);
 	$lName = mysqlPrep($_POST["lName"]);
-	$dish = mysqlPrep($_POST["dish"]);
-	$email = mysqlPrep($_POST["email"]); //Édetermine if email in list 
+	// *** Need to determine userTypeID probably default to Chef
+	$userTypeId = 2; // assume chef (= 2) XX mysqlPrep($_POST["userTypeID"]);
+	
+	// *** working here 11/22/13 but need to get logic of this settled first *******
+	$email = mysqlPrep($_POST["email"]); //Éget email from ?loginDM.php page  
+	
+	if (checkUEmail($email)){ // if email in list
+		// **** redirect to editDish with Dish/user ID
+	} else {
+		//  create new dish IF not too ?many new Dishes...
+	}
 	     // -- may or may not enter dish if email not in list??? may warn???
 	
 	// validations
-	$requiredFields = array("fName", "lName", "dish", "email");
+	$requiredFields = array("lName", "email");
 	validatePresences($requiredFields);
 	
 	$fieldsWithMaxLengths = array("fName" => 20);
@@ -21,18 +30,18 @@
 		redirectTo("showDishes.php");
 	}
 	
-	$query = "INSERT INTO dish (";
-	$query .= " fName, lName, dish, email";
+	$query = "INSERT INTO tbUsers (";
+	$query .= "fName, lName, userTypeID, email";
 	$query .= ") VALUES(";
-	$query .= " '{$fName}', '{$lName}', '{$dish}',  '{$email}'";
+	$query .= " '{$fName}', '{$lName}', {$userTypeId}, '{$email}'";
 	$query .= ")";
 	$result = mysqli_query($connection, $query);
 	if ($result) {	// Success - show added dish
-		$_SESSION["message"] = "Added Dish.";
+		$_SESSION["message"] = "Added Chef.";
 		redirectTo("showDishes.php");
 	} else {	// Failure
-		$_SESSION["message"] = "Dish FAILED to add.";
-		redirectTo("addDish.php"); //  - redo
+		$_SESSION["message"] = "User not added.";
+		redirectTo("addUser.php"); //  - redo
 	}
 } else {	// This is probably a _GET request	
 	redirectTo("addDish.php"); //  - user must use 'submit' button

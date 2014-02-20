@@ -1,8 +1,7 @@
 <?php require_once("./includes/session.php"); ?>
 <?php require_once("./includes/functions.php");	?>
-<?php require_once("./includes/connection.php"); ?>
-
 <?php include("./includes/layout/header.php");	?>
+<?php require_once("./includes/connection.php"); ?>
 <div id="main">
 <!-- . or .. within header file (e.g. ./includes/u2013.css )??? for localhost I had to use 1 but on server 2 -->
 	<nav id="navigation">
@@ -14,8 +13,8 @@
 		<?php echo formErrors($errors); ?>
 		<?php 
 			$dishesSet = findAllDishes();
-			$selectedDishID = null;
-			$selectedLName = null;
+			$selectedDishID = null;  // ***10/24 not sure if this is usable now
+			$selectedLName = null;  // ***10/24 not sure if this is usable now
 		?>
 		<!-- ***??? 9/24/13 turn below into function listAllDishes($selectedDishID) -->
 		<ul class="dishes">
@@ -23,11 +22,19 @@
 		<?php 
 			while ($dish = mysqli_fetch_assoc($dishesSet)){	
 		?>
+			<!--  *******WAS testing here 10/23/13 4PM -->
+			<?php 
+				$sessionDishID = $_SESSION["currentDishID"] ?: -1;  // if currentDishID is set use it otherwise set to non-existant number
+				$specLayoutContext = ($dish['dishID'] == $sessionDishID) ? "thisChef" : $layoutContext;
+				$anchorPre = dishAnchorPreTag($specLayoutContext, $dish['dishID']);
+				$anchorPost = ($anchorPre == "") ? "" : "</a>";
+			?>
 			<li<?php if ($dish['dishID'] == $selectedDishID) {
 				echo " class=\"selected\"";
 			} ?>><name><?php echo $dish["lName"] . ": " ?></name>
-				<a href="editDish.php?dishID=<?php echo urlencode($dish['dishID']); ?>">
-				     <dish><?php echo $dish["dish"] ?></dish></a>
+			 	<?php echo $anchorPre ?>
+				<dish><?php echo $dish["dish"] ?></dish>
+				<?php echo $anchorPost ?>
 			</li>
 		<?php } ?>
 		</ul>
