@@ -7,7 +7,15 @@
 	$lName = mysqlPrep($_POST["lName"]);
 	// *** Need to determine userTypeID probably default to Chef
 	$userTypeId = 2; // assume chef (= 2) XX mysqlPrep($_POST["userTypeID"]);
-	$email = checkUEmail(mysqlPrep($_POST["email"])); //Édetermine if email in list 
+	
+	// *** working here 11/22/13 but need to get logic of this settled first *******
+	$email = mysqlPrep($_POST["email"]); //Éget email from ?loginDM.php page  
+	
+	if (checkUEmail($email)){ // if email in list
+		// **** redirect to editDish with Dish/user ID
+	} else {
+		//  create new dish IF not too ?many new Dishes...
+	}
 	     // -- may or may not enter dish if email not in list??? may warn???
 	
 	// validations
@@ -21,7 +29,7 @@
 		$_SESSION["errors"] = $errors;
 		redirectTo("showDishes.php");
 	}
-	/
+	
 	$query = "INSERT INTO tbUsers (";
 	$query .= "fName, lName, userTypeID, email";
 	$query .= ") VALUES(";
