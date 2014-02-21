@@ -1,4 +1,5 @@
 <?php
+// ***NOT USED was in old (Non-object) concept instead of config.php and database.php
 // put in safe/inaccessible file (especially pw)
 // localhost version:
 define("DB_SERVER", "localhost");
