@@ -24,14 +24,14 @@ class MySQLDatabase {
 		if(mysqli_connect_errno()) {
 			die("Database connection failed: " .
 					mysqli_connect_error() .
-					" (" . mysqli_connect_errno() . ")"
-			);
+					" (" . mysqli_connect_errno() . ")");
 		}
 	}
 
 	public function closeConnection() {
 		if (isset($this->connection)) {
 			mysqli_close($this->$connection);
+			// unset($this->connection);
 		}
 	}
 
@@ -40,5 +40,7 @@ class MySQLDatabase {
 // ** see "Making Database … Agnostic below
 
 $database = new MySQLDatabase();
+// if you want a shortcut/alias reference:
+$db =& $database;
 //  if we want to close it: $database->closeConnection();
 ?>

@@ -20,6 +20,12 @@ switch ($currentComputer) {
 case "workMac":
 	$siteStr = DS.'Applications'.DS.'XAMPP'.DS.'xamppfiles'.DS.'htdocs'.DS.'danielsmtn'.DS.'danielsmtn';
 	break;
+
+case "homePC":
+	// C:\xampp\htdocs\danielsmtn\includes
+	// $homePCDir = DS."xampp".DS."htdocs".DS."danielsmtn";
+	$siteStr =  DS."xampp".DS."htdocs".DS."danielsmtn";
+	break;	
 	
 default:
 	// linux
