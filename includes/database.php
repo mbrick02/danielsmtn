@@ -34,6 +34,10 @@ class MySQLDatabase {
 			// unset($this->connection);
 		}
 	}
+	
+	public static function  mbTest() {
+		echo "So far this is just a static (class) test function";
+	}
 
 }
 // note: this allows us options of alternate db classes (e.g. class OracleDatabase)
@@ -43,4 +47,6 @@ $database = new MySQLDatabase();
 // if you want a shortcut/alias reference:
 $db =& $database;
 //  if we want to close it: $database->closeConnection();
+
+$db->mbTest();
 ?>

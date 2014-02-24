@@ -8,12 +8,28 @@
 // (\ for Windows, / for Unix)
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
-$currentComputer = "workMac";
+$homePCDir = "C:".DS."xampp".DS."htdocs".DS."danielsmtn";
+$workMacDir = DS.'Applications'.DS.'XAMPP'.DS.'xamppfiles'.DS.'htdocs'.DS.'danielsmtn';
+
+$curDir = getcwd();
+
+$currentComputer = $curDir;  // initialize to curDir
+// $currentComputer = "workMac";
 // $currentComputer = "workPC";
 // $currentComputer = "homePC";
 // had addendum from home PC that is not showing up in Git
 // $currentComputer = "homeCentOS";
 // $currentComputer = ...android, phone, iPad...
+
+
+if (strstr($curDir, $homePCDir)) {
+	$currentComputer =  "homePC";
+} else if (strstr($curDir, $workMacDir)) {
+	$currentComputer =  "workMac";;
+}
+
+// if cwd contains ApplicationDSXAMPP then currentComputer is workMac else if cwd contains "C:\xampp\htdocs\danielsmtn" then is homePC
+
 
 
 switch ($currentComputer) {
@@ -25,12 +41,23 @@ case "homePC":
 	// C:\xampp\htdocs\danielsmtn\includes
 	// $homePCDir = DS."xampp".DS."htdocs".DS."danielsmtn";
 	$siteStr =  DS."xampp".DS."htdocs".DS."danielsmtn";
-	break;	
+	break;
+	
+case "workPC":
+	// ************NEED to double check this ********************
+	// C:\xampp\htdocs\danielsmtn\includes
+	// $homePCDir = DS."xampp".DS."htdocs".DS."danielsmtn";
+	$siteStr =  DS."xampp".DS."htdocs".DS."danielsmtn";
+	break;	 
 	
 default:
-	// linux
+	// assuming home linux box
 	$siteStr = DS.'Users'.DS.'site'.DS.'danielsmtn';
+	$output = "Not sure which PC this is, so assuming Linx box with web folder: <br />" . $siteStr;
+	$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+	echo $output;
 }
+
 
 defined('SITE_ROOT') ? null : define('SITE_ROOT', $siteStr);
 
@@ -40,7 +67,7 @@ defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
 // echo getcwd() . "<br />";
 // workMac: /Applications/XAMPP/xamppfiles/htdocs/danielsmtn/danielsmtn/includes
 // Test lib path:
-echo "LibPath: " . LIB_PATH;
+// echo "LibPath: " . LIB_PATH;
 /*
 // load config file first
 require_once(LIB_PATH.DS.'config.php');
