@@ -10,7 +10,7 @@ defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 $homePCDir = "C:".DS."xampp".DS."htdocs".DS."danielsmtn";
 $workMacDir = DS.'Applications'.DS.'XAMPP'.DS.'xamppfiles'.DS.'htdocs'.DS.'danielsmtn';
-
+// note looks to be same as  home: getcwd is $workPC = "C:\xampp\htdocs\danielsmtn\includes"
 $curDir = getcwd();
 
 $currentComputer = $curDir;  // initialize to curDir
