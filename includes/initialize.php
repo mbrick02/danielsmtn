@@ -68,13 +68,13 @@ defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
 // workMac: /Applications/XAMPP/xamppfiles/htdocs/danielsmtn/danielsmtn/includes
 // Test lib path:
 // echo "LibPath: " . LIB_PATH;
-/*
+
 // load config file first
 require_once(LIB_PATH.DS.'config.php');
 
 // load basic function next so that everything after can use them
 require_once(LIB_PATH.DS.'functions.php');
-
+/*
 // load core objects
 require_once(LIB_PATH.DS.'session.php');
 require_once(LIB_PATH.DS.'database.php');
