@@ -74,14 +74,14 @@ require_once(LIB_PATH.DS.'config.php');
 
 // load basic function next so that everything after can use them
 require_once(LIB_PATH.DS.'functions.php');
-/*
+
 // load core objects
 require_once(LIB_PATH.DS.'session.php');
 require_once(LIB_PATH.DS.'database.php');
-require_once(LIB_PATH.DS.'databaseObject.php');
-require_once(LIB_PATH.DS.'pagination.php');
+// ** if >PHP5.3 late static binding for methods & vars: require_once(LIB_PATH.DS.'databaseObject.php');
+// ** for page x of y: require_once(LIB_PATH.DS.'pagination.php');
 
 // load database-related classes
 require_once(LIB_PATH.DS.'user.php');
-*/
+
 ?>
