@@ -35,6 +35,14 @@ class MySQLDatabase {
 		}
 	}
 	
+	// idea is to make function names so that they will be the same
+	//  for database objects of different types of databases
+	// (probably?) this will lead to an overall database object that each type of database
+	//          has extended object for; such as MySQLDatabase extended from Database
+	public function fetchArray($result) {
+		return mysqli_fetch_row($result);
+	}
+	
 	public static function  mbTest() {
 		echo "So far this is just a static (class) test function";
 	}

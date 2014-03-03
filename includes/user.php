@@ -1,19 +1,22 @@
 <?php 
-<?php
 // If it's going to need the database then it's
 //  probably smart to require it before we start.
-
 // user.php called by initialize.php, so, LIB_PATH available
-require_once(LIB_PATH.DC.'database.php');
+require_once(LIB_PATH.DS.'database.php');
 
 class User {
 
-	protected static $tableName="users";
+	protected static $tableName="tbusers";
 	public $id;
 	public $username;
 	public $password;
-	public $firstName;
-	public $lastName;
+	public $fName;
+	public $lName;
+	public $email;
+	public $userTypeID;
+	
+	// 3/3/14 currently only fields in usufructdish::tbusers: 
+	//				userID, fName, lName, email, userTypeID
 
 	// *********************** new user.php methods *****************************************
 
@@ -28,32 +31,17 @@ class User {
 		// A new record won't have an id yet.
 		return isset($this->id) ? $this->update() : $this->create();
 	}
-	public function create() {
-		global $database;
-		// Don't forget SQL syntax and habits:
-		//  - INSERT INTO table (key, key) VALUES ('value', 'value')
-		// - single-quotes around all values
-		// - escape all values to prevent SQL injection
-		$sql = "INSERT INTO users (";
-		$sql .= "username, password, firstName, lastName";
-		$sql .= ") VALUES ('";
-		$sql .= $database->escapeValue($this->username) ."', '";
-		$sql .= $database->escapeValue($this->password) . "', '";
-		$sql .= $database->escapeValue($this->firstName) ."', '";
-		$sql .= $database->escapeValue($this->lastName) ."')";
-		if($database->query($sql)) {
-			$this->id = $database->insertID();
-			return true;
-		} else {
-			return false;
-		}
-	}
+
 
 	// **** end first updated methods
 
-	protected static $dbFields() = array('id', 'username', 'password', 'firstName', 'lastName');
+	protected static $dbFields = array('id', 'username', 'password', 'fName', 'lName', 'email', 'userTypeID');
 
-
+	// ***** 3/3/14 LEFT OFF HERE TESTING get_object_vars...but can't use self??????????????????????????????
+	public static function testShowUserObjVars(){
+		print_r("<br />tbUser Attributes: " . get_object_vars(self));
+	}
+	
 	protected function attributes() {
 		// return an array of attribute names and their values
 		$attributes = array();
@@ -65,20 +53,20 @@ class User {
 	return $attributes;
 	}
 	
-	
-	
+	// ***below is old verstion***
+// 	protected function attributes() {
+// 		// return an array of attribute keys and their values
+// 		// get_object_vars returns associative array with attributes as keys and values
+// 		return get_object_vars($this);
+// 	}
+		
 	private function has_attribute($attribute) {
 	$object_vars = $this->attributes();
 	// just want to know if key exists
 	return array_key_exists($attribute, $object_vars);
 	}
 	
-	protected function attributes() {
-		// return an array of attribute keys and their values
-		// get_object_vars returns associative array with attributes as keys and values
-		return get_object_vars($this);
-	}
-	
+
 	protected function sanitizedAttributes() {
 		global $database;
 		$cleanAttributes =  array();
@@ -91,7 +79,7 @@ class User {
 	}
 	
 	//  *** I think this is fixed???old save is the same as above public function save() {...
-	
+
 	public function create() {
 		global $database;
 		// Don't forget SQL syntax and habits:
@@ -101,7 +89,7 @@ class User {
 		$attributes = $this->sanitizedAttributes();
 	
 		$sql = "INSERT INTO users (";
-		$sql .= join(", ", array_keys($attributes());
+		$sql .= join(", ", array_keys($attributes()));
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
 		$sql .= "')";
@@ -122,7 +110,7 @@ class User {
 		$attributes = $this->sanitizedAttributes();
 		$attributePairs = array();
 		foreach($attributes as $key => $value) {
-			$attributePairs[] = "{$key}='{$value}'"
+			$attributePairs[] = "{$key}='{$value}'";
 		}
 		$sql = "UPDATE ". self::$table_name. " SET ";
 		$sql .= join(", ", $attributePairs);;
