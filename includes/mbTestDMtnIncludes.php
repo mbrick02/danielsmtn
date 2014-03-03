@@ -1,8 +1,11 @@
 <?php
 	require_once('./initialize.php');
-	require_once('./database.php');
-	echo "<br /><br />Current Dir: " . getcwd();
+	// require_once('./database.php');
+	// echo "<br /><br />Current Dir: " . getcwd();
 	
+	echo $db->escapeValue("<br />It's working?<br />");
+	
+	/*
 	//** this won't work as is (wanted to test get_object_vars()): user::testShowUserObjVars();
 	
 	$sql = "SELECT * FROM users WHERE id = 1";
@@ -19,5 +22,5 @@
 		echo "User: " . $user['username'] . "<br />";
 		echo " Name: " . $user['firstName'] . " " . $user['lastName'] . "<br /> <br />";
 	}
-
+	*/
 ?>
