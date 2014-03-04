@@ -5,13 +5,16 @@
 	
 	echo $db->escapeValue("<br />It's working?<br />");
 	
-	/*
-	//** this won't work as is (wanted to test get_object_vars()): user::testShowUserObjVars();
+
 	
-	$sql = "SELECT * FROM users WHERE id = 1";
-	$resultSet = $database->query($sql);
-	$foundUser = $database->fetchArray($resultSet);
-	echo $foundUser['username'];
+	$user = User::findByID(1);
+	echo "User First Name: " . $user->fName;
+	
+	
+	// ***probably won't work instantiate private: $user = User::instantiate($record);
+	// $user->mbusertest();
+	/*	
+	echo $user->['fname'];
 	
 	// Note: if we had Object methods, would have to instantiate: $User = new User();
 	$record = $User::findByID(1);

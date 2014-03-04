@@ -39,7 +39,7 @@ class MySQLDatabase {
 	
 	public function query($query){
 		$this->lastQuery = $query;
-		$result = mysqli_query($connection, $query);
+		$result = mysqli_query($this->connection, $query);
 		// collected in $result resource; note reverse order from mysql()
 		$this->confirmQuery($result);
 		return $result;
@@ -47,7 +47,7 @@ class MySQLDatabase {
 	
 	private function confirmQuery($result) {
 		if (!$result) {
-			$output = "Database query failed: " . mysqli_error() . "<br /><br />";
+			$output = "Database query failed: " . mysqli_error($this->connection) . "<br /><br />";
 			// only use for development: $output .= "Last SQL query: " . $this->lastQuery;
 			die($output);
 		}

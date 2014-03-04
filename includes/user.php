@@ -7,7 +7,7 @@ require_once(LIB_PATH.DS.'database.php');
 class User {
 
 	protected static $tableName="tbusers";
-	public $id;
+	public $userID;
 	public $username;
 	public $password;
 	public $fName;
@@ -157,7 +157,7 @@ class User {
 	public static function findByID($id=0) {
 		global $database;
 		// change to array: $resultSet = self::findBySQL("SELECT * FROM  " . self::$tableName . " WHERE id={$id} LIMIT 1");
-		$resultArray = self::findBySQL("SELECT * FROM users WHERE id={$id} LIMIT 1");
+		$resultArray = self::findBySQL("SELECT * FROM " . self::$tableName ." WHERE userID={$id} LIMIT 1");
 		// no longer set: $found = $database->fetchArray($resultSet);
 		return !empty($resultArray) ? array_shift($resultArray) : false;
 	}
@@ -183,7 +183,7 @@ class User {
 		// $object->lastName = $record['lastName'];
 	
 		// INSTEAD of above:
-		foreach($record as $attribute->$value){
+		foreach($record as $attribute=>$value){
 			if($object->hasAttribute($attribute)) {
 				$object->$attribute = $value;
 			}
@@ -199,6 +199,11 @@ class User {
 	
 		// We don't care about the value, we just want to know if key exits
 		return array_key_exists($attribute, $objectVars);
+	}
+	
+	public function mbusertest($testvar = "") {
+		echo "<br /><br />Current user objectvars: <br />  ";
+		print_r(get_obj_vars($this));
 	}
 
 }
