@@ -10,9 +10,7 @@
 	$user = User::findByID(1);
 	echo "<br />User Last Name: " . $user->lName;
 	
-	
-	// ***probably won't work instantiate private: $user = User::instantiate($record);
-	$user->mbusertest();
+	// **debug: $user->mbusertest();
 	/*	
 	echo $user->['fname'];
 	

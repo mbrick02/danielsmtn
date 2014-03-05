@@ -32,15 +32,8 @@ class User {
 		return isset($this->id) ? $this->update() : $this->create();
 	}
 
-
-	// **** end first updated methods
-
 	protected static $dbFields = array('id', 'username', 'password', 'fName', 'lName', 'email', 'userTypeID');
 
-	// ***** 3/3/14 LEFT OFF HERE TESTING get_object_vars...but can't use self??????????????????????????????
-	public static function testShowUserObjVars(){
-		print_r("<br />tbUser Attributes: " . get_object_vars(self));
-	}
 	
 	protected function attributes() {
 		// return an array of attribute names and their values
@@ -80,7 +73,7 @@ class User {
 	
 	//  *** I think this is fixed???old save is the same as above public function save() {...
 
-	public function create() {
+	protected function create() {
 		global $database;
 		// Don't forget SQL syntax and habits:
 		//  - INSERT INTO table (key, key) VALUES ('value', 'value')
@@ -88,7 +81,7 @@ class User {
 		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitizedAttributes();
 	
-		$sql = "INSERT INTO users (";
+		$sql = "INSERT INTO " . self::$tableName ." (";
 		$sql .= join(", ", array_keys($attributes()));
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
@@ -101,7 +94,7 @@ class User {
 		}
 	}
 	
-	public function update() {
+	protected function update() {
 		global $database;
 		// Don't forget SQL syntax and habits:
 		//  - UPDATE table SET key='value' key='value' WHERE condition
@@ -120,9 +113,7 @@ class User {
 		return ($database->affected_rows() == 1) ? true : false;
 	}
 	
-	
-	
-	// *************************** end new user.php methods ***************************************
+
 	
 	
 	// ======*** authenticate() method for User class used in login.php ====
@@ -130,8 +121,8 @@ class User {
 		global $database;
 		$username = $database->escape_value($username);
 		$password = $database->escape_value($passord);
-		$sql = "SELECT * FROM users ";
-		$sql .= "WHERE username = '{$username}' ";
+		$sql = "SELECT * FROM " . self::$tableName;
+		$sql .= " WHERE username = '{$username}' ";
 		$sql .= "AND password = '{$password}' ";
 		$sql .= "LIMIT 1";
 	
@@ -164,7 +155,7 @@ class User {
 	
 	public static function findBySQL($sql= "") {
 		global $database;
-		echo "<br />user-findBySQ SQL: <br />" . $sql . "<br />";
+		// ** debug: echo "<br />user-findBySQ SQL: <br />" . $sql . "<br />";
 		$resultSet = $database->query($sql);
 		$objectArray = array();
 		
@@ -183,14 +174,11 @@ class User {
 		// $object->password = $record['password'];
 		// $object->firstName = $record['firstName'];
 		// $object->lastName = $record['lastName'];
-	echo "Instantiate called. <br />";
-	echo "record: ";
-	print_r($record);
+
 		// INSTEAD of above:
 		foreach($record as $attribute=>$value){
 			if($object->hasAttribute($attribute)) {
 				$object->$attribute = $value;
-				echo "<br />Attrib: " . $attribute . " / value: " . $value;
 			}
 		}
 	
@@ -206,10 +194,11 @@ class User {
 		return array_key_exists($attribute, $objectVars);
 	}
 	
-	public function mbusertest($testvar = "") {
-		echo "<br /><br />Current user objectvars: <br />  ";
-		print_r(get_object_vars($this));
-	}
+// **debug:
+// 	public function mbusertest($testvar = "") {
+// 		echo "<br /><br />Current user objectvars: <br />  ";
+// 		print_r(get_object_vars($this));
+// 	}
 
 }
 

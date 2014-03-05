@@ -81,7 +81,7 @@ class MySQLDatabase {
 	// (probably?) this will lead to an overall database object that each type of database
 	//          has extended object for; such as MySQLDatabase extended from Database
 	public function fetchArray($result) {
-		return mysqli_fetch_row($result);
+		return mysqli_fetch_assoc($result);
 	}
 }
 // note: this allows us options of alternate db classes (e.g. class OracleDatabase)
