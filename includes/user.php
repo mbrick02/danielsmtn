@@ -164,8 +164,10 @@ class User {
 	
 	public static function findBySQL($sql= "") {
 		global $database;
+		echo "<br />user-findBySQ SQL: <br />" . $sql . "<br />";
 		$resultSet = $database->query($sql);
 		$objectArray = array();
+		
 		while ($row = $database->fetchArray($resultSet)) {
 			// add to end (?NOT ?replace) objectArray
 			$objectArray[] = self::instantiate($row);
@@ -181,11 +183,14 @@ class User {
 		// $object->password = $record['password'];
 		// $object->firstName = $record['firstName'];
 		// $object->lastName = $record['lastName'];
-	
+	echo "Instantiate called. <br />";
+	echo "record: ";
+	print_r($record);
 		// INSTEAD of above:
 		foreach($record as $attribute=>$value){
 			if($object->hasAttribute($attribute)) {
 				$object->$attribute = $value;
+				echo "<br />Attrib: " . $attribute . " / value: " . $value;
 			}
 		}
 	
@@ -203,7 +208,7 @@ class User {
 	
 	public function mbusertest($testvar = "") {
 		echo "<br /><br />Current user objectvars: <br />  ";
-		print_r(get_obj_vars($this));
+		print_r(get_object_vars($this));
 	}
 
 }

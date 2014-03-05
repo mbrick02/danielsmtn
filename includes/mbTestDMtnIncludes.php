@@ -8,11 +8,11 @@
 
 	
 	$user = User::findByID(1);
-	echo "User First Name: " . $user->fName;
+	echo "<br />User Last Name: " . $user->lName;
 	
 	
 	// ***probably won't work instantiate private: $user = User::instantiate($record);
-	// $user->mbusertest();
+	$user->mbusertest();
 	/*	
 	echo $user->['fname'];
 	
@@ -21,9 +21,9 @@
 	echo $record['username'];
 	
 	$userSet = User::findAll();
-	while ($user = $database->fetch_array($userSet)) {
-		echo "User: " . $user['username'] . "<br />";
-		echo " Name: " . $user['firstName'] . " " . $user['lastName'] . "<br /> <br />";
+	foreach ($users as $user) {
+		echo "User: " . $user->username . "<br />";
+		echo " Name: " . $user->fullName() . "<br /> <br />";
 	}
 	*/
 ?>
