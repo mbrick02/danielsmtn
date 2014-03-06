@@ -1,8 +1,8 @@
 <?php 
 // If it's going to need the database then it's
-//  probably smart to require it before we start.
+//  probably smart to require it before we start. also need functions.php called by initialize
 // user.php called by initialize.php, so, LIB_PATH available
-require_once(LIB_PATH.DS.'database.php');
+require_once(LIB_PATH.DS.'database.php');  // called by initialize but require_once is safe
 
 class User {
 
@@ -148,9 +148,9 @@ class User {
 	public static function findByID($id=0) {
 		global $database;
 		// change to array: $resultSet = self::findBySQL("SELECT * FROM  " . self::$tableName . " WHERE id={$id} LIMIT 1");
-		$resultArray = self::findBySQL("SELECT * FROM " . self::$tableName ." WHERE userID={$id} LIMIT 1");
+		$resultObjArray = self::findBySQL("SELECT * FROM " . self::$tableName ." WHERE userID={$id} LIMIT 1");
 		// no longer set: $found = $database->fetchArray($resultSet);
-		return !empty($resultArray) ? array_shift($resultArray) : false;
+		return !empty($resultObjArray) ? array_shift($resultObjArray) : false;
 	}
 	
 	public static function findBySQL($sql= "") {
@@ -168,21 +168,25 @@ class User {
 	
 	private static function instantiate($record) {
 		// Could check that $record exists and is an array
-		$object = new self;
-		// $object->id = $record['id'];
-		// $object->username = $record['username'];
-		// $object->password = $record['password'];
-		// $object->firstName = $record['firstName'];
-		// $object->lastName = $record['lastName'];
-
-		// INSTEAD of above:
-		foreach($record as $attribute=>$value){
-			if($object->hasAttribute($attribute)) {
-				$object->$attribute = $value;
-			}
-		}
+		if (is_array($record)) {
+			$object = new self;
+			// $object->id = $record['id'];
+			// $object->username = $record['username'];
+			// $object->password = $record['password'];
+			// $object->firstName = $record['firstName'];
+			// $object->lastName = $record['lastName'];
 	
-		return $object;
+			// INSTEAD of above:
+			foreach($record as $attribute=>$value){
+				if($object->hasAttribute($attribute)) {
+					$object->$attribute = $value;
+				}
+			}
+		
+			return $object;
+		} else {
+			return NULL;  // ****NOT SURE THIS IS GRACEFUL FAIL**debug: echo "user::instantiate = null";
+		}
 	}
 	
 	private function hasAttribute($attribute) {

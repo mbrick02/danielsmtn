@@ -1,7 +1,29 @@
 <?php
-function redirectTo($newLocation) {
-	header("Location: " . $newLocation);
-	exit;
+function redirectTo($newLocation = NULL) {
+	if ($newLocation != NULL) {
+		header("Location: " . $newLocation);
+		exit;
+	}
+	
+}
+
+function outputMessage($message="") {
+	if (!empty($message)) {
+		return "<p class=\"message\">{$message}</p>";
+	} else {
+		return "";
+	}
+}
+
+// __autoload is object function like __clone __constructor __destructor BUT outside object
+function __autoload($className) {
+	$className = strtolower($className);
+	$path = "LIB_PATH.DS.{$className}.php";
+	if(file_exists($path)) {
+		require_once($path);
+	} else {
+		die("The file {$className}.php could not be found.");
+	}
 }
 
 function mysqlPrep($string) {
