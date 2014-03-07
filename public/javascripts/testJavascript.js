@@ -1,0 +1,3 @@
+/*
+	this folder will have javascript for D Mountain site.
+*/

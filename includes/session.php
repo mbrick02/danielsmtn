@@ -10,6 +10,7 @@ class Session {
 
 	private $loggedIn=false;
 	public $userID;
+	public $message;
 
 	function __construct() {
 		session_start();
@@ -48,15 +49,21 @@ class Session {
 		}	
 	}
 
-
-	// ********these functions are from non-object session.php (calls mus be updated)*******
+	public function setMessage($msg) {
+		$this->message = $_SESSION['message'] = $msg; 
+		
+	}
 	
-	public function message() {
+	// ********these functions were from non-object session.php (calls should be updated)*******
+	
+	public function putMessage() {
 		if (isset($_SESSION["message"])) {
+			// $this->message = $_SESSION["message"];
 			$output = "<div class=\"message\">" . htmlentities($_SESSION["message"]) ."</div>";
 				
 			// Clear Message
 			$_SESSION["message"] = null;
+			$this->message = "";
 			return $output;
 		}
 	}
