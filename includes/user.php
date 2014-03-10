@@ -40,6 +40,7 @@ class User {
 		$attributes = array();
 		foreach(self::$dbFields as $field) {
 			if (property_exists($this, $field)) {
+				// note below: $this->$field dynamically naming the attribute by $field variable value
 				$attributes[$field] = $this->$field;
 			}
 		}
@@ -112,8 +113,6 @@ class User {
 		$database->query($sql);
 		return ($database->affected_rows() == 1) ? true : false;
 	}
-	
-
 	
 	
 	// ======*** authenticate() method for User class used in loginDM.php ====
