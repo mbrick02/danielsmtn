@@ -18,12 +18,16 @@ function outputMessage($message="") {
 // __autoload is object function like __clone __constructor __destructor BUT outside object
 function __autoload($className) {
 	$className = strtolower($className);
-	$path = "LIB_PATH.DS.{$className}.php";
+	$path = LIB_PATH.DS."{$className}.php";
 	if(file_exists($path)) {
 		require_once($path);
 	} else {
 		die("The file {$className}.php could not be found.");
 	}
+}
+
+function includeLayoutTemplate($template="") {
+	include(LIB_PATH.DS.'layout'.DS.$template);
 }
 
 function mysqlPrep($string) {

@@ -1,5 +1,5 @@
 <?php
-// file should be called through initialize.php allowing LIB_PATH.DS
+require_once("initialize.php");
 require_once(LIB_PATH.DS."config.php");
 
 class MySQLDatabase {

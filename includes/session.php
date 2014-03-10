@@ -22,7 +22,7 @@ class Session {
 		}
 	}
 	public function isLoggedIn(){
-		return $this->logged_in;
+		return $this->loggedIn;
 	}
 	
 	public function login($user) {

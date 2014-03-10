@@ -34,11 +34,12 @@
 
   	<meta name="viewport" content="width=device-width; initial-scale=1.0" />
   	
-	<script type="text/javascript" src="./includes/modernizr-1.7.js"></script>
-	<script type="text/javascript" src="./includes/jquery-1.5.1.js"></script>
-	<script type="text/javascript" src="./includes/placholder.js"></script>
+	<script type="text/javascript" src="../../public/javascripts/modernizr-1.7.js"></script>
+	<!-- ***probably need to update this to google -->
+	<script type="text/javascript" src="../../public/javascripts/jquery-1.5.1.js"></script>
+	<!-- script type="text/javascript" src="../../public/javascripts/placholder.js"></script -->
 	
-	<link href="./includes/u2013.css" media="all" rel="stylesheet" type="text/css"> 
+	<link href="../../public/stylesheets/danmtn.css" media="all" rel="stylesheet" type="text/css"> 
 	<title>Usufruct Dishes</title>
 </head>
 <body>

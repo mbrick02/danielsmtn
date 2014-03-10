@@ -1,9 +1,9 @@
 <?php
 // "index.php" in admin, so we have to navigate up 2 parent folders to get to includes
-require_once("../../includes/functions.php);
-require_once("../../includes/session.php);
+require_once('../../includes/initialize.php');
+// require_once(LIB_PATH.DS.'session.php');
 
-if (!$session->isLoggedIn()) { redirect_to("login.php"); }
+if (!$session->isLoggedIn()) { redirectTo("loginDM.php"); }
 ?>
 <html>
 	<head>
@@ -24,7 +24,7 @@ if (!$session->isLoggedIn()) { redirect_to("login.php"); }
 		<div id="main">
 		<h2>Menu</h2>
 
-		<div id="footer">Copyright<?php echo date("Y", time()); ?>, MBviaSkog</div>
+		<footer>Copyright<?php echo date("Y", time()); ?>, MBviaSkog</footer>
 	</body>
 </html>
 ?>

@@ -116,7 +116,7 @@ class User {
 
 	
 	
-	// ======*** authenticate() method for User class used in login.php ====
+	// ======*** authenticate() method for User class used in loginDM.php ====
 	public static function authenticate($username="", $password="") {
 		global $database;
 		$username = $database->escape_value($username);
