@@ -37,6 +37,7 @@ class Session {
 		unset($_SESSION['userID']);
 		unset($this->userID);
 		$this->loggedIn = false;
+		// ?? redirect to login page??
 	}
 	
 	private function checkLogin() {

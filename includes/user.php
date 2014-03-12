@@ -10,6 +10,7 @@ class User {
 	public $userID;
 	public $username;
 	public $password;
+	public $hashedpassword; // *** encrypt******************************
 	public $fName;
 	public $lName;
 	public $email;
@@ -119,7 +120,8 @@ class User {
 	public static function authenticate($username="", $password="") {
 		global $database;
 		$username = $database->escape_value($username);
-		$password = $database->escape_value($passord);
+		$password = $database->escape_value($password);
+		$hashedPassword = $databseORuser->encrypt($password, $saltedHash); // hash password *****
 		$sql = "SELECT * FROM " . self::$tableName;
 		$sql .= " WHERE username = '{$username}' ";
 		$sql .= "AND password = '{$password}' ";
@@ -128,6 +130,58 @@ class User {
 		$resultArray = self::findBySQL($sql);
 		return !empty($resultArray) ? array_shift($resultArray) : false;
 	}
+	
+	protected function passwordEncrypt($password) {
+		$hashFormat = "$2y$10$"; // blowfish level/pass 10
+		$saltLength = 22;  // blowfish salts should be 22 or more
+		$salt = generateSalt($saltLength);
+		$formatAndSalt = $hashFormat . $salt;
+		$hash = crypt($password, $formatAndSalt);
+		return $hash;
+	}
+	
+	protected function generateSalt($length) {
+	
+		// No 100% unique or random, but works for saltr
+		$uniqueRandStr = md5(uniqid(mt_rand(), true));
+	
+		// Valid characters for a salt are [a-zA-Z0-9./]
+		$base64Str = base64_encode($uniqueRandStr);
+	
+		// But not '+' which is valid in base64 encoding
+		$modifiedBase64Str = str_replace('+', '.', $base64Str);
+	
+		// Truncate string to the correct length
+		$salt = substr($modifiedBase64Str, 0, $length);
+	
+		return $salt;
+	
+	} // end generateSalt()
+	
+	// ---
+	
+	protected function passwordCheck($password, $existingHash) {
+	
+		// existing hash contains format and salt at start
+		$hash = crypt($password, $existingHash);
+		if ($hash === $existingHash) {
+			return true;
+		} else {
+			return false;
+		}
+	
+	} // end passwordCheck
+	// ==================
+	// ********** New PHP >5.4 Password Functions *******************
+	// *** same algorithm as above but built in
+	// ===================
+	// password_hash($password, PASSWORD_DEFAULT);  // default is Blowfish. Or…
+	
+	// same as above but specified
+	// password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]);
+	
+	// also added: password_verify($password, $existing_hash)
+	// ========================================
 	
 	public function fullName() {
 		if(isset($this->firstName) && isset($this->lastName)) {
