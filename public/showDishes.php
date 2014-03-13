@@ -1,15 +1,14 @@
-<?php require_once("./includes/session.php"); ?>
-<?php require_once("./includes/functions.php");	?>
-<?php include("./includes/layout/header.php");	?>
-<?php require_once("./includes/connection.php"); ?>
+<?php require_once("../includes/initialize.php"); ?>
+
+<?php includeLayoutTemplate('header.php'); ?>
 <div id="main">
 <!-- . or .. within header file (e.g. ./includes/u2013.css )??? for localhost I had to use 1 but on server 2 -->
-	<nav id="navigation">
+	<nav id="navigation" class="leftside">
 		<?php echo navigation(); ?>
 	</nav>
-	<div id="page">
-		<?php echo message(); ?>
-		<?php $errors = errors(); ?>
+	<content><!-- div id="page"> -->
+		<?php echo $session->putMessage(); ?>
+		<?php $errors = $session->errors(); ?>
 		<?php echo formErrors($errors); ?>
 		<?php 
 			$dishesSet = findAllDishes();
@@ -38,7 +37,7 @@
 			</li>
 		<?php } ?>
 		</ul>
-	</div>
-</div>
+	<!-- /div> -->
+	</content>
 <?php mysqli_free_result($dishesSet); ?>
-<?php include("./includes/layout/footer.php");	?>
+<?php includeLayoutTemplate('footer.php'); ?>

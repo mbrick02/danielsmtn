@@ -22,6 +22,12 @@
 	}
 	
 	$hdTitle = $hdTitle . htmlentities($titleSuffix);
+	
+	if (strpos(getcwd(), "admin")){
+		$relStyleDir = "../../public/stylesheets/";
+	} else {
+		$relStyleDir = "../public/stylesheets/";
+	}
  ?>
  
 <!DOCTYPE html>
@@ -39,7 +45,8 @@
 	<script type="text/javascript" src="../../public/javascripts/jquery-1.5.1.js"></script>
 	<!-- script type="text/javascript" src="../../public/javascripts/placholder.js"></script -->
 	
-	<link href="../../public/stylesheets/danmtn.css" media="all" rel="stylesheet" type="text/css"> 
+	<!-- ** if working from admin add ../ **use php getcwd() if has admin do set that way otherwise assume public -->
+	<link href="<?php echo $relStyleDir ?>danmtn.css" media="all" rel="stylesheet" type="text/css"> 
 	<title>Usufruct Dishes</title>
 </head>
 <body>

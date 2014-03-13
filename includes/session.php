@@ -10,6 +10,7 @@ class Session {
 
 	private $loggedIn=false;
 	public $userID;
+	// *** I will probably abandon this since I seem to only use _SESSION['message']
 	public $message;
 
 	function __construct() {

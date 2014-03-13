@@ -37,11 +37,12 @@ function mysqlPrep($string) {
 	return $escapedString;
 }
 
-function confirmQuery($resultSet) {
-	if (!$resultSet) {
-		die("Database query failed.");
-	}
-}
+// ***DEL now in database.php Database object
+// function confirmQuery($resultSet) {
+// 	if (!$resultSet) {
+// 		die("Database query failed.");
+// 	}
+// }
 
 function formErrors($errors){
 	$output = "";
@@ -59,6 +60,7 @@ function formErrors($errors){
 	return $output;
 }
 
+// ******** DEL use findAllUsers in user.php User class ***************
 function findAllAdmins() {
 	global $connection;
 	$query = "SELECT * ";
@@ -101,20 +103,20 @@ function dishAnchorPreTag($layoutContext, $dishID){
 	return $dishAPreTag;
 }
 
+// **** this needs to be put in a separate Dish class in dish.php
 function findAllDishes() {
-	global $connection;
+	global $db; // ** was $connection from old connection.php now translating to $db(with ->connection)
 	$query = "SELECT * ";
 	$query .= "FROM dish ";
 	// $query .= "ORDER BY dish ASC";
-	// echo $query;
-	$dishesSet = mysqli_query($connection, $query);
-	confirmQuery($dishesSet);
+	
+	$dishesSet = $db->query($query);
 	
 	return $dishesSet;
 }
 
 function findDishByID($dishID){
-	global $connection;
+	global $db; // ** was $connection from old connection.php now translating to $db(with ->connection)
 	
 	$safe_dishID = mysqli_real_escape_string($connection, $dishID);
 	
@@ -123,7 +125,7 @@ function findDishByID($dishID){
 	$query .= "WHERE dishID = {$safe_dishID} ";
 	$query .= "LIMIT 1";
 
-	$dishesSet = mysqli_query($connection, $query);
+	$dishesSet = mysqli_query($db->connection, $query);
 	// echo $query;
 	confirmQuery($dishesSet);
 	

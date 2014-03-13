@@ -21,7 +21,7 @@ class MySQLDatabase {
 
 	public function openConnection() {
 		$this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-
+		
 		// Test if connection succeeded
 		if(mysqli_connect_errno()) {
 			die("Database connection failed: " .
@@ -55,9 +55,9 @@ class MySQLDatabase {
 	
 	// *** instead of public function mysqlPrep($string) {... (not db agnostic)
 	public function escapeValue($string) {
-		// *** PHP < v5 (next 2 lines probably not necessary … look 'em up if needed)
-		// if ($this->real_escape_string_exists….
-		// if (!$this->magic_quotes_active….
+		// *** PHP < v5 (next 2 lines probably not necessary (look 'em up if needed)
+		// if ($this->real_escape_string_exists).
+		// if (!$this->magic_quotes_active).
 	
 		$escaped_string = mysqli_real_escape_string($this->connection, $string);
 		return $escaped_string;

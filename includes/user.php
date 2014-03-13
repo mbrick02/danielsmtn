@@ -54,12 +54,7 @@ class User {
 // 		// get_object_vars returns associative array with attributes as keys and values
 // 		return get_object_vars($this);
 // 	}
-		
-	private function has_attribute($attribute) {
-	$object_vars = $this->attributes();
-	// just want to know if key exists
-	return array_key_exists($attribute, $object_vars);
-	}
+
 	
 
 	protected function sanitizedAttributes() {
@@ -195,6 +190,7 @@ class User {
 	// *** below are Common Database Methods to be put in DatabaseObject
 	// Note these are class methods (static) so you don't have to instantiate an object
 	public static function findAll() {
+		// returns object array
 		return self::findBySQL("SELECT * FROM " . self::$tableName);
 	}
 	
@@ -238,14 +234,15 @@ class User {
 		
 			return $object;
 		} else {
-			return NULL;  // ****NOT SURE THIS IS GRACEFUL FAIL**debug: echo "user::instantiate = null";
+			return NULL;  // ****NOT SURE THIS IS GRACEFUL FAIL**debug: echo "User::instantiate = null";
 		}
 	}
 	
 	private function hasAttribute($attribute) {
 		// get_object_vars returns an associative array with all attributes
 		// (incl. private ones!)
-		$objectVars = get_object_vars($this);
+		// *old: $objectVars = get_object_vars($this);
+		$object_vars = $this->attributes();
 	
 		// We don't care about the value, we just want to know if key exits
 		return array_key_exists($attribute, $objectVars);

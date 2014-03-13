@@ -1,4 +1,8 @@
-<?php require_once("../../includes/initialize.php"); ?>
+<?php 
+	require_once("../../includes/initialize.php");
+	if (!$session->isLoggedIn()) { redirectTo("loginDM.php"); }
+?>
+
 <?php $allUsers = User::findAll(); ?>
 <?php $layoutContext = "admin"?>
 <?php includeLayoutTemplate('header.php'); ?>

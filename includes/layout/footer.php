@@ -1,7 +1,7 @@
 <?php
-
+  // not sure if there needs to be something before the footer tag???
 ?>
-	<footer>Copyright <?php echo date("Y"); ?></footer>
+	<footer><br/> <br />Copyright <?php echo date("Y"); ?></footer>
 </body>
 </html>
 <?php 
