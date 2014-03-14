@@ -40,31 +40,34 @@ if (isset($_POST['submit'])) { // Form has been submitted
 			echo $session->putMessage();
         ?>
         <h2>Let us know who is bringing their dish</h2>
-        
+        <!-- ***Need to add userTypeID = ?2 (admin) -->
         <table class="formTable">
-         <form action="regUser.php" name="adminLogin" method="post">
- <!--         <tr>
+		<form action="regUser.php" name="adminLogin" method="post">
+            <tr>
               	<td><label for ="fName">First Name: </label></td>
               	<td><input name="fName" type="text" id="fName" 
                 placeholder="Enter first Name"/></td>
-              </tr>  -->
- <!--         <tr>
+            </tr>
+            <tr>
               	<td><label for ="lName">lName: </label></td>
               	<td><input name="lName" type="text" id="lName" 
                 placeholder="Enter Last Name"/></td>
-              </tr>  -->
-                            <tr>
+            </tr>
+            <tr>
               	<td><label for ="username">username: </label></td>
               	<td><input name="username" type="text" id="username" 
                 placeholder="Leave Blank if you dont have a username"/></td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
               	<td><label for ="email">Email(preferably the one your invitation was sent to): </label></td>
               	<td><input name="email" type="email" id="Text2" 
                 placeholder="Enter Email address"/></td>
-              </tr>
-              <tr>
+            </tr>
+            <tr>
               	<td class="submitButton" colspan="2"><input type="submit" name="submit" value="Enter User"></td>
-              </tr>  
+            </tr> 
 		</form>
+		</table>
+            
+        
 <?php includeLayoutTemplate('footer.php');	?>

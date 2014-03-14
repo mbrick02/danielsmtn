@@ -10,5 +10,18 @@
 	<nav>
 		&nbsp;
 	</nav>
-	<!-- ***continue here from "Admin CRUD" Essential Training aroun 4:05 -->
+	<!-- findAll **--later may want to sort admins first -->
+	<table>
+	<tr><td>Field</td><td>value</td></tr>
+	<?php 
+	$userSet = User::findAll();
+	foreach ($users as $user) {
+		echo "<tr>User: " . $user->username . "</td>";
+		echo "<td> Name: " . $user->fullName() . "</td> </tr>";
+	}
+	?>
+
+	</table>
+	
+	<!-- ***continue here from "Admin CRUD" Essential Training aroun 4:30 -->
 </Main>
