@@ -31,11 +31,12 @@ if (isset($_POST['submit'])) { // Form has been submitted
 
 
 <?php includeLayoutTemplate('header.php'); ?>
+
   <div id="main">
     <head>
       <h1>Login Page</h1>
     </head>
-    <div id="main_section">
+    <article>
         <?php 
 			echo $session->putMessage();
         ?>
@@ -53,7 +54,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
               	<td><input name="lName" type="text" id="lName" 
                 placeholder="Enter Last Name"/></td>
               </tr>  -->
-                            <tr>
+              <tr>
               	<td><label for ="username">username: </label></td>
               	<td><input name="username" type="text" id="username" 
                 placeholder="Leave Blank if you dont have a username"/></td>
@@ -67,4 +68,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
               	<td class="submitButton" colspan="2"><input type="submit" name="submit" value="Enter User"></td>
               </tr>  
 		</form>
+	</table>
+	</article>
+	</div>
 <?php includeLayoutTemplate('footer.php');	?>

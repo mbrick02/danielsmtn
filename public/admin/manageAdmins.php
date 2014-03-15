@@ -27,5 +27,7 @@
 
 	</table>
 	
-	<!-- ***continue here from "Admin CRUD" Essential Training around 4:30 -->
+	<br />
+	<a href ="newAdmin.php">Add new admin</a>
 </Main>
+<?php includeLayoutTemplate('header.php'); ?>
