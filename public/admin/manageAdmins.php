@@ -5,6 +5,9 @@
 
 <?php $allUsers = User::findAll(); ?>
 <?php $layoutContext = "admin"?>
+<?php $limitType=""; // case $layoutContext >> User::findAll();?>
+<?php // case $limitType so that for chefs $limitType="WHERE userTypeID=CHEFTYPE" or $chefType ?>
+
 <?php includeLayoutTemplate('header.php'); ?>
 <Main>
 	<nav>
@@ -12,16 +15,17 @@
 	</nav>
 	<!-- findAll **--later may want to sort admins first -->
 	<table>
-	<tr><td>Field</td><td>value</td></tr>
+	<tr><th>Field</th><th>value</th><th>Action</th></tr>
 	<?php 
 	$userSet = User::findAll();
 	foreach ($users as $user) {
-		echo "<tr>User: " . $user->username . "</td>";
-		echo "<td> Name: " . $user->fullName() . "</td> </tr>";
+		echo "<tr><td>User: " . $user->username . "</td>";
+		echo "<td> Name: " . $user->fullName() . "</td>";
+		echo "<td><a href=\"editAdminUser.php?id=" . urlencode($admin['id']) ."\">Edit</a></0td> </tr>";
 	}
 	?>
 
 	</table>
 	
-	<!-- ***continue here from "Admin CRUD" Essential Training aroun 4:30 -->
+	<!-- ***continue here from "Admin CRUD" Essential Training around 4:30 -->
 </Main>
