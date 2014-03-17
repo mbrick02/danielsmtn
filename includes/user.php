@@ -119,7 +119,8 @@ class User {
 		$hashedPassword = $databseORuser->encrypt($password, $saltedHash); // hash password *****
 		$sql = "SELECT * FROM " . self::$tableName;
 		$sql .= " WHERE username = '{$username}' ";
-		$sql .= "AND password = '{$password}' ";
+		$sql .= "AND password = '{$password}' "; // use below once addAdmin and editAdmin in place
+		// ***change to this*** $sql .= "AND password = '{$hashedPassword}' ";
 		$sql .= "LIMIT 1";
 	
 		$resultArray = self::findBySQL($sql);
@@ -179,8 +180,8 @@ class User {
 	// ========================================
 	
 	public function fullName() {
-		if(isset($this->firstName) && isset($this->lastName)) {
-			return $this->firstName . " " . $this->lastName;
+		if(isset($this->fName) && isset($this->lName)) {
+			return $this->fName . " " . $this->lName;
 		} else {
 			return " ";
 		}
@@ -242,7 +243,7 @@ class User {
 		// get_object_vars returns an associative array with all attributes
 		// (incl. private ones!)
 		// *old: $objectVars = get_object_vars($this);
-		$object_vars = $this->attributes();
+		$objectVars = $this->attributes();
 	
 		// We don't care about the value, we just want to know if key exits
 		return array_key_exists($attribute, $objectVars);

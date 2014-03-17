@@ -1,5 +1,6 @@
 BODY {
 	font:10pt/12pt Arial, Helvetica, sans-serif;
+	background-color: #00ff80;
 }
 H2 {
 	font : bold 18pt/20pt Arial, Helvetica, sans-serif;
@@ -45,7 +46,7 @@ nav.leftside ul {
 }
 
 nav.leftside ul li {
-    
+
 }content {
     border: 3px dashed green;
     float: left;

@@ -17,7 +17,8 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	
 	if ($foundUser) {
 		$session->login($foundUser);
-		redirectTo("mainAdmin.php");
+		echo $foundUser->lName;
+		// redirectTo("manageAdmins.php");
 	} else {
 		// username/password combo was not found in db
 		$session->setMessage("Username/password combination incorrect");
@@ -43,7 +44,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
         <h2>Let us know who is bringing their dish</h2>
         
         <table class="formTable">
-         <form action="regUser.php" name="adminLogin" method="post">
+         <form action="manageAdmins.php" name="adminLogin" method="post">
  <!--         <tr>
               	<td><label for ="fName">First Name: </label></td>
               	<td><input name="fName" type="text" id="fName" 
@@ -60,7 +61,12 @@ if (isset($_POST['submit'])) { // Form has been submitted
                 placeholder="Leave Blank if you dont have a username"/></td>
               </tr>
               <tr>
-              	<td><label for ="email">Email(preferably the one your invitation was sent to): </label></td>
+              	<td><label for ="password">password: </label></td>
+              	<td><input name="password" type="password" id="password" 
+                placeholder="Leave Blank if you dont have a password"/></td>
+              </tr>
+              <tr>
+              	<td><label for ="email">Email (preferably the one your invitation was sent to): </label></td>
               	<td><input name="email" type="email" id="Text2" 
                 placeholder="Enter Email address"/></td>
               </tr>

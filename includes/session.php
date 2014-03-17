@@ -29,7 +29,7 @@ class Session {
 	public function login($user) {
 		// database should find user based on username/password
 		if($user) {
-			$this->userID = $_SESSION['userID'] = $user->id;
+			$this->userID = $_SESSION['userID'] = $user->userID;
 			$this->loggedIn = true;
 		}
 	}

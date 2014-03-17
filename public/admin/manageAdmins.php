@@ -1,6 +1,9 @@
 <?php 
 	require_once("../../includes/initialize.php");
-	if (!$session->isLoggedIn()) { redirectTo("loginDM.php"); }
+	if (!$session->isLoggedIn()) {
+		// debug ** echo "<br /> Not logged in. <br />";
+		redirectTo("loginDM.php");
+	}
 ?>
 
 <?php $allUsers = User::findAll(); ?>
@@ -17,17 +20,17 @@
 	<table>
 	<tr><th>Field</th><th>value</th><th>Action</th></tr>
 	<?php 
-	$userSet = User::findAll();
+	$users = User::findAll();
 	foreach ($users as $user) {
 		echo "<tr><td>User: " . $user->username . "</td>";
 		echo "<td> Name: " . $user->fullName() . "</td>";
-		echo "<td><a href=\"editAdminUser.php?id=" . urlencode($admin['id']) ."\">Edit</a></0td> </tr>";
+		echo "<td><a href=\"editAdminUser.php?id=" . urlencode($user->userID) ."\">Edit</a></0td> </tr>";
 	}
 	?>
 
 	</table>
 	
 	<br />
-	<a href ="newAdmin.php">Add new admin</a>
+	<a href ="newDMAdmin.php">Add new admin</a>
 </Main>
 <?php includeLayoutTemplate('header.php'); ?>
