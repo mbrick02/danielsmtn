@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	
 	if ($foundUser) {
 		$session->login($foundUser);
-		echo $foundUser->lName;
+		$session->setMessage("User Found");
 		// redirectTo("manageAdmins.php");
 	} else {
 		// username/password combo was not found in db
