@@ -23,6 +23,7 @@ class Session {
 		}
 	}
 	public function isLoggedIn(){
+		echo "<h1>isLoggedIn is:</h1> " . ($this->loggedIn ? "Truey" : "Falsey");
 		return $this->loggedIn;
 	}
 	

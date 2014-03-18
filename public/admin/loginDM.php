@@ -2,13 +2,13 @@
 require_once('../../includes/initialize.php');
 
 if ($session->isLoggedIn()) {
-	redirectTo("index.php");
+	redirectTo("addUser.php");  // test debug ... should be mainAdmin.php
 }
 
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
-	
-	$username = trim($_POST['username']);
+	echo "<h1>Post submitted</h1>";
+/*	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 	
 	// ***this is admin login so we check for username/password ??chef login??
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	}
 } else { // Form has not been submitted
 	$username = "";
-	$password = "";
+	$password = ""; */
 }
 ?>
 
