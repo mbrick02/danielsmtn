@@ -116,11 +116,11 @@ class User {
 		global $database;
 		$username = $database->escape_value($username);
 		$password = $database->escape_value($password);
-		$hashedPassword = $databseORuser->encrypt($password, $saltedHash); // hash password *****
+		$hashedPassword = $password; // *** debug CHANGE TO LINE BELOW ******
+		// $hashedPassword = self::passwordEncrypt($password, $saltedHash); // hash password *****
 		$sql = "SELECT * FROM " . self::$tableName;
 		$sql .= " WHERE username = '{$username}' ";
-		$sql .= "AND password = '{$password}' "; // use below once addAdmin and editAdmin in place
-		// ***change to this*** $sql .= "AND password = '{$hashedPassword}' ";
+		$sql .= "AND password = '{$hashedPassword}' ";
 		$sql .= "LIMIT 1";
 	
 		$resultArray = self::findBySQL($sql);
