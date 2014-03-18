@@ -3,8 +3,7 @@ function redirectTo($newLocation = NULL) {
 	if ($newLocation != NULL) {
 		header("Location: " . $newLocation);
 		exit;
-	}
-	
+	}	
 }
 
 function outputMessage($message="") {

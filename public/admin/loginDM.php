@@ -7,7 +7,7 @@ if ($session->isLoggedIn()) {
 
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
-	echo "<h1>Post submitted</h1>";
+	redirectTo("../showDishes.php");  // *** debug DELETE
 /*	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 	
@@ -34,17 +34,27 @@ if (isset($_POST['submit'])) { // Form has been submitted
 <?php includeLayoutTemplate('header.php'); ?>
 
   <div id="main">
-    <head>
-      <h1>Login Page</h1>
-    </head>
     <article>
+    <header>
+      <h1>Login Page</h1>
+    </header>
+    <div>
         <?php 
 			echo $session->putMessage();
         ?>
         <h2>Let us know who is bringing their dish</h2>
         
-        <table class="formTable">
-         <form action="manageAdmins.php" name="adminLogin" method="post">
+        
+        <form action="loginDM.php" name="adminLogin" method="post">
+         <fieldset>
+         <table class="formTable">
+         <thead>
+         	<tr>
+         	  	<th>Label</th><th>Field</th>
+         	</tr>
+         </thead>        
+         <tbody>
+
  <!--         <tr>
               	<td><label for ="fName">First Name: </label></td>
               	<td><input name="fName" type="text" id="fName" 
@@ -72,9 +82,12 @@ if (isset($_POST['submit'])) { // Form has been submitted
               </tr>
               <tr>
               	<td class="submitButton" colspan="2"><input type="submit" name="submit" value="Enter User"></td>
-              </tr>  
+              </tr> 
+          </tbody> 
+		  </table>
+		  </fieldset>
 		</form>
-	</table>
+	</div>
 	</article>
 	</div>
 <?php includeLayoutTemplate('footer.php');	?>

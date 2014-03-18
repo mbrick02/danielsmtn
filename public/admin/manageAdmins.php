@@ -1,7 +1,6 @@
 <?php 
 	require_once("../../includes/initialize.php");
 	if (!$session->isLoggedIn()) {
-		// debug ** echo "<br /> Not logged in. <br />";
 		redirectTo("loginDM.php");
 	}
 ?>
