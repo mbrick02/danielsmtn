@@ -29,12 +29,13 @@ function includeLayoutTemplate($template="") {
 	include(LIB_PATH.DS.'layout'.DS.$template);
 }
 
+/* // Below not used - use escapeValue in database.php
 function mysqlPrep($string) {
-	global $connection;
+	global $db;
 	
-	$escapedString = mysqli_real_escape_string($connection, $string);
+	$escapedString = mysqli_real_escape_string($db->connection, $string);
 	return $escapedString;
-}
+} */
 
 // ***DEL now in database.php Database object
 // function confirmQuery($resultSet) {
@@ -59,7 +60,7 @@ function formErrors($errors){
 	return $output;
 }
 
-// ******** DEL use findAllUsers in user.php User class ***************
+/* // ******** DEL use findAllUsers and findByID in user.php User class ***************
 function findAllAdmins() {
 	global $connection;
 	$query = "SELECT * ";
@@ -70,8 +71,7 @@ function findAllAdmins() {
 	confirmQuery($adminSet);
 	
 	return $adminSet;
-}
-
+} 
 function findAdminByID($adminID) {
 	global $connection;
 	
@@ -91,7 +91,7 @@ function findAdminByID($adminID) {
 	} else {
 		return null;
 	}	
-}
+} */
 
 function dishAnchorPreTag($layoutContext, $dishID){
 	if (($layoutContext == "admin") || ($layoutContext == "thisChef")) {  // if admin or dish of this chef, make editable

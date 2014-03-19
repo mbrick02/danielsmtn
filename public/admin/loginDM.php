@@ -7,8 +7,8 @@ if ($session->isLoggedIn()) {
 
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
-	redirectTo("../showDishes.php");  // *** debug DELETE
-/*	$username = trim($_POST['username']);
+	
+	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 	
 	// ***this is admin login so we check for username/password ??chef login??
@@ -17,15 +17,15 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	
 	if ($foundUser) {
 		$session->login($foundUser);
-		$session->setMessage("User Found");
-		// redirectTo("manageAdmins.php");
+		$session->setMessage("User and ID Found ". $foundUser->fName . $session->userID);
+		redirectTo("manageAdmins.php");
 	} else {
 		// username/password combo was not found in db
 		$session->setMessage("Username/password combination incorrect");
 	}
 } else { // Form has not been submitted
 	$username = "";
-	$password = ""; */
+	$password = "";
 }
 ?>
 

@@ -16,15 +16,15 @@ class User {
 	public $email;
 	public $userTypeID;
 	
-	// 3/3/14 currently only fields in usufructdish::tbusers: 
-	//				userID, fName, lName, email, userTypeID
+	// 3/19/14 currently only fields in usufructdish::tbusers: 
+	//				userID, username, password, fName, lName, email, userTypeID
 
 	// *********************** new user.php methods *****************************************
 
 	//  ***** first updated methods
 	// add these to user.php
 
-	//…
+	//
 
 	// note: these are public and not static--accessible from outside for an instance
 	// although create ana update() could be protected to force user to use save()
@@ -33,7 +33,7 @@ class User {
 		return isset($this->id) ? $this->update() : $this->create();
 	}
 
-	protected static $dbFields = array('id', 'username', 'password', 'fName', 'lName', 'email', 'userTypeID');
+	protected static $dbFields = array('userID', 'username', 'password', 'fName', 'lName', 'email', 'userTypeID');
 
 	
 	protected function attributes() {
@@ -63,7 +63,7 @@ class User {
 		// sanitize the values before submitting
 		// Note: does not alter the actual value of each attribute
 		foreach($this->attributes() as $key => $value){
-			$cleanAttributes[$key] = $database->escape_value($value);
+			$cleanAttributes[$key] = $database->escapeValue($value);
 	}
 	return $cleanAttributes;
 	}
@@ -113,9 +113,9 @@ class User {
 	
 	// ======*** authenticate() method for User class used in loginDM.php ====
 	public static function authenticate($username="", $password="") {
-		global $database;
-		$username = $database->escape_value($username);
-		$password = $database->escape_value($password);
+		global $db;
+		$username = $db->escapeValue($username);
+		$password = $db->escapeValue($password);
 		$hashedPassword = $password; // *** debug CHANGE TO LINE BELOW ******
 		// $hashedPassword = self::passwordEncrypt($password, $saltedHash); // hash password *****
 		$sql = "SELECT * FROM " . self::$tableName;
@@ -123,7 +123,7 @@ class User {
 		$sql .= "AND password = '{$hashedPassword}' ";
 		$sql .= "LIMIT 1";
 	
-		$resultArray = self::findBySQL($sql);
+		$resultArray = self::findBySQL($sql);  // should be one user object
 		return !empty($resultArray) ? array_shift($resultArray) : false;
 	}
 	
