@@ -32,9 +32,9 @@ if (isset($_POST['submit'])) { // Form has been submitted
 
 <?php includeLayoutTemplate('header.php'); ?>
   <div id="main">
-    <head>
+    <!-- **SEE header.php** <head>
       <h1>Login Page</h1>
-    </head>
+    </head> -->
     <div id="main_section">
         <?php 
 			echo $session->putMessage();
