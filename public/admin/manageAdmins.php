@@ -32,4 +32,4 @@
 	<br />
 	<a href ="newDMAdmin.php">Add new admin</a>
 </Main>
-<?php includeLayoutTemplate('header.php'); ?>
+<?php includeLayoutTemplate('footer.php'); ?>
