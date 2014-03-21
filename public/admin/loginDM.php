@@ -2,7 +2,7 @@
 require_once('../../includes/initialize.php');
 
 if ($session->isLoggedIn()) {
-	redirectTo("addUser.php");  // test debug ... should be mainAdmin.php
+	redirectTo("manageAdmins.php");  // test debug ... should be mainAdmin.php
 }
 
 // Remember to give your form's submit tag a name="submit" attribute

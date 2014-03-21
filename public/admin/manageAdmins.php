@@ -31,5 +31,6 @@
 	
 	<br />
 	<a href ="newDMAdmin.php">Add new admin</a>
+	<a href ="logoutAdmin.php">Log Out</a>
 </Main>
 <?php includeLayoutTemplate('footer.php'); ?>
