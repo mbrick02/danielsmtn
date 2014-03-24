@@ -14,6 +14,7 @@
 <Main>
 	<nav>
 		&nbsp;
+		<!-- *****if I have a main menu <a href="mainMenu.php">&laquo; Main Menu</a><br/> -->
 	</nav>
 	<!-- findAll **--later may want to sort admins first -->
 	<table>
@@ -31,6 +32,6 @@
 	
 	<br />
 	<a href ="newDMAdmin.php">Add new admin</a>
-	<a href ="logoutAdmin.php">Log Out</a>
+	<a href ="logoutDM.php">Log Out</a>
 </Main>
 <?php includeLayoutTemplate('footer.php'); ?>

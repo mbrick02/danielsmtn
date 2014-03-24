@@ -38,7 +38,21 @@ class Session {
 		unset($_SESSION['userID']);
 		unset($this->userID);
 		$this->loggedIn = false;
-		// ?? redirect to login page??
+		// let calling function redirect: redirectTo("page.pg");
+		
+		/*
+		 * // hard-core version of logout with destroy
+		 * session_start();
+		 * $_SESSION = array();
+		 * if (isset($_COOKIE[session_name()])){
+		 * 	setcookie(session_name(), '', time()=42000, '/');
+		 * }
+		 * session_destroy();
+		 * redirectTo("loginDM.php");		
+		 */
+		
+		
+		
 	}
 	
 	private function checkLogin() {
