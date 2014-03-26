@@ -5,7 +5,7 @@ require_once(LIB_PATH.DS."config.php");
 class MySQLDatabase {
 
 	private $connection;
-	private $lastQuery;
+	private $lastQuery="";
 	// *** private $magic_quotes_active;
 	// *** private $real_escape_string_exists;
 
@@ -13,7 +13,6 @@ class MySQLDatabase {
 	// 	so it is a good place to do checks that may required later by other methods
 	function __construct() {
 		$this->openConnection();
-		$this->lastQuery = "";  // I added this well after 'PHP Beyond Basics' ?*?* default value?***
 		// *** we probaly dont need to worry about this since working only with MySQL >5
 		// $this->magic_quotes_active = get_magic_quotes_gpc();
 		// $this->real_escape_string_exists = function_exists("mysql_real_escape_string");

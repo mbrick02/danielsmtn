@@ -24,7 +24,7 @@
 	foreach ($users as $user) {
 		echo "<tr><td>User: " . $user->username . "</td>";
 		echo "<td> Name: " . $user->fullName() . "</td>";
-		echo "<td><a href=\"editAdminUser.php?id=" . urlencode($user->userID) ."\">Edit</a></0td> </tr>";
+		echo "<td><a href=\"editDMAdmin.php?id=" . urlencode($user->userID) ."\">Edit</a></0td> </tr>";
 	}
 	?>
 

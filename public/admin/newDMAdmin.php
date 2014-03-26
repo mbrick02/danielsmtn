@@ -1,8 +1,14 @@
 <?php 
 require_once('../../includes/initialize.php');
+require_once(LIB_PATH.DS.'form.php');
 
-if ($session->isLoggedIn()) {
-	redirectTo("index.php");
+$fields = array("fName", "lName", "username", "password", "email");
+$requiredFields = array("fName", "lName", "username", "password", "email");
+
+$formNewDMAdmin = new Form($fields, $requiredFields);
+
+if (!$session->isLoggedIn()) {
+	redirectTo("loginDM.php");
 }
 
 // Remember to give your form's submit tag a name="submit" attribute
@@ -39,10 +45,10 @@ if (isset($_POST['submit'])) { // Form has been submitted
         <?php 
 			echo $session->putMessage();
         ?>
-        <h2>Let us know who is bringing their dish</h2>
+        <h2>Create New Admin</h2>
         <!-- ***Need to add userTypeID = ?2 (admin) -->
         <table class="formTable">
-		<form action="regUser.php" name="adminLogin" method="post">
+		<form action="newDMAdmin.php" name="adminLogin" method="post">
             <tr>
               	<td><label for ="fName">First Name: </label></td>
               	<td><input name="fName" type="text" id="fName" 
@@ -57,6 +63,10 @@ if (isset($_POST['submit'])) { // Form has been submitted
               	<td><label for ="username">username: </label></td>
               	<td><input name="username" type="text" id="username" 
                 placeholder="Leave Blank if you dont have a username"/></td>
+            </tr>
+            <tr>
+              	<td><label for ="password">password: </label></td>
+              	<td><input name="password" type="text" id="password" /></td> <!-- change to type password -->
             </tr>
             <tr>
               	<td><label for ="email">Email(preferably the one your invitation was sent to): </label></td>

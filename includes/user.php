@@ -22,9 +22,6 @@ class User {
 	// *********************** new user.php methods *****************************************
 
 	//  ***** first updated methods
-	// add these to user.php
-
-	//
 
 	// note: these are public and not static--accessible from outside for an instance
 	// although create ana update() could be protected to force user to use save()
@@ -48,7 +45,7 @@ class User {
 	return $attributes;
 	}
 	
-	// ***below is old verstion***
+	// ***below is old version***
 // 	protected function attributes() {
 // 		// return an array of attribute keys and their values
 // 		// get_object_vars returns associative array with attributes as keys and values
