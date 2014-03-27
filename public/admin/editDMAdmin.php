@@ -1,19 +1,29 @@
 <?php 
 require_once('../../includes/initialize.php');
-require_once(LIB_PATH.DS.'form.php');
-
-$fields = array("fName", "lName", "username", "password", "email");
-$requiredFields = array("fName", "lName", "username", "password", "email");
-
-$formNewDMAdmin = new Form($fields, $requiredFields);
 
 if (!$session->isLoggedIn()) {
 	redirectTo("loginDM.php");
 }
 
+require_once(LIB_PATH.DS.'form.php');
+
+$fields = array("fName", "lName", "username", "password", "email");
+$requiredFields = array("fName", "lName", "username", "password", "email");
+$fieldsWMaxLengths = array("username" => 35, "password" => 45);
+
+$user = User::findByID($_GET['id']);
+// *** 3/26/14 continue her putting $user vals in form values
+
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
-	// *** $formNewDMAdmin->setFormValues($user)
+	$formNewDMAdmin = new Form($fields, $requiredFields, $fieldsWMaxLengths);
+	if (!$formNewDMAdmin->validatePrecences()) {
+		$session->setMessage($formNewDMAdmin->message);
+	}	
+	
+	$formNewDMAdmin->setObjectVals($user); // *** still need to write this
+	
+
 } else { // Form has not been submitted
 	$username = "";
 	$password = "";
@@ -25,20 +35,20 @@ if (isset($_POST['submit'])) { // Form has been submitted
 <?php includeLayoutTemplate('header.php'); ?>
   <div id="main">
     <!-- **SEE header.php** <head>
-      <h1>Login Page</h1>
+      <h1>E Page</h1>
     </head> -->
     <div id="main_section">
         <?php 
 			echo $session->putMessage();
         ?>
-        <h2>Create New Admin</h2>
+        <h2>Edit New Admin <?php echo $user->fullname() ?></h2>
         <!-- ***Need to add userTypeID = ?2 (admin) -->
         <table class="formTable">
-		<form action="newDMAdmin.php" name="adminLogin" method="post">
+		<form action="editDMAdmin.php" name="adminLogin" method="post">
             <tr>
               	<td><label for ="fName">First Name: </label></td>
               	<td><input name="fName" type="text" id="fName" 
-                placeholder="Enter first Name"/></td>
+                value = <?php echo $user->fname; ?>/></td>
             </tr>
             <tr>
               	<td><label for ="lName">lName: </label></td>
@@ -60,7 +70,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
                 placeholder="Enter Email address"/></td>
             </tr>
             <tr>
-              	<td class="submitButton" colspan="2"><input type="submit" name="submit" value="Enter User"></td>
+              	<td class="submitButton" colspan="2"><input type="submit" name="submit" value="Update User"></td>
             </tr> 
 		</form>
 		</table>

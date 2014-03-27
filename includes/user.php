@@ -16,6 +16,7 @@ class User {
 	public $email;
 	public $userTypeID;
 	
+	protected static $dbFields = array('userID', 'username', 'password', 'fName', 'lName', 'email', 'userTypeID');	
 	// 3/19/14 currently only fields in usufructdish::tbusers: 
 	//				userID, username, password, fName, lName, email, userTypeID
 
@@ -30,7 +31,7 @@ class User {
 		return isset($this->id) ? $this->update() : $this->create();
 	}
 
-	protected static $dbFields = array('userID', 'username', 'password', 'fName', 'lName', 'email', 'userTypeID');
+
 
 	
 	protected function attributes() {

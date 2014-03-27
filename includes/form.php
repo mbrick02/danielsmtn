@@ -2,16 +2,18 @@
 
 class Form {
 	
-	public $errors = array();
-	public $fields=array();
-	public $requiredFields=array();
+	private $errors = array();
+	private $fields=array();
+	private $requiredFields=array();
+	private $fieldsWithMaxLengths=array();
 	
-	public function __construct($fields = array(), $requiredFields = array()) {
+	public function __construct($fields = array(), $requiredFields = array(), $fieldsWithMaxLengths = array()) {
 //         foreach($fields as $key => $value) {
 //             $this->$key = $value;
 //         }
-		$this->fields = $fields;
-		$this->requiredFields = $requiredFields;
+		$this->fields = $fields();
+		$this->requiredFields = $requiredFields();
+		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths();
 			
     }
 	
@@ -26,15 +28,14 @@ class Form {
 	// use === to avoid false positives
 	// empty() would consider "0" to be empty
 	public function hasPresence($value) {
-		return isset($value) && $value !== "";
+		return isset($value) && ($value !== "");
 	}
 	
 	public function validatePresences() {
-		global $errors;
 		foreach($this->requiredFields as $field) {
 			$value = trim($_POST[$field]);
 			if (!hasPresence($value)) {
-				$errors[$field] = fieldnameAsText($field) . " can't be blank";
+				$this->errors[$field] = fieldnameAsText($field) . " can't be blank";
 			}
 		}
 	}
@@ -47,12 +48,12 @@ class Form {
 	
 	
 	public function validateMaxLengths($fieldsWithMaxLengths) {
-		global $errors;
+		
 		// Expects an assoc. array
 		foreach ($fieldsWithMaxLengths as $field => $max) {
 			$value = trim($_POST[$field]);
 			if (!hasMaxLength($value, $max)) {
-				$errors[$field] = fieldnameAsText($field) . " is too long";
+				$this->errors[$field] = $this->fieldnameAsText($field) . " is too long";
 			}
 		}
 	}
@@ -61,6 +62,27 @@ class Form {
 	public function hasInclusionIn($value, $set) {
 		return in_array($value, $set);
 	}
+	
+	public function formErrors(){
+	$output = "";
+	if (!empty($this->errors)) {
+		$output = "<div class=\"error\">";
+		$output .= "Please fix the following errors:";
+		$output .= "<ul>";
+		foreach ($this->errors as $key => $error) {
+			$output .= "<li>{$error}</li>";
+		}
+		$output .= "</ul>";
+		$output .= "</div>";
+	}
+
+	return $output;
+	}
+	
+	// *** possible method to test string presence
+// 	public function IsThisInSet($this, $set){
+// 		return (preg_match("/{$this}/", $set));
+// 	}
 	
 } 
 ?>

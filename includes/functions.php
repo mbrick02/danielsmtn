@@ -44,21 +44,22 @@ function mysqlPrep($string) {
 // 	}
 // }
 
-function formErrors($errors){
-	$output = "";
-	if (!empty($errors)) {
-		$output = "<div class=\"error\">";
-		$output .= "Please fix the following errors:";
-		$output .= "<ul>";
-		foreach ($errors as $key => $error) {
-			$output .= "<li>{$error}</li>";
-		}
-		$output .= "</ul>";
-		$output .= "</div>";
-	}
 
-	return $output;
-}
+// *** refactoreded this to form.php
+// function formErrors($errors){
+// 	$output = "";
+// 	if (!empty($errors)) {
+// 		$output = "<div class=\"error\">";
+// 		$output .= "Please fix the following errors:";
+// 		$output .= "<ul>";
+// 		foreach ($errors as $key => $error) {
+// 			$output .= "<li>{$error}</li>";
+// 		}
+// 		$output .= "</ul>";
+// 		$output .= "</div>";
+// 	}
+// 	return $output;
+// }
 
 /* // ******** DEL use findAllUsers and findByID in user.php User class ***************
 function findAllAdmins() {

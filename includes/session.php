@@ -65,7 +65,6 @@ class Session {
 
 	public function setMessage($msg) {
 		$this->message = $_SESSION['message'] = $msg; 
-		
 	}
 	
 	// ********these functions were from non-object session.php (calls should be updated)*******
