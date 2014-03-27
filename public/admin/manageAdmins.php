@@ -16,6 +16,7 @@
 		&nbsp;
 		<!-- *****if I have a main menu <a href="mainMenu.php">&laquo; Main Menu</a><br/> -->
 	</nav>
+	<?php echo $session->putMessage(); ?>
 	<!-- findAll **--later may want to sort admins first -->
 	<table>
 	<tr><th>Field</th><th>value</th><th>Action</th></tr>
