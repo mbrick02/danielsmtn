@@ -21,7 +21,6 @@ class User {
 	//				userID, username, password, fName, lName, email, userTypeID
 
 	// *********************** new user.php methods *****************************************
-
 	//  ***** first updated methods
 
 	// note: these are public and not static--accessible from outside for an instance
@@ -101,7 +100,7 @@ class User {
 			$attributePairs[] = "{$key}='{$value}'";
 		}
 		$sql = "UPDATE ". self::$table_name. " SET ";
-		$sql .= join(", ", $attributePairs);;
+		$sql .= join(", ", $attributePairs);
 		$sql .= " WHERE id=". $database->escapeValue($this->id);
 	
 		$database->query($sql);

@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
             <tr>
               	<td><label for ="fName">First Name: </label></td>
               	<td><input name="fName" type="text" id="fName" 
-                value = <?php echo htmlentities($user->fname); ?>/></td>
+                value ="<?php echo htmlentities($user->fName); ?>" /></td>
             </tr>
             <tr>
               	<td><label for ="lName">lName: </label></td>
