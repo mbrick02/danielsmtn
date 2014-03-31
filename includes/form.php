@@ -11,9 +11,9 @@ class Form {
 //         foreach($fields as $key => $value) {
 //             $this->$key = $value;
 //         }
-		$this->fields = $fields();
-		$this->requiredFields = $requiredFields();
-		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths();
+		$this->fields = $fields;
+		$this->requiredFields = $requiredFields;
+		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths;
 			
     }
 	
@@ -34,8 +34,8 @@ class Form {
 	public function validatePresences() {
 		foreach($this->requiredFields as $field) {
 			$value = trim($_POST[$field]);
-			if (!hasPresence($value)) {
-				$this->errors[$field] = fieldnameAsText($field) . " can't be blank";
+			if (!$this->hasPresence($value)) {
+				$this->errors[$field] = $this->fieldnameAsText($field) . " can't be blank";
 			}
 		}
 	}
@@ -52,7 +52,7 @@ class Form {
 		// Expects an assoc. array
 		foreach ($fieldsWithMaxLengths as $field => $max) {
 			$value = trim($_POST[$field]);
-			if (!hasMaxLength($value, $max)) {
+			if (!$this->hasMaxLength($value, $max)) {
 				$this->errors[$field] = $this->fieldnameAsText($field) . " is too long";
 			}
 		}

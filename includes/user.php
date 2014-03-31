@@ -114,7 +114,8 @@ class User {
 		$username = $db->escapeValue($username);
 		$password = $db->escapeValue($password);
 		$hashedPassword = $password; // *** debug CHANGE TO LINE BELOW ******
-		// $hashedPassword = self::passwordEncrypt($password, $saltedHash); // hash password *****
+		// $saltedHash
+		// $hashedPassword = self::passwordEncrypt($password); // hash password *****
 		$sql = "SELECT * FROM " . self::$tableName;
 		$sql .= " WHERE username = '{$username}' ";
 		$sql .= "AND password = '{$hashedPassword}' ";

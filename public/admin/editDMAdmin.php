@@ -21,11 +21,11 @@ if (!$user) {
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
 	$formNewDMAdmin = new Form($fields, $requiredFields, $fieldsWMaxLengths);
-	if (!$formNewDMAdmin->validatePrecences()) {
-		$session->setMessage($formNewDMAdmin->message);
+	if (!$formNewDMAdmin->validatePresences()) {
+		$session->setMessage($formNewDMAdmin->formErrors());
 	}	
 	
-	$formNewDMAdmin->setObjectVals($user); // *** still need to write this
+	// ****************$formNewDMAdmin->setObjectVals($user); // *** still need to write this
 	
 	// $resultObj = $user->updateUserByID(?); if ($resultObj) { $session->setmessage("updated...
 	
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
         <h2>Edit Admin <?php echo $user->fullname() ?></h2>
         <!-- ***Need to add userTypeID = ?2 (admin) -->
         <table class="formTable">
-		<form action="editDMAdmin.php?id=<?php echo urldecode($user->id); ?>" name="adminLogin" method="post">
+		<form action="editDMAdmin.php?id=<?php echo urldecode($user->userID); ?>" name="adminLogin" method="post">
             <tr>
               	<td><label for ="fName">First Name: </label></td>
               	<td><input name="fName" type="text" id="fName" 
@@ -60,21 +60,21 @@ if (isset($_POST['submit'])) { // Form has been submitted
             <tr>
               	<td><label for ="lName">lName: </label></td>
               	<td><input name="lName" type="text" id="lName" 
-                placeholder="Enter Last Name"/></td>
+                value ="<?php echo htmlentities($user->lName); ?>" placeholder="Enter Last Name"/></td>
             </tr>
             <tr>
               	<td><label for ="username">username: </label></td>
               	<td><input name="username" type="text" id="username" 
-                placeholder="Leave Blank if you dont have a username"/></td>
+                value ="<?php echo htmlentities($user->username); ?>" placeholder="Leave Blank if you dont have a username"/></td>
             </tr>
             <tr>
               	<td><label for ="password">password: </label></td>
-              	<td><input name="password" type="text" id="password" /></td> <!-- change to type password -->
+              	<td><input name="password" type="text" id="password" /><?php echo htmlentities($user->password); ?></td> <!-- change to type password passwordEncrypt($password, ??$saltedHash); -->
             </tr>
             <tr>
               	<td><label for ="email">Email(preferably the one your invitation was sent to): </label></td>
               	<td><input name="email" type="email" id="Text2" 
-                placeholder="Enter Email address"/></td>
+                value ="<?php echo htmlentities($user->email); ?>" placeholder="Enter Email address"/></td>
             </tr>
             <tr>
               	<td class="submitButton" colspan="2"><input type="submit" name="submit" value="Update User"></td>
