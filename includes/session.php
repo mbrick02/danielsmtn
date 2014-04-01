@@ -81,6 +81,10 @@ class Session {
 		}
 	}
 	
+	public function setErrors($errors = ""){
+		$_SESSION["errors"] = $errors;
+	}
+	
 	public function errors() {
 		if (isset($_SESSION["errors"])) {
 			$errors = $_SESSION["errors"];

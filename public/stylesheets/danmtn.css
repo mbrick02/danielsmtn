@@ -2,15 +2,17 @@
  * This was the original style sheet for the site and has been added to
  *    (it probably needs to be cleaned up)
  */
-	
+
 div.message {
 	border: 2px solid orange;
 	color: blue; font-weight: bold;
+	width: 40%;
 	margin: 1em 0 ; padding: 1em;
 }
 
 div.error {
 	border: 2px solid #8D0D19;
+	width: 40%;
 	color: #8D0D19; font-weight: bold;
 	margin: 1em 0 ; padding: 1em;
 }

@@ -22,10 +22,11 @@ if (!$user) {
 if (isset($_POST['submit'])) { // Form has been submitted
 	$formNewDMAdmin = new Form($fields, $requiredFields, $fieldsWMaxLengths);
 	if (!$formNewDMAdmin->validatePresences()) {
-		$session->setMessage($formNewDMAdmin->formErrors());
+		$session->setErrors($formNewDMAdmin->formErrors());
 	}	
 	
-	// ****************$formNewDMAdmin->setObjectVals($user); // *** still need to write this
+	// ***********$formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
+	//  *** set values then UPDATE
 	
 	// $resultObj = $user->updateUserByID(?); if ($resultObj) { $session->setmessage("updated...
 	
@@ -47,6 +48,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
     <div id="main_section">
         <?php 
 			echo $session->putMessage();
+			echo $session->errors();
         ?>
         <h2>Edit Admin <?php echo $user->fullname() ?></h2>
         <!-- ***Need to add userTypeID = ?2 (admin) -->
