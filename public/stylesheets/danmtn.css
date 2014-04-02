@@ -1,0 +1,80 @@
+/***
+ * This was the original style sheet for the site and has been added to
+ *    (it probably needs to be cleaned up)
+ */
+
+div.message {
+	border: 2px solid orange;
+	color: blue; font-weight: bold;
+	width: 40%;
+	margin: 1em 0 ; padding: 1em;
+}
+
+div.error {
+	border: 2px solid #8D0D19;
+	width: 40%;
+	color: #8D0D19; font-weight: bold;
+	margin: 1em 0 ; padding: 1em;
+}
+
+BODY {
+	font:10pt/12pt Arial, Helvetica, sans-serif;
+	background-color: #00ff80;
+}
+H2 {
+	font : bold 18pt/20pt Arial, Helvetica, sans-serif;
+}
+H3 {
+	font : bold 15pt/17pt Arial, Helvetica, sans-serif;
+}
+.questParenthet {
+	font : 10pt/12pt Arial, Helvetica, sans-serif;
+}
+.questCateg {
+	font : 13pt/15pt Arial, Helvetica, sans-serif;
+}
+P {
+	font : normal 10pt/12pt Arial, Helvetica, sans-serif;
+}
+P.introQuest {
+	font : bold 10pt/12pt Arial, Helvetica, sans-serif;
+}
+
+.qnaireQuest{
+	font: normal 10pt/12pt Arial, Helvetica, sans-serif;
+}
+
+.poem{
+	font: italic 10pt/12pt Arial, Helvetica, sans-serif;
+}
+
+.capitonPic{
+	font: normal 9pt/10pt Arial, Helvetica, sans-serif;
+}
+
+
+nav.leftside {
+    float:left;
+    width: 120px;
+    border: 5px groove red;
+    margin: 5px;
+}
+
+nav.leftside ul {
+    list-style-type: none;
+}
+
+nav.leftside ul li {
+
+}content {
+    border: 3px dashed green;
+    float: left;
+}
+
+footer {
+    clear: both;
+}
+
+table tr td.submitButton {
+    text-align: center;
+}

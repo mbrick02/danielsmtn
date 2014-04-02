@@ -8,9 +8,6 @@
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
   <?php include("./includes/layout/header.php"); ?>
   <div id="main">
-    <head>
-      <h1>addDish</h1>
-    </head>
     <nav>
       <!-- php echo navigation($currentDMtnSect, $currentPage) **replace below** -->
       <p><a href="/">Home</a></p>
@@ -39,4 +36,6 @@
             <input type="submit" name="submit" value="Submit Dish">
             
         </form>
+     </div>
+    </div>
 <?php include("./includes/layout/footer.php");	?>
