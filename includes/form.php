@@ -16,6 +16,22 @@ class Form {
 		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths;
 			
     }
+    
+    public function setObjectVals($dbObject) {
+    	global $session;
+    	foreach($this->fields as $field){
+    		if(isset($dbObject->$field)) {
+    			if (isset($_SESSION["{$field}"])) {
+	    			$dbObject->$field = $_SESSION["{$field}"];
+	    			echo $dbObject->$field;
+    			} else {
+    				$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not a form field ");
+    			}
+    		} else {
+    			$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not a ". User::$tableName . " DB field in ");
+    		}
+    	}
+    }
 	
 	public function fieldnameAsText($fieldname) {
 		$fieldname = str_replace("_", " ", $fieldname);

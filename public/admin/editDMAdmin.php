@@ -11,7 +11,12 @@ $fields = array("fName", "lName", "username", "password", "email");
 $requiredFields = array("fName", "lName", "username", "password", "email");
 $fieldsWMaxLengths = array("username" => 35, "password" => 45);
 
-$user = User::findByID($_GET['id']); // *** also need to verify userTypeID = AdminType (?2)
+if (isset($_GET['id'])) {
+	$user = User::findByID($_GET['id']); // *** also need to verify userTypeID = AdminType (?2)
+} else {
+	redirectTo("manageAdmins.php");
+}
+
 if (!$user) {
 	// no admin user found with that ID
 	redirectTo("manageAdmins.php");
@@ -25,7 +30,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
 		$session->setErrors($formNewDMAdmin->formErrors());
 	}	
 	
-	// ***********$formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
+	$formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
 	//  *** set values then UPDATE
 	
 	// $resultObj = $user->updateUserByID(?); if ($resultObj) { $session->setmessage("updated...
