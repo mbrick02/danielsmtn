@@ -30,7 +30,10 @@ if (isset($_POST['submit'])) { // Form has been submitted
 		$session->setErrors($formNewDMAdmin->formErrors());
 	}	
 	
-	$formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
+	$aryResultSetObjVs = $formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
+	print_r($aryResultSetObjVs);
+	// ** $setObjectVals should collect the mysql_prep/$db->escapeValue() processed form values and put in $user->"$attributes" 4/2/14
+	// refactorization of $user->fName = $db->escapValue($_POST["fName"]);
 	//  *** set values then UPDATE
 	
 	// $resultObj = $user->updateUserByID(?); if ($resultObj) { $session->setmessage("updated...
