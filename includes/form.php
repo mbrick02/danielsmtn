@@ -20,15 +20,13 @@ class Form {
     public function setObjectVals($dbObject) {
     	global $session;
     	
-    	$arySetObjValsResults = array();
-    	
     	foreach($this->fields as $field){
+    		$updatedUser = false;
     		if(isset($dbObject->$field)) {
-    			if (isset($_SESSION["{$field}"])) {
-	    			$dbObject->$field = $_SESSION["{$field}"];
-	    			 array_push($arySetObjValsResults, "Form field:" . $_SESSION["{$field}"] . " | Object field: " . $dbObject->$field); // ** debug 04/02/14
+    			if (isset($_POST["{$field}"])) {
+	    			$dbObject->$field = $_POST["{$field}"];
+	    			$updatedUser = true;
     			} else {
-    				array_push($arySetObjValsResults, " Program error: " . $this->fieldnameAsText($field) . " not a form field "); // ** debug 4/2/14
     				$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not a form field ");
     			}
     		} else {
@@ -37,7 +35,7 @@ class Form {
     		}
     	}
     	
-    	return $arySetObjValsResults;
+    	return $updatedUser;
     }
 	
 	public function fieldnameAsText($fieldname) {

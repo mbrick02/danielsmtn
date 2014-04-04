@@ -21,23 +21,19 @@ if (!$user) {
 	// no admin user found with that ID
 	redirectTo("manageAdmins.php");
 }
-// *** 3/26/14 continue her putting $user vals in form values
-
-// Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
 	$formNewDMAdmin = new Form($fields, $requiredFields, $fieldsWMaxLengths);
 	if (!$formNewDMAdmin->validatePresences()) {
 		$session->setErrors($formNewDMAdmin->formErrors());
 	}	
 	
-	$aryResultSetObjVs = $formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
-	print_r($aryResultSetObjVs);
-	// ** $setObjectVals should collect the mysql_prep/$db->escapeValue() processed form values and put in $user->"$attributes" 4/2/14
-	// refactorization of $user->fName = $db->escapValue($_POST["fName"]);
-	//  *** set values then UPDATE
+	$updatedUser = $formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
 	
-	// $resultObj = $user->updateUserByID(?); if ($resultObj) { $session->setmessage("updated...
-	
+	if ($updatedUser) {
+		$user->update($******UserID);
+	} else {
+		$session->setMessage("User could not be  updated");
+	}
 	
 
 } else { // Form has not been submitted
