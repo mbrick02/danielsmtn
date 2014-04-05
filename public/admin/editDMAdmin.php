@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	$updatedUser = $formNewDMAdmin->setObjectVals($user); // *** still need to write this OR PUT IN USER????
 	
 	if ($updatedUser) {
-		$user->update($******UserID);
+		$user->save();
 	} else {
 		$session->setMessage("User could not be  updated");
 	}

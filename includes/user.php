@@ -16,7 +16,8 @@ class User {
 	public $email;
 	public $userTypeID;
 	
-	protected static $dbFields = array('userID', 'username', 'password', 'fName', 'lName', 'email', 'userTypeID');	
+	// 'userID', 
+	protected static $dbFields = array('username', 'password', 'fName', 'lName', 'email', 'userTypeID');	
 	// 3/19/14 currently only fields in usufructdish::tbusers: 
 	//				userID, username, password, fName, lName, email, userTypeID
 
@@ -76,7 +77,7 @@ class User {
 		$attributes = $this->sanitizedAttributes();
 	
 		$sql = "INSERT INTO " . self::$tableName ." (";
-		$sql .= join(", ", array_keys($attributes()));
+		$sql .= join(", ", array_keys($attributes));
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
 		$sql .= "')";
