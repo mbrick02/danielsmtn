@@ -8,8 +8,8 @@
 	</nav>
 	<content><!-- div id="page"> -->
 		<?php echo $session->putMessage(); ?>
-		<?php $errors = $session->errors(); ?>
-		<?php echo formErrors($errors); ?>
+		<?php $errors = $session->errors();//** instantiate a form  ?>
+		<?php echo formErrors($errors); // **4/14 convert to thisForm->formErrors($errors) ?>
 		<?php 
 			$dishesSet = findAllDishes();
 			$selectedDishID = null;  // ***10/24 not sure if this is usable now
@@ -21,7 +21,7 @@
 		<?php 
 			while ($dish = mysqli_fetch_assoc($dishesSet)){	
 		?>
-			<!--  *******WAS testing here 10/23/13 4PM -->
+			<!--  *******WAS testing here 10/23/13 4PM...  ***4/14 turn this into a form ** -->
 			<?php 
 				$sessionDishID = $_SESSION["currentDishID"] ?: -1;  // if currentDishID is set use it otherwise set to non-existant number
 				$specLayoutContext = ($dish['dishID'] == $sessionDishID) ? "thisChef" : $layoutContext;
