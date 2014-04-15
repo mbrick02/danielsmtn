@@ -1,6 +1,4 @@
-<?php require_once("./includes/session.php"); ?>
-<?php require_once("./includes/functions.php");	?>
-<?php require_once("./includes/connection.php"); ?>
+<?php require_once('./includes/initialize.php'); ?>
 <?php require_once("./includes/validationFunctions.php"); ?>
 <?php if (isset($_POST['submit'])) {	// Process the formÉ.
 	$fName = mysqlPrep($_POST["fName"]);

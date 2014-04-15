@@ -1,7 +1,5 @@
-<?php require_once("./includes/session.php"); ?>
-<?php require_once("./includes/connection.php"); ?>
-<?php require_once("./includes/functions.php");	?>
-<?php require_once("./includes/validationFunctions.php"); ?>
+<?php require_once('../includes/initialize.php'); ?>
+<?php require_once("../includes/validationFunctions.php"); ?>
 <?php 
 	if (isset($_GET["dishID"])) {
 		$selectedDishID = mysqlPrep($_GET["dishID"]);
