@@ -1,0 +1,219 @@
+/*global styles - don't change */
+/*
+ * *** Probably won't use these???????? ******* 
+ *aside, article, section, header, footer, nav{
+ * 	display:block;
+ * }
+ */
+/*
+  Site Colors:
+  #1A446C - blue grey
+  #8D0D19 - bugundy
+*/
+/* probably don't need these since I'm using Normalize.css 
+html, body{
+	margin: 0;
+	padding: 0; 
+}
+*/
+
+section.container img {
+}
+
+html{
+	/* ?????? */
+}
+
+body {
+	background-color: #FFFF00;
+	max-width: 1024px;
+	min-width: 640px;
+	font: 100% 'Paddington LT W01', 'Combo', cursive;
+}
+
+header {
+	height: 70px;
+	margin: 0; padding: 0;
+}
+
+nav {
+	float: left;
+	width: 150px; height: 100%;
+	margin: 0; padding: 0 2em;
+	color: #8D0D19; background: #1A446C;
+}
+
+nav a {
+	color: #D4E6F4;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #FFFFFF;
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+.selected { font-weight: bold; background: gold; }
+
+div.message {
+    border: 2px solid #8D0D19;
+    color: #8D0D19; font-weight: bold;
+    margin: 1em 0 ; padding: 1em;
+}
+
+#page {
+	float: left; height: 100%;
+	padding-left: 2em; vertical-align: top;
+	background: #EEE4B9;
+}
+
+name {
+	font: normal 1.5em/2em arial, sans-serif;
+}
+
+dish {
+	font: normal 1em/2em arial, sans-serif;
+	background-color: green;
+}
+
+ul.dishes {
+	list-style: none;
+	font-weight: normal;
+}
+
+ul.name li {
+	padding: 0em;
+}
+
+footer {
+	clear: both;
+	height: 2em; margin: 0; padding: 1em;
+	text-align: center;
+	background: #1A446C; color: #D4E6F4;
+}
+/* ****SCREEN TYPES **************************************************** */
+/* mobile styles */
+@media only screen and (max-width: 480px){
+	body{
+		width: 320px;
+		font-size: 80%;
+	}
+	
+	div.inviteText H2 {
+		font: bold 50%/20% 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 10%;
+		text-align:center;
+	}
+}
+
+/* tablet styles */
+@media only screen and (min-width: 481px) and (max-width: 768px){
+	body{
+		width: 80%;
+		font-size: 120%;
+	}
+	
+	div.inviteText H2 {
+		font: bold 70%/40% 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 20%;
+		text-align:center;
+	}
+	
+	
+	
+}
+
+/* desktop styles */
+@media only screen and (min-width: 769px){
+	body{
+		width: 700px;
+		font-size: 100%;
+	}
+	
+	section.container {
+		background-color: rgb(237,228,214);
+		margin: 100px 20px;
+		height: 611px;
+		position: relative;
+	}
+	
+	section.container img{
+		position: absolute;
+	}
+	
+	section.container div.inviteText {
+		position: absolute;
+		top: 72px;
+		left: 142px;
+		text-align:center;
+	}
+	
+	section.container div.inviteText h1.sufruct {
+		font: bold 1.2em/.5em 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 40px;
+	}
+	
+	section.container div.inviteText h1.number {
+		font: bold 3em/.1em 'Paddington LT W01', 'Combo', cursive;
+	}
+			
+	div.inviteText H2 {
+		font: bold .75em/.9em 'Paddington LT W01', 'Combo', cursive;
+	}
+	
+	section.container div.inviteText H3 {
+		font: normal .7em/.8em 'Paddington LT W01', 'Combo', cursive;
+	}
+	
+	section.container div.inviteText p {
+		font: normal .6em/.5em 'Paddington LT W01', 'Combo', cursive;
+	}
+	
+	section.container div.inviteText p.spacer{
+		line-height: 10px;
+	}
+	
+
+	/*section.container div.inviteText p.endSection {
+		font: normal .9em/.5em 'Paddington LT W01', 'Combo', cursive;
+		margin-left: 3em;
+		text-align:center;
+	}*/
+	
+	footer {
+		clear: both;
+	}
+	
+} /* END DESKTOP ******* */
+/* ****END - SCREEN TYPES **************************************************** */
+
+/* tab sections */
+#inviteTab {
+	background: url("../images/peackFeath01v9crp.png") no-repeat left top;
+	background-size: 75%;
+	margin: 5px;
+}
+
+/* END tab sections */
+
+/*  delete
+@media only screen and (min-width: 25em) {
+		body{font-size: 140%;}
+}
+
+@media only screen and (min-width: 700px) {
+	body{font-size: 180%}
+}
+*/
+
+/* style that change */
+
+/*
+ * 
+font-family:'Paddington LT W01';
+ */
+
+
