@@ -79,6 +79,15 @@ dish {
 	background-color: green;
 }
 
+div.grandhighBox {
+	text-align: center;
+}
+
+div.titleBox {
+	float:left;
+	display: inline-block;
+}
+
 ul.dishes {
 	list-style: none;
 	font-weight: normal;
