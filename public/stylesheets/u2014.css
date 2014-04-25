@@ -16,8 +16,18 @@ html, body{
 	padding: 0;
 }
 */
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
 
 section.container img {
+	float: left;
 }
 
 html{
@@ -138,10 +148,15 @@ footer {
 	}
 
 	section.container {
-		background-color: rgb(237,228,214);
+		// background-color: rgb(237,228,214);
 		margin: 100px 20px;
 		height: 611px;
 		position: relative;
+		overflow: hidden;
+	}
+	
+	section.container p {
+		line-height: .7px;
 	}
 
 	section.container img{
@@ -196,9 +211,15 @@ footer {
 
 /* tab sections */
 #inviteTab {
-	background: url("../images/peackFeath02NonEy.png") no-repeat left top;
-	background-size: 100%;
+	/* background: url("../images/peackFeath02NonEy.png") no-repeat left top;
+	background-size: 100%; */
 	margin: 5px;
+	float: left;
+	overflow: hidden;
+}
+
+#inviteTab div.backgroundImage {
+		float: left;
 }
 
 /* END tab sections */
