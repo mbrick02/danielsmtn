@@ -5,7 +5,10 @@
 
 $(document).ready(function() {
 	$("p").hide();
-	$("h1").click(function() {
-		$(this).next().slideToggle(300);
+	$("h2").click(function() {
+		$(this).nextAll().slideToggle(300);
 	});
+	var imgUProgBkgrnd = document.getElementById('uProgBkgrnd');
+	var imgWidth = imgUProgBkgrnd.clientWidth;
+	console.log('image width: ' + imgWidth);
 });

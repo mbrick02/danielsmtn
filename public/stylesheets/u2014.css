@@ -30,7 +30,7 @@ section.container img {
 	float: left;
 }
 
-/*
+
 html{
 	/* ?????? */
 }
@@ -73,25 +73,6 @@ div.message {
     border: 2px solid #8D0D19;
     color: #8D0D19; font-weight: bold;
     margin: 1em 0 ; padding: 1em;
-}
-
-div.centerBox {
-	text-align: center;
-	display: block;
-}
-
-div.clear {
-	clear:both;
-}
-
-div.titleBoxL {
-	float: left;
-	display: inline-block;
-}
-
-div.titleBoxR {
-	float: right;
-	display: inline-block;
 }
 
 ul.dishes {
@@ -207,13 +188,14 @@ footer {
 		clear: both;
 	}
 
-} */ /* END DESKTOP ******* */
+}     /* END DESKTOP ******* */
 /* ****END - SCREEN TYPES **************************************************** */
 
 /* tab sections */
 #inviteTab {
-	background: url("../images/peackFeath02NonEy.png") no-repeat left top;
-	background-size: 100%;
+	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
+	// background-size: 100%;
+	width: 100%;
 	margin: 5px;
 	float: left;
 	overflow: hidden;
@@ -221,7 +203,39 @@ footer {
 
 #inviteTab div.backgroundImage {
 		float: left;
-		z-index: 1;
+}
+
+#inviteTab div.backgroundImage img {
+	z-index: -1;
+	width: 100%;
+}
+
+div.centerBox {
+	text-align: center;
+	display: block;
+	margin: 0 20%;
+	padding-bottom: 10%
+}
+
+div.bottomBox {
+	text-align: center;
+	margin: 15% 0 0 12%;
+}
+
+div.clear {
+	clear:both;
+}
+
+div.titleBoxL {
+	float: left;
+	display: inline-block;
+	margin: 0 5%;
+}
+
+div.titleBoxR {
+	float: right;
+	display: inline-block;
+	margin: 0 2%;
 }
 
 /* END tab sections */
