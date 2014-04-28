@@ -30,6 +30,7 @@ section.container img {
 	float: left;
 }
 
+/*
 html{
 	/* ?????? */
 }
@@ -154,7 +155,7 @@ footer {
 		position: relative;
 		overflow: hidden;
 	}
-	
+
 	section.container p {
 		line-height: .7px;
 	}
@@ -206,13 +207,13 @@ footer {
 		clear: both;
 	}
 
-} /* END DESKTOP ******* */
+} */ /* END DESKTOP ******* */
 /* ****END - SCREEN TYPES **************************************************** */
 
 /* tab sections */
 #inviteTab {
-	/* background: url("../images/peackFeath02NonEy.png") no-repeat left top;
-	background-size: 100%; */
+	background: url("../images/peackFeath02NonEy.png") no-repeat left top;
+	background-size: 100%;
 	margin: 5px;
 	float: left;
 	overflow: hidden;
@@ -220,6 +221,7 @@ footer {
 
 #inviteTab div.backgroundImage {
 		float: left;
+		z-index: 1;
 }
 
 /* END tab sections */
