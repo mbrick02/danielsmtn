@@ -28,6 +28,7 @@ html, body{
 
 section.container img {
 	float: left;
+	position: absolute;
 }
 
 
@@ -90,18 +91,140 @@ footer {
 	text-align: center;
 	background: #1A446C; color: #D4E6F4;
 }
+
+
+/* tab sections */
+// **************  UPDATE FOR TABS DELETE NONTAB VERSION BELOW ****************
+div#tabs, div#tabs div#tabs-3 {
+	width: 100%;
+	z-index: -1;
+	position: relative;
+}
+
+
+div#tabs div#tabs-1 #inviteTab {
+	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
+	// background-size: 100%;
+	margin: 5px;
+	float: left;
+	width: 100%;
+	// overflow: hidden;
+}
+
+div#tabs div#tabs-1 #inviteTab div h2 {
+	line-height: 60%;
+}
+
+div#tabs div#tabs-1 #inviteTab div.backgroundImage {
+		float: left;
+		overflow: hidden;
+}
+
+div#tabs div#tabs-1 #inviteTab div.backgroundImage img {
+	z-index: 0;
+	height: 100%;
+	position: absolute;
+}
+
+
+// ************
+
+
+#inviteTab {
+	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
+	// background-size: 100%;
+	margin: 5px;
+	float: left;
+	width: 100%;
+	// overflow: hidden;
+}
+
+#inviteTab div h2 {
+	line-height: 60%;
+}
+
+#inviteTab div.backgroundImage {
+		float: left;
+		overflow: hidden;
+}
+
+#inviteTab div.backgroundImage img {
+	z-index: -1;
+	height: 100%;
+}
+
+div.centerBox {
+	text-align: center;
+	display: block;
+	margin: 5% 10% 15% 0;
+	position: relative;
+}
+
+div.bottomBox {
+	text-align: center;
+	margin-top: 8%;
+	margin-right: 3%;
+	position: relative;
+}
+
+div.clear {
+	clear:both;
+}
+
+div.titleBoxL {
+	float: left;
+	display: inline-block;
+	margin: 0 15% 0 2%;
+	position: relative;
+}
+
+div.titleBoxR {
+	float: right;
+	display: inline-block;
+	margin: 0 17% 0 0;
+	position: relative;
+}
+
+/* END tab sections */
+
+
 /* ****SCREEN TYPES **************************************************** */
 /* mobile styles */
 @media only screen and (max-width: 480px){
 	body{
 		width: 320px;
-		font-size: 80%;
+		font-size: 120%;
+	}
+	
+	div.centerBox {
+		width: 70%;
+		margin-top: 40%;
 	}
 
-	div.inviteText H2 {
-		font: bold 50%/20% 'Paddington LT W01', 'Combo', cursive;
-		margin-left: 10%;
-		text-align:center;
+	div.titleBoxL {
+		float: none;
+		display: block;
+		width: 70%;
+		text-align: center;
+		margin: 5% 10% 15% 0;
+	}
+	
+	div.titleBoxR {
+		float: none;
+		display: block;
+		width: 70%;
+		text-align: center;
+		clear: both;
+		margin: 5% 0% 15% 0;
+	}
+
+	div.bottomBox {
+		margin: 5% 0% 15% 0;
+		width: 70%;
+	}
+	#inviteTab div.backgroundImage img {
+		width: 100%;
+		position: fixed;
 	}
 }
 
@@ -118,8 +241,14 @@ footer {
 		text-align:center;
 	}
 
-
-
+	#inviteTab div.backgroundImage img {
+		width: 100%;
+		position: fixed;
+	}
+	
+	div.titleBoxR {
+		margin-right: 0;
+	}
 }
 
 /* desktop styles */
@@ -132,7 +261,7 @@ footer {
 	section.container {
 		// background-color: rgb(237,228,214);
 		margin: 100px 20px;
-		height: 611px;
+		// height: 611px;
 		position: relative;
 		overflow: hidden;
 	}
@@ -141,9 +270,6 @@ footer {
 		line-height: .7px;
 	}
 
-	section.container img{
-		position: absolute;
-	}
 
 	section.container div.inviteText {
 		position: absolute;
@@ -191,54 +317,6 @@ footer {
 }     /* END DESKTOP ******* */
 /* ****END - SCREEN TYPES **************************************************** */
 
-/* tab sections */
-#inviteTab {
-	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
-	// background-size: 100%;
-	width: 100%;
-	margin: 5px;
-	float: left;
-	overflow: hidden;
-}
-
-#inviteTab div.backgroundImage {
-		float: left;
-}
-
-#inviteTab div.backgroundImage img {
-	z-index: -1;
-	width: 100%;
-}
-
-div.centerBox {
-	text-align: center;
-	display: block;
-	margin: 0 20%;
-	padding-bottom: 10%
-}
-
-div.bottomBox {
-	text-align: center;
-	margin: 15% 0 0 12%;
-}
-
-div.clear {
-	clear:both;
-}
-
-div.titleBoxL {
-	float: left;
-	display: inline-block;
-	margin: 0 5%;
-}
-
-div.titleBoxR {
-	float: right;
-	display: inline-block;
-	margin: 0 2%;
-}
-
-/* END tab sections */
 
 /*  delete
 @media only screen and (min-width: 25em) {
