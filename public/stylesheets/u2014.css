@@ -4,6 +4,8 @@
  *aside, article, section, header, footer, nav{
  * 	display:block;
  * }
+ *  //** gradient's pink: #e474d1
+ * 
  */
 /*
   Site Colors:
@@ -93,7 +95,7 @@ footer {
 }
 
 
-/* tab sections */
+/* tab sections global */
 // **************  UPDATE FOR TABS DELETE NONTAB VERSION BELOW ****************
 div#tabs, div#tabs div#tabs-1 {
 	width: 100%;
@@ -101,17 +103,10 @@ div#tabs, div#tabs div#tabs-1 {
 	position: relative;
 }
 
-div p {
-	font: italic bold 90%/90%;
-}
-
 div#tabs div#tabs-1 #inviteTab {
-	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
-	// background-size: 100%;
 	margin: 5px;
 	float: left;
 	width: 100%;
-	// overflow: hidden;
 }
 
 div#tabs div#tabs-1 #inviteTab div h2 {
@@ -120,10 +115,10 @@ div#tabs div#tabs-1 #inviteTab div h2 {
 
 div#tabs div#tabs-1 #inviteTab div.backgroundImage {
 		float: left;
-		overflow: hidden;
+		// overflow: hidden;
 }
 
-div#tabs div#tabs-1 #inviteTab div.backgroundImage img {
+div#tabs #inviteTab div.backgroundImage img {
 	z-index: 0;
 	height: 100%;
 	position: absolute;
@@ -143,12 +138,15 @@ div#tabs div#tabs-1 #inviteTab div.backgroundImage img {
 }
 
 #inviteTab div h2 {
-	line-height: 60%;
+	font: bold 110%/60% 'Paddington LT W01', 'Combo', cursive;
+}
+
+#inviteTab div p {
+	font: italic 90%/60% 'Paddington LT W01', 'Combo', cursive;
 }
 
 #inviteTab div.backgroundImage {
 		float: left;
-		overflow: hidden;
 }
 
 #inviteTab div.backgroundImage img {
@@ -159,15 +157,19 @@ div#tabs div#tabs-1 #inviteTab div.backgroundImage img {
 div.centerBox {
 	text-align: center;
 	display: block;
-	margin: 5% 10% 15% 0;
+	margin: 25% 0 20% 15%;
 	position: relative;
 }
 
 div.bottomBox {
 	text-align: center;
-	margin-top: 8%;
-	margin-right: 3%;
+	margin-top: 10%;
+	margin-left: 15%;
 	position: relative;
+}
+
+div.bottomBox p {
+	line-height: 1%;
 }
 
 div.clear {
@@ -177,14 +179,14 @@ div.clear {
 div.titleBoxL {
 	float: left;
 	display: inline-block;
-	margin: 0 15% 0 2%;
+	margin-left: 16%;
 	position: relative;
 }
 
 div.titleBoxR {
 	float: right;
 	display: inline-block;
-	margin: 0 1% 0 0;
+	margin-right: 3%;
 	position: relative;
 }
 
@@ -198,36 +200,80 @@ div.titleBoxR {
 		width: 320px;
 		font-size: 120%;
 	}
-
+	
+	div#tabs, div#tabs div#tabs-1 {
+		width: 100%;
+		z-index: -2;
+		position: absolute;
+	}
 	div.centerBox {
 		width: 70%;
 		margin-top: 40%;
+		position: relative;
+		z-index: 10;
 	}
 
 	div.titleBoxL {
-		float: none;
+		float: left;
 		display: block;
 		width: 70%;
 		text-align: center;
-		margin: 5% 10% 15% 0;
+		position: relative;
+		z-index: 10;
 	}
 
 	div.titleBoxR {
-		float: none;
+		float: left;
 		display: block;
 		width: 70%;
 		text-align: center;
 		clear: both;
-		margin: 5% 0% 15% 0;
+		margin: 16%;
+		position: relative;
+		z-index: 10;
 	}
 
 	div.bottomBox {
-		margin: 5% 0% 15% 0;
+		float: left;
+		display: block;
 		width: 70%;
+		margin-left: 16%;
+		text-align: center;
+		position: relative;
+		z-index: 10;
 	}
-	#inviteTab div.backgroundImage img {
+	
+	.container {
+		height: 400px;
+		position: relative;
+		z-index: 0;
+	}
+	
+	#inviteTab div.backgroundImage {
+		// position: relative;
+		top: 10px;
+		z-index: 2;
+	}
+	
+	div#tabs #inviteTab div.backgroundImage img {
 		width: 100%;
 		position: fixed;
+		top: 10;
+		left: 0;
+		z-index: 3;
+		overflow: auto;
+	}
+	
+	div#tabs ul {
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 3;		
+	}
+	
+	div#tabs ul li > a {
+		font: bold 50%/50% Arial, Helvetica, sans-serif;
 	}
 }
 
@@ -236,12 +282,6 @@ div.titleBoxR {
 	body{
 		width: 80%;
 		font-size: 120%;
-	}
-
-	div.inviteText H2 {
-		font: bold 70%/40% 'Paddington LT W01', 'Combo', cursive;
-		margin-left: 20%;
-		text-align:center;
 	}
 
 	#inviteTab div.backgroundImage img {
@@ -271,14 +311,6 @@ div.titleBoxR {
 
 	section.container p {
 		line-height: .7px;
-	}
-
-
-	section.container div.inviteText {
-		position: absolute;
-		top: 72px;
-		left: 142px;
-		text-align:center;
 	}
 
 	section.container div.inviteText h1.sufruct {
