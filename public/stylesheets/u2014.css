@@ -95,12 +95,15 @@ footer {
 
 /* tab sections */
 // **************  UPDATE FOR TABS DELETE NONTAB VERSION BELOW ****************
-div#tabs, div#tabs div#tabs-3 {
+div#tabs, div#tabs div#tabs-1 {
 	width: 100%;
-	z-index: -1;
+	z-index: -2;
 	position: relative;
 }
 
+div p {
+	font: italic bold 90%/90%;
+}
 
 div#tabs div#tabs-1 #inviteTab {
 	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
@@ -181,7 +184,7 @@ div.titleBoxL {
 div.titleBoxR {
 	float: right;
 	display: inline-block;
-	margin: 0 17% 0 0;
+	margin: 0 1% 0 0;
 	position: relative;
 }
 
@@ -195,7 +198,7 @@ div.titleBoxR {
 		width: 320px;
 		font-size: 120%;
 	}
-	
+
 	div.centerBox {
 		width: 70%;
 		margin-top: 40%;
@@ -208,7 +211,7 @@ div.titleBoxR {
 		text-align: center;
 		margin: 5% 10% 15% 0;
 	}
-	
+
 	div.titleBoxR {
 		float: none;
 		display: block;
@@ -245,7 +248,7 @@ div.titleBoxR {
 		width: 100%;
 		position: fixed;
 	}
-	
+
 	div.titleBoxR {
 		margin-right: 0;
 	}
