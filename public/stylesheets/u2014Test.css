@@ -99,11 +99,11 @@ footer {
 /* tab sections global ******** */
 div#tabs, div#tabs div.tabContent {
 	width: 100%;
+	top: 20px;
 	padding: 0;
 	z-index: 1;
 	position: relative;
 }
-
 
 div#tabs ul {
 	width: 100%;
@@ -114,6 +114,7 @@ div#tabs ul {
 }
 
 div#tabs div#tabs-1 div.tabContent section.container {
+	margin: 2px;
 	float: left;
 	width: 100%;
 }
@@ -122,27 +123,25 @@ div#tabs div#tabs-1 div.tabContent section.container div h2 {
 	line-height: 60%;
 }
 
-div.tabContent section.container div.backgroundImage {
+div#tabs div#tabs-1 div.tabContent section.container div.backgroundImage {
 		float: left;
+		// overflow: hidden;
 }
 
 div#tabs div.tabContent section.container div.backgroundImage img {
- 	z-index: 0;  /* was 0 which worked on tab 3 but NO OTHER why???????????? */
+	z-index: 0;
 	height: 100%;
-	position: relative;
-}
-
-/* ************************ERORRRRRRRRRRRRRR**************5/2*********
-div#tabs div.tabContent section.container div#progTabImg img {
- 	z-index: 0; 
-	width: 100%;
 	position: absolute;
 }
-*/
+
 
 div.tabContent section.container {
+	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
+	// background-size: 100%;
+	margin: 5px;
 	float: left;
 	width: 100%;
+	// overflow: hidden;
 }
 
 div.tabContent section.container div h2 {
@@ -153,12 +152,20 @@ div.tabContent section.container div p {
 	font: italic 90%/70% 'Paddington LT W01', 'Combo', cursive;
 }
 
+div.tabContent section.container div.backgroundImage {
+		float: left;
+}
+
+div.tabContent section.container div.backgroundImage img {
+	z-index: -1;
+	height: 100%;
+}
+
 div.centerBox {
 	text-align: center;
 	display: block;
 	margin: 25% 0 20% 15%;
 	position: relative;
-	z-index: 10;
 }
 
 div.bottomBox {
@@ -166,7 +173,6 @@ div.bottomBox {
 	margin-top: 10%;
 	margin-left: 15%;
 	position: relative;
-	z-index: 10;
 }
 
 div.bottomBox p {
@@ -182,7 +188,6 @@ div.titleBoxL {
 	display: inline-block;
 	margin-left: 10%;
 	position: relative;
-	z-index: 10;
 }
 
 div.titleBoxR {
@@ -190,7 +195,6 @@ div.titleBoxR {
 	display: inline-block;
 	margin-right: 3%;
 	position: relative;
-	z-index: 10;
 }
 
 /* END tab sections */
@@ -205,13 +209,11 @@ div.titleBoxR {
 		line-height: 200%;
 	}
 
-	div#tabs, div#tabs div.tabContent {
+	div#tabs, div#tabs div#tabs-1 {
 		width: 100%;
 		z-index: -2;
 		position: absolute;
 	}
-
-
 	div.centerBox {
 		width: 70%;
 		margin-top: 40%;
@@ -261,6 +263,7 @@ div.titleBoxR {
 		z-index: 2;
 	}
 
+
 	div#tabs div.tabContent section.container div.backgroundImage img {
 		width: 100%;
 		position: fixed;
@@ -307,6 +310,7 @@ div.titleBoxR {
 }
 
 /* desktop styles */
+/* ******************* CONTINUE TESTING **********************
 @media only screen and (min-width: 769px){
 	body{
 		width: 700px;
