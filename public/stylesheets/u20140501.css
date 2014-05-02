@@ -5,7 +5,7 @@
  * 	display:block;
  * }
  *  //** gradient's pink: #e474d1
- *
+ * 
  */
 /*
   Site Colors:
@@ -104,29 +104,29 @@ div#tabs, div#tabs div.tabContent {
 	position: relative;
 }
 
-div#tabs div#tabs-1 div.tabContent section.container {
+div#tabs div#tabs-1 #inviteTab {
 	margin: 2px;
 	float: left;
 	width: 100%;
 }
 
-div#tabs div#tabs-1 div.tabContent section.container div h2 {
+div#tabs div#tabs-1 section#inviteTab div h2 {
 	line-height: 60%;
 }
 
-div#tabs div#tabs-1 div.tabContent section.container div.backgroundImage {
+div#tabs div#tabs-1 #inviteTab div.backgroundImage {
 		float: left;
 		// overflow: hidden;
 }
 
-div#tabs div.tabContent section.container div.backgroundImage img {
+div#tabs #inviteTab div.backgroundImage img {
 	z-index: 0;
 	height: 100%;
 	position: absolute;
 }
 
 
-div.tabContent section.container {
+#inviteTab {
 	// background: url("../images/peackFeath02NonEy.png") no-repeat left top;
 	// background-size: 100%;
 	margin: 5px;
@@ -135,19 +135,19 @@ div.tabContent section.container {
 	// overflow: hidden;
 }
 
-div.tabContent section.container div h2 {
+#inviteTab div h2 {
 	font: bold 110%/80% 'Paddington LT W01', 'Combo', cursive;
 }
 
-div.tabContent section.container div p {
+#inviteTab div p {
 	font: italic 90%/70% 'Paddington LT W01', 'Combo', cursive;
 }
 
-div.tabContent section.container div.backgroundImage {
+#inviteTab div.backgroundImage {
 		float: left;
 }
 
-div.tabContent section.container div.backgroundImage img {
+#inviteTab div.backgroundImage img {
 	z-index: -1;
 	height: 100%;
 }
@@ -199,7 +199,7 @@ div.titleBoxR {
 		font-size: 120%;
 		line-height: 200%;
 	}
-
+	
 	div#tabs, div#tabs div#tabs-1 {
 		width: 100%;
 		z-index: -2;
@@ -241,43 +241,43 @@ div.titleBoxR {
 		position: relative;
 		z-index: 10;
 	}
-
+	
 	.container {
 		height: 400px;
 		position: relative;
 		z-index: 0;
 	}
-
-	div.tabContent section.container div.backgroundImage {
+	
+	#inviteTab div.backgroundImage {
 		// position: relative;
 		top: 10px;
 		z-index: 2;
 	}
-
-	/* ?switch out with below (div#tabs worked) for tab-1 not tab-3:
-	 * div#tabs	div.tabContent section.container div.backgroundImage img {
-	 * 	idea is to keep tabContent in divs of tabContent with fixed backgroundImages*/
-
-	div#tabs div.tabContent section.container div.backgroundImage img {
+	
+	/* ?switch out with below (div#tabs worked) for tab-1 not tab-3: 
+	 * div#tabs	div.tabContent section.container div.backgroundImage img { 
+	 * 	idea is to keep tabContent in divs of tabContent with fixed backgroundImages*/ 
+	
+	div#tabs #inviteTab div.backgroundImage img {
 		width: 100%;
 		position: fixed;
 		top: 10;
 		left: 0;
 		z-index: 3;
 	}
-
+	
 	div#tabs ul {
 		width: 100%;
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 3;
+		z-index: 3;		
 	}
-
+	
 	div#tabs div.tabContent section.container div.centerBox h3 {
 		font: bold 100%/90% 'Paddington LT W01', 'Combo', cursive;
-	}
-
+	} 
+	
 	div#tabs ul li > a {
 		font: bold 50%/50% Arial, Helvetica, sans-serif;
 	}
@@ -289,7 +289,7 @@ div.titleBoxR {
 		width: 80%;
 		font-size: 120%;
 	}
-
+	
 	div.tabContent {
 		width: 100%;
 	}
@@ -298,7 +298,7 @@ div.titleBoxR {
 		width: 100%;
 		position: fixed;
 	}
-
+	
 	div.titleBoxL {
 		margin-right: 8%;
 		margin-left: 5%;
