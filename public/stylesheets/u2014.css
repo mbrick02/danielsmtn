@@ -227,6 +227,7 @@ div.titleBoxR {
 	div.centerBox {
 		width: 70%;
 		margin-top: 40%;
+		margin-left: 20%;
 		position: relative;
 		z-index: 10;
 	}
@@ -274,7 +275,7 @@ div.titleBoxR {
 	}
 
 	div#tabs div.tabContent section.container div.backgroundImage img {
-		width: 95%;
+		width: 100%;
 		position: fixed;
 		top: 25px;
 		left: 0;
