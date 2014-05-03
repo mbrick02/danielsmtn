@@ -30,7 +30,7 @@ html, body{
 
 section.container img {
 	float: left;
-	width: 100%;
+	width: 95%;
 	position: absolute;
 }
 
@@ -124,17 +124,19 @@ div#tabs div#tabs-1 div.tabContent section.container div h2 {
 
 div.tabContent section.container div.backgroundImage {
 		float: left;
+		padding-top: 0;
 }
 
 div#tabs div.tabContent section.container div.backgroundImage img {
  	z-index: 0;  /* was 0 which worked on tab 3 but NO OTHER why???????????? */
 	height: 100%;
-	position: relative;
+	position: fixed;
 }
+
 
 /* ************************ERORRRRRRRRRRRRRR**************5/2*********
 div#tabs div.tabContent section.container div#progTabImg img {
- 	z-index: 0; 
+ 	z-index: 0;
 	width: 100%;
 	position: absolute;
 }
@@ -143,10 +145,19 @@ div#tabs div.tabContent section.container div#progTabImg img {
 div.tabContent section.container {
 	float: left;
 	width: 100%;
+	position: absolute;
+}
+
+div.tabContent section.container div h1 {
+	font: bold 130%/90% 'Paddington LT W01', 'Combo', cursive;
 }
 
 div.tabContent section.container div h2 {
 	font: bold 110%/80% 'Paddington LT W01', 'Combo', cursive;
+}
+
+div.tabContent section.container div h3 {
+	font: bold 100%/80% 'Paddington LT W01', 'Combo', cursive;
 }
 
 div.tabContent section.container div p {
@@ -156,8 +167,9 @@ div.tabContent section.container div p {
 div.centerBox {
 	text-align: center;
 	display: block;
-	margin: 25% 0 20% 15%;
+	margin: 20% 0 25% 40%;
 	position: relative;
+	float: left;
 	z-index: 10;
 }
 
@@ -179,7 +191,7 @@ div.clear {
 
 div.titleBoxL {
 	float: left;
-	display: inline-block;
+	display: block;
 	margin-left: 10%;
 	position: relative;
 	z-index: 10;
@@ -262,9 +274,9 @@ div.titleBoxR {
 	}
 
 	div#tabs div.tabContent section.container div.backgroundImage img {
-		width: 100%;
+		width: 95%;
 		position: fixed;
-		top: 10;
+		top: 25px;
 		left: 0;
 		z-index: 3;
 	}
@@ -295,6 +307,10 @@ div.titleBoxR {
 		position: fixed;
 	}
 
+	section.container div.backgroundImage {
+		margin-top: 2em;
+	}
+
 	div.titleBoxL {
 		margin-right: 8%;
 		margin-left: 5%;
@@ -315,10 +331,10 @@ div.titleBoxR {
 
 	section.container {
 		// background-color: rgb(237,228,214);
-		margin: 100px 20px;
+		margin: 2em 0;
 		// height: 611px;
 		position: relative;
-		overflow: hidden;
+		overflow: auto;
 	}
 
 	section.container p {

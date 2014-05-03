@@ -3,6 +3,16 @@
  *    (it probably needs to be cleaned up)
  */
 
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
 div.message {
 	border: 2px solid orange;
 	color: blue; font-weight: bold;
@@ -21,6 +31,46 @@ BODY {
 	font:10pt/12pt Arial, Helvetica, sans-serif;
 	background-color: #00ff80;
 }
+
+div.title {
+	line-height: 200%;
+}
+
+div section.container div.location h2 {
+	position: relative;
+	color: GoldenRod;
+	clear: both;
+	background: #9400D3;
+}
+
+div section.container div.location {
+	margin-top: 5%;
+}
+
+
+div section.container div.location {
+	padding-left: 1%;
+}
+
+div section.container {
+	position: absolute;
+	width: 100%;
+}
+
+div section.container div.accomodation {
+	position: relative;
+	clear: both;
+	border: solid 1px;
+	padding: 1%;
+	margin-left: 1%;
+}
+
+div section.container div.accomodation img {
+	float: right;
+	position: relative;
+	width: 40%;
+}
+
 H2 {
 	font : bold 18pt/20pt Arial, Helvetica, sans-serif;
 }

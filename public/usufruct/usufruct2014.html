@@ -1,74 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8" />
-
-  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-       Remove this if you use the .htaccess -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-  <title>usufruct</title>
-  <meta name="description" content="" />
-  <meta name="author" content="bricklerml" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link href="../stylesheets/normalize.css" rel="stylesheet">
-  <link id="u2014CSS" href="../stylesheets/u2014.css" rel="stylesheet">
-  <link href='http://fonts.googleapis.com/css?family=Combo' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+	<title>Test jQuery Tabs</title>
+	<link href="../stylesheets/normalize.css" rel="stylesheet">
+	<link id="u2014CSS" href="../stylesheets/danmtn.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Combo' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
-	<header>
-      <h1>Usufruct 44 (2014)</h1>
-    </header>
-    <nav>
-      <p><a href="./index.htm">Home</a></p>
-      <p><a href="">Accomodations</a></p>
-      <p><!-- a href="./contact">Contact</a --></p>
-    </nav>
-<section class="container">
-	<section id="inviteTab" class="clearfix">
-		<div class="backgroundImage" class="clearfix">
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Usufruct</a></li>
+    <li><a href="#tabs-2">No. 44</a></li>
+    <li><a href="#tabs-3">Program</a></li>
+    <li><a href="#tabs-4">Map</a></li>
+    <li><a href="./accomodations.html" target="_blank">Accomodations</a></li>
+  </ul>
+  <div id="tabs-1" class="clearfix tabContent">
+	<section id="inviteTab" class="clearfix container">
+		<div class="clearfix backgroundImage"> <!-- backgrndImg didnt work -->
+			<img id="inviteBkgrnd" src="../images/peackFeath01v9crpTxt.png">
+		</div>
+		<!-- div class="backgroundImage clearfix">
+			<img id="uProgBkgrnd" src="../images/peackFeath01v9crp.png">
+		</div -->
+	</section> <!-- end inviteTab -->
+  </div>
+  <div id="tabs-2" class="clearfix tabContent">
+  	  <section id="u44Tab" class="clearfix container">
+		<div class="clearfix backgroundImage">
+			<img id="u44Bkgrnd" src="../images/U44v8P2.jpg">
+		</div>
+     </section> <!-- end u44Tab -->
+  </div>
+  <div id="tabs-3" class="clearfix tabContent">
+	<section id="progTab" class="clearfix container">
+		<div id="progTabImg" class="clearfix backgroundImage">
 			<img id="uProgBkgrnd" src="../images/peackFeath02NonEy.png">
 		</div>
+
         <div class="centerBox">
-        	<h2>Usufruct 44</h2>
-        	<p>Grand High Commissioner:</p>
+        	<h1>Usufruct 44</h2>
+        	<h2>Grand High Commissioner:</h3>
         	<p>Mark Throop</p>
         </div>
-        <div class="titleBoxL">
+        <div class="clear">&nbsp;</div>
+        <div class="titleBoxL clearfix">
         	<h2>When:</h2>
         	<p>Saturday May 24th, 2014</p>
-        	<p>6:30ish PM</p>
+        	<p>6:30ish</p>
 			<p>(come earlier to hang out)</p>
         </div>
         <div class="titleBoxR">
         	<h2>Where:</h2>
-        	<p>5904 McKinney Hollow Road</p>
+        	<p>5904 McKinney Hollow Rd.</p>
         	<p>Daniel's Mountain</p>
         	<p>(or thereabouts)</p>
         </div>
         <div class="clear"></div>
         <div class="bottomBox">
-        	<h2>Music by:</h2>
-        	<p>The Daniel's Mountain Gang</p>
-        	<h2>Whats:</h2>
-        	<p>Will's "Lear"y Edmond</p>
-        	<h2>Performances by:</h2>
- 			<p>The Daniel's Mountain Players</p>
         	<h2> Whys:</h2>
         	<p>pigish eats</p>
         	<p>and various stuffs</p>
-        	<h2><a href="mailto:usufruct@danielsmountain.org">Let us know if your coming</a></h2>
+        	<br />
+        	<h2>Whats:</h2>
+        	<p>Will's "Lear"y Edmond</p>
+        	<br />
+        	<h2>Music by:</h2>
+        	<p>The Daniel's Mountain Gang</p>
+        	<br />
+        	<h2>Performances by:</h2>
+ 			<p>The Daniel's Mountain Players</p>
+ 			<br />
+        	<h2><a href="mailto:usufruct@danielsmountain.org">Let us know if your coming!</a></h2>
         </div>
         &nbsp;<br />
 	</section> <!-- end inviteTab -->
-</section> <!-- end container -->
+  </div>
+  <div id="tabs-4" class="clearfix tabContent">
+	<section id="mapTab" class="clearfix container">
+		<div class="clearfix backgroundImage">
+			<br />
+			<a href="../images/U44 2014 v8aP4Map.pdf" target="_blank">PDF Version of Map (zoomable)</a>
+			<br />
+			<img id="mapBkgrnd" src="../images/U44v8P4Map.jpg">
+			<br />
+			<a href="../images/U44 2014 v8aP4Map.pdf" target="_blank">PDF Version of Map (zoomable)</a>
+			<br />
+		</div>
+	</section> <!-- end mapTab -->
+  </div>
+</div>
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="../javascripts/jquery-1.11.0.min.js"><\/script>');</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link id="u2014CSS" href="../stylesheets/u2014.css" rel="stylesheet">
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="../javascripts/U14code.js"></script>
+
 </body>
 </html>
