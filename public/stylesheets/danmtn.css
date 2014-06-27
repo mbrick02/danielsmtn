@@ -13,6 +13,10 @@
 	clear: both;
 }
 
+body {
+	font: 100%/80% Arial, Helvetica, sans-serif;
+}
+
 div.message {
 	border: 2px solid orange;
 	color: blue; font-weight: bold;
@@ -38,7 +42,7 @@ div.title {
 
 div section.container div.location h2 {
 	position: relative;
-	color: GoldenRod;
+	color: #DAA520;
 	clear: both;
 	background: #9400D3;
 }
