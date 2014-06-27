@@ -87,11 +87,11 @@ H3 {
 .questCateg {
 	font : 13pt/15pt Arial, Helvetica, sans-serif;
 }
-P {
-	font : normal 10pt/12pt Arial, Helvetica, sans-serif;
+p {
+	font : normal 12%/13% Arial, Helvetica, sans-serif;
 }
-P.introQuest {
-	font : bold 10pt/12pt Arial, Helvetica, sans-serif;
+p.introQuest {
+	font : bold 12pt/12pt Arial, Helvetica, sans-serif;
 }
 
 .qnaireQuest{
