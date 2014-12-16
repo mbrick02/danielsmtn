@@ -83,5 +83,6 @@ require_once(LIB_PATH.DS.'database.php');
 
 // load database-related classes
 require_once(LIB_PATH.DS.'user.php');
+require_once(LIB_PATH.DS.'form.php');
 
 ?>

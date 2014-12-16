@@ -30,7 +30,7 @@ class Form {
     				$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not a form field "); //** this only give last error rather than all errors
     			}
     		} else {
-    			$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not a ". User::$tableName . " DB field in ");
+    			$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not in ". User::$tableName);
     		}
     	}
     	
@@ -83,8 +83,9 @@ class Form {
 		return in_array($value, $set);
 	}
 	
-	public function formErrors(){
+	public function formErrors($errors){
 	$output = "";
+	$this->errors = $errors; // not sure if this should be: .= (to make sure I get previous session $errors?) 
 	if (!empty($this->errors)) {
 		$output = "<div class=\"error\">";
 		$output .= "Please fix the following errors:";

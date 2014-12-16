@@ -8,8 +8,9 @@
 	</nav>
 	<content><!-- div id="page"> -->
 		<?php echo $session->putMessage(); ?>
-		<?php $errors = $session->errors();//** instantiate a form  ?>
-		<?php echo formErrors($errors); // **4/14 convert to thisForm->formErrors($errors) ?>
+		<?php $errors = $session->errors(); ?>
+		<?php $dishForm = new Form ?>
+		<?php echo $dishForm->formErrors($errors); ?>
 		<?php 
 			$dishesSet = findAllDishes();
 			$selectedDishID = null;  // ***10/24 not sure if this is usable now
