@@ -127,6 +127,7 @@ class User {
 	}
 	
 	protected function passwordEncrypt($password) {
+		// 12/16/14 may wan to update to: password_hash($password, PASSWORD_BCRYPT, ['cost' => 10]); 
 		$hashFormat = "$2y$10$"; // blowfish level/pass 10
 		$saltLength = 22;  // blowfish salts should be 22 or more
 		$salt = generateSalt($saltLength);
@@ -137,7 +138,7 @@ class User {
 	
 	protected function generateSalt($length) {
 	
-		// No 100% unique or random, but works for saltr
+		// No 100% unique or random, but works for salt
 		$uniqueRandStr = md5(uniqid(mt_rand(), true));
 	
 		// Valid characters for a salt are [a-zA-Z0-9./]
