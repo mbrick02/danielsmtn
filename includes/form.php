@@ -30,7 +30,7 @@ class Form {
     				$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not a form field "); //** this only give last error rather than all errors
     			}
     		} else {
-    			$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not in ". User::$tableName);
+    			$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not in " . User::$tableName);
     		}
     	}
     	

@@ -120,7 +120,18 @@ nav.leftside ul {
 
 nav.leftside ul li {
 
-}content {
+}
+
+h3.listTitle{
+	font : bold 16pt/20pt Arial, Helvetica, sans-serif;
+}
+
+.dishes{
+	list-style-type: none;
+
+}
+
+content {
     border: 3px dashed green;
     float: left;
 }

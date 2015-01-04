@@ -10,7 +10,7 @@
 		<?php echo $session->putMessage(); ?>
 		<?php $errors = $session->errors(); ?>
 		<?php $dishForm = new Form ?>
-		<?php echo $dishForm->formErrors($errors); ?>
+		<?php // echo $dishForm->formErrors($errors); ?>
 		<?php 
 			$dishesSet = findAllDishes();
 			$selectedDishID = null;  // ***10/24 not sure if this is usable now
