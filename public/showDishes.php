@@ -24,7 +24,9 @@
 		?>
 			<!--  *******WAS testing here 10/23/13 4PM...  ***4/14 turn this into a form ** -->
 			<?php 
-				$sessionDishID = $_SESSION["currentDishID"] ?: -1;  // if currentDishID is set use it otherwise set to non-existant number
+				$sessionDishID = isset($_SESSION["currentDishID"]) ? $_SESSION["currentDishID"]: -1;  
+				// if currentDishID is set use it otherwise set to non-existant number
+				// Note: $_SESSION["currentDishID"]) ?: -1; // (ternary shortcut) gives a warning if no server request (empty form opened)
 				$specLayoutContext = ($dish['dishID'] == $sessionDishID) ? "thisChef" : $layoutContext;
 				$anchorPre = dishAnchorPreTag($specLayoutContext, $dish['dishID']);
 				$anchorPost = ($anchorPre == "") ? "" : "</a>";
