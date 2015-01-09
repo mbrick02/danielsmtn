@@ -15,6 +15,7 @@ class Session {
 
 	function __construct() {
 		session_start();
+		$this->checkMessage();
 		$this->checkLogin();
 		if($this->loggedIn) {
 			// actions to take right away if user is logged in
@@ -62,14 +63,25 @@ class Session {
 			$this->loggedIn = false;
 		}	
 	}
+	
+	private function checkMessage() {
+		// Is there a message stored in the session?
+		if(isset($_SESSION['message'])) {
+			// Add it as an attribute and erase the stored version
+			$this->message = $_SESSION['message'];
+			unset($_SESSION['message']);
+		} else {
+			$this->message = "";
+		}
+	}
 
-	public function setMessage($msg) {
+	private function setMessage($msg) {
 		$this->message = $_SESSION['message'] = $msg; 
 	}
 	
 	// ********these functions were from non-object session.php (calls should be updated)*******
 	
-	public function putMessage() {
+	private function putMessage() {
 		if (isset($_SESSION["message"])) {
 			// $this->message = $_SESSION["message"];
 			$output = "<div class=\"message\">" . htmlentities($_SESSION["message"]) ."</div>";
@@ -81,6 +93,28 @@ class Session {
 		}
 	}
 	
+//	******** Skoglunds (see Beyond Basics 10-6, "Storing Messages in the Session")
+/*	
+	public function message($msg="") {
+		if(!empty($msg)) {
+			// then this is "set message"
+			//make sure you understand why $this->message=$msg wouldn't work
+			$_SESSION['message'] = $msg;
+		} else {
+			// then this is "get message"
+			return $this->message;
+		}
+	}
+*/	
+//    ***** mine:
+	public function message($msg = "") {
+		if ($msg == "") {
+			$this->putMessage();
+		} else {
+			$this->setMessage($msg);
+		}
+	}
+		
 	public function setErrors($errors = ""){
 		$_SESSION["errors"] = $errors;
 	}

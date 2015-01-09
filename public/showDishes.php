@@ -5,16 +5,17 @@
 	// ***probably don't need next if******
 	if(empty($_GET['id'])){
 		$session->message("No id for ?set of dishes?????");
-		redirectTo('index.php');
+		// **1/15 not sure this is a good idea (diff. than Skoglund's login project): redirectTo('index.php');
 	}
 	
 	// here phot.php (with comment) had $phot = Photograph::findByID($_GET['id']);
 	
-	if(isset($_POST['submit'])){
+	// **1/09/15  When we have a form, we can implement code below:
+//	if(isset($_POST['submit'])){
 		
-	} else {
+//	} else {
 		
-	}
+//	}
   
 ?>
 <?php includeLayoutTemplate('header.php'); ?>
@@ -24,7 +25,7 @@
 		<?php echo navigation(); ?>
 	</nav>
 	<content><!-- div id="page"> -->
-		<?php echo $session->putMessage(); ?>
+		<?php echo $session->message(); ?>
 		<?php $errors = $session->errors(); ?>
 		<?php $dishForm = new Form ?>
 		<?php // echo $dishForm->formErrors($errors); ?>

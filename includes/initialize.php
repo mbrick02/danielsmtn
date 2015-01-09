@@ -82,6 +82,7 @@ require_once(LIB_PATH.DS.'database.php');
 // ** for page x of y: require_once(LIB_PATH.DS.'pagination.php');
 
 // load database-related classes
+// **0115 require_once(LIB_PATH.DS.'datbaseObject.php');
 require_once(LIB_PATH.DS.'user.php');
 require_once(LIB_PATH.DS.'form.php');
 
