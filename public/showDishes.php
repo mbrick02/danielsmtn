@@ -1,5 +1,22 @@
 <?php require_once("../includes/initialize.php"); ?>
-
+<?php 
+	// processs this form (started 1/8/15) 
+	// ???????based on comments, but I'm not basing dishes on a photo *******
+	// ***probably don't need next if******
+	if(empty($_GET['id'])){
+		$session->message("No id for ?set of dishes?????");
+		redirectTo('index.php');
+	}
+	
+	// here phot.php (with comment) had $phot = Photograph::findByID($_GET['id']);
+	
+	if(isset($_POST['submit'])){
+		
+	} else {
+		
+	}
+  
+?>
 <?php includeLayoutTemplate('header.php'); ?>
 <div id="main">
 <!-- . or .. within header file (e.g. ./includes/u2013.css )??? for localhost I had to use 1 but on server 2 -->
@@ -12,7 +29,7 @@
 		<?php $dishForm = new Form ?>
 		<?php // echo $dishForm->formErrors($errors); ?>
 		<?php 
-			$dishesSet = findAllDishes();
+			$dishesSet = findAllDishes(); // *** 1/8/15 change to dish->findAll();
 			$selectedDishID = null;  // ***10/24 not sure if this is usable now
 			$selectedLName = null;  // ***10/24 not sure if this is usable now
 		?>
