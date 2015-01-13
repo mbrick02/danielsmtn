@@ -96,7 +96,7 @@ function findAdminByID($adminID) {
 
 function dishAnchorPreTag($layoutContext, $dishID){
 	if (($layoutContext == "admin") || ($layoutContext == "thisChef")) {  // if admin or dish of this chef, make editable
-		$dishAPreTag = "<a href=\'editDish.php?dishID=" . urlencode($dishID) . "\'>";
+		$dishAPreTag = "<a href='editDish.php?dishID=" . urlencode($dishID) . "'>";
 	}  else {
 		$dishAPreTag = "";
 	}

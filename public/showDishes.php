@@ -45,20 +45,25 @@
 				$sessionDishID = isset($_SESSION["currentDishID"]) ? $_SESSION["currentDishID"]: -1;  
 				// if currentDishID is set use it otherwise set to non-existant number
 				// Note: $_SESSION["currentDishID"]) ?: -1; // (ternary shortcut) gives a warning if no server request (empty form opened)
-				$specLayoutContext = ($dish['dishID'] == $sessionDishID) ? "thisChef" : $layoutContext;
-				$anchorPre = dishAnchorPreTag($specLayoutContext, $dish['dishID']);
+				// **1/12/15 functions below in functions.php MOVE TO dish.php if needed
+				if (!isset($layoutContext)){
+					$layoutContext = "thisChef";
+				}
+				$specLayoutContext = ($dish['id'] == $sessionDishID) ? "thisChef" : $layoutContext;
+				$anchorPre = dishAnchorPreTag($specLayoutContext, $dish['id']);
 				$anchorPost = ($anchorPre == "") ? "" : "</a>";
 			?>
-			<li<?php if ($dish['dishID'] == $selectedDishID) {
-				echo " class=\"selected\"";
-			} ?>><name><?php echo $dish["lName"] . ": " ?></name>
+			<li<?php 
+				if ($dish['id'] == $selectedDishID) {
+				 	echo " class=\"selected\" ";
+				} 
+			?>><name><?php echo $dish["lName"] . ": " ?></name>
 			 	<?php echo $anchorPre ?>
 				<dish><?php echo $dish["dish"] ?></dish>
 				<?php echo $anchorPost ?>
 			</li>
 		<?php } ?>
 		</ul>
-	<!-- /div> -->
 	</content>
 <?php mysqli_free_result($dishesSet); ?>
 <?php includeLayoutTemplate('footer.php'); ?>
