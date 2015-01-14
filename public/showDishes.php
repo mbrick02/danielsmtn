@@ -49,12 +49,12 @@
 				if (!isset($layoutContext)){
 					$layoutContext = "thisChef";
 				}
-				$specLayoutContext = ($dish['id'] == $sessionDishID) ? "thisChef" : $layoutContext;
-				$anchorPre = dishAnchorPreTag($specLayoutContext, $dish['id']);
+				$specLayoutContext = ($dish['dishID'] == $sessionDishID) ? "thisChef" : $layoutContext;
+				$anchorPre = dishAnchorPreTag($specLayoutContext, $dish['dishID']);
 				$anchorPost = ($anchorPre == "") ? "" : "</a>";
 			?>
 			<li<?php 
-				if ($dish['id'] == $selectedDishID) {
+				if ($dish['dishID'] == $selectedDishID) {
 				 	echo " class=\"selected\" ";
 				} 
 			?>><name><?php echo $dish["lName"] . ": " ?></name>
