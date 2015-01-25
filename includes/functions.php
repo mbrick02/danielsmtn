@@ -147,7 +147,7 @@ function navigation(){
 	$output .= "<li><a href=\"./index.htm\">Home</a></li>";
 	$output .= "<!-- probably need this to go to Usfruct for year -->";
 	$output .= "<li><a href=\"./showDishes.php\">Show Dishes</a></li>";
-	$output .= "<li><a href=\"./priv/loginDM.php\">&#43; Add, Edit or Delete Dish</a></li>";
+	$output .= "<li><a href=\"./admin/loginDM.php\">&#43; Add, Edit or Delete Dish</a></li>";
 	$output .= "</ul>";
 	
 	return $output;

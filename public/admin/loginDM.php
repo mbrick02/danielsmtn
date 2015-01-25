@@ -17,11 +17,11 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	
 	if ($foundUser) {
 		$session->login($foundUser);
-		$session->setMessage("Found User: ". $foundUser->fName . ", ID: " . $session->userID);
+		$session->message("Found User: ". $foundUser->fName . ", ID: " . $session->userID);
 		redirectTo("manageAdmins.php");
 	} else {
 		// username/password combo was not found in db
-		$session->setMessage("Username/password combination incorrect");
+		$session->message("Username/password combination incorrect");
 	}
 } else { // Form has not been submitted
 	$username = "";
@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
     </header>
     <div>
         <?php 
-			echo $session->putMessage();
+			echo $session->message();
         ?>
         <h2>Let us know who is bringing their dish</h2>
         
@@ -68,15 +68,15 @@ if (isset($_POST['submit'])) { // Form has been submitted
               <tr>
               	<td><label for ="username">username: </label></td>
               	<td><input name="username" type="text" id="username" 
-                placeholder="Leave Blank if you dont have a username"/></td>
+                placeholder="Leave Blank if unsure"/></td>
               </tr>
               <tr>
               	<td><label for ="password">password: </label></td>
               	<td><input name="password" type="password" id="password" 
-                placeholder="Leave Blank if you dont have a password"/></td>
+                placeholder="Leave Blank if unsure"/></td>
               </tr>
               <tr>
-              	<td><label for ="email">Email (preferably the one your invitation was sent to): </label></td>
+              	<td><label for ="email">Email (the one your invitation was sent to): </label></td>
               	<td><input name="email" type="email" id="Text2" 
                 placeholder="Enter Email address"/></td>
               </tr>

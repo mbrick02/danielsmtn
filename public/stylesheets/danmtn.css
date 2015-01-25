@@ -106,7 +106,6 @@ p.introQuest {
 	font: normal 9pt/10pt Arial, Helvetica, sans-serif;
 }
 
-
 nav.leftside {
     float:left;
     width: 120px;
@@ -124,6 +123,7 @@ nav.leftside ul li {
 
 h3.listTitle{
 	font : bold 16pt/20pt Arial, Helvetica, sans-serif;
+	padding: 1em;
 }
 
 .dishes{
