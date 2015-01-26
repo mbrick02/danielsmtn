@@ -46,6 +46,22 @@ class Dish {
 // 		return get_object_vars($this);
 // 	}
 
+	public static function make($dishID="", $fName, $lName, $dish, $email){
+		if(!empty($fName) && !empty($lName) && !empty($dish) && !empty($email)) {
+			$dish = new Dish(); // notice capital "D" like class name
+			
+			$dish->dishID = $dishID; // **test for empty? how does that affect save() 
+			$dish->dish = $dish;
+			$dish->fName = $fName;
+			$dish->lName = $lName;
+			$dish->email = $email;
+			return $dish;
+		} else {
+			return false;
+		}
+	}
+	
+
 	protected function sanitizedAttributes() {
 		global $database;
 		$cleanAttributes =  array();

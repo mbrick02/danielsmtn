@@ -25,7 +25,7 @@
             <p><label for ="lName">lName: </label>
                 <input name="lName" type="text" id="lName"
                 placeholder="Enter Last Name"/></p>
-            <p><label for ="email">Email(use the same one where you received your invitation): </label>
+            <p><label for ="email">Email(use the invitation email): </label>
                 <input name="email" type="email" id="Text2"
                 placeholder="Enter Email address"/></p>
             <p><label for ="dish">Dish: </label>
