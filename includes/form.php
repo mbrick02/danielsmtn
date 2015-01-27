@@ -1,20 +1,24 @@
+<?php require_once('./includes/initialize.php'); ?>
 <?php
-
+// *** require_once(DIR_VAL, "initialize");
 class Form {
 	
 	private $errors = array();
 	private $fields=array();
 	private $requiredFields=array();
 	private $fieldsWithMaxLengths=array();
+	private $useTable = User::$tablename;  // default value is User table
 	
-	public function __construct($fields = array(), $requiredFields = array(), $fieldsWithMaxLengths = array()) {
+	public function __construct($tablename="", $fields = array(), $requiredFields = array(), $fieldsWithMaxLengths = array()) {
 //         foreach($fields as $key => $value) {
 //             $this->$key = $value;
 //         }
 		$this->fields = $fields;
 		$this->requiredFields = $requiredFields;
 		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths;
-			
+		if(!empty($tablename)){
+			$this->useTable = $tablename;
+		}	
     }
     
     public function setObjectVals($dbObject) {

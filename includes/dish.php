@@ -46,7 +46,7 @@ class Dish {
 // 		return get_object_vars($this);
 // 	}
 
-	public static function make($dishID="", $fName, $lName, $dish, $email){
+	public static function make($fName, $lName, $dish, $email, $dishID=""){
 		if(!empty($fName) && !empty($lName) && !empty($dish) && !empty($email)) {
 			$dish = new Dish(); // notice capital "D" like class name
 			
