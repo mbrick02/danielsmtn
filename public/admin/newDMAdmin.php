@@ -19,9 +19,6 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	$password = "";
 }
 ?>
-
-
-
 <?php includeLayoutTemplate('header.php'); ?>
   <div id="main">
     <!-- **SEE header.php** <head>

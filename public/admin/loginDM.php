@@ -7,7 +7,6 @@ if ($session->isLoggedIn()) {
 
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
-	
 	$username = trim($_POST['username']);
 	$password = trim($_POST['password']);
 	

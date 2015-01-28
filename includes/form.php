@@ -1,11 +1,12 @@
 <?php
-// *** require_once(DIR_VAL, "initialize");
+require_once("initialize.php");
 class Form {
 	private $errors = array();
 	private $fields = array();
 	private $requiredField = array();
 	private $fieldsWithMaxLengths = array();
-	private $tablename = User::tablename;  // default value is User table
+	
+	static $tablename ="tbusers";  // default value (currently set to User table)
 	
 	public function __construct($tablename="", $fields = array(), $requiredFields = array(), $fieldsWithMaxLengths = array()) {
 //         foreach($fields as $key => $value) {
@@ -14,7 +15,7 @@ class Form {
 		$this->fields = $fields;
 		$this->requiredFields = $requiredFields;
 		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths;
-		if(!empty($tablename)){
+		if(empty($tablename)){
 			$this->tablename = $tablename;
 		}	
     }
@@ -93,7 +94,7 @@ class Form {
 		$output .= "Please fix the following errors:";
 		$output .= "<ul>";
 		foreach ($this->errors as $key => $error) {
-			$output .= "<li>{$error}</li>";
+			$output .= "<li>{$key} has error: {$error}</li>";
 		}
 		$output .= "</ul>";
 		$output .= "</div>";

@@ -17,13 +17,11 @@
 		$dish = Dish::make($formDish->fName, $formDish->lName, $formDish->dish, $formDish->email);
 	}
 ?>
-
 <?php 
 	if (isset($connection)) {
 		mysqli_close($connection);
 	}
 ?>
-
 <?php if (!isset($_SESSION['userID'])){
 		$_SESSION["message"] = "You must log in before you may add a dish";
 		redirectTo("./admin/loginDM.php");
