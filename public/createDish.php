@@ -1,16 +1,15 @@
-<?php require_once('./includes/initialize.php'); ?>
-
-<?php require_once("./includes/validationFunctions.php"); // *** move(d) to form.php ?>
+<?php require_once('../includes/initialize.php'); ?>
+<?php require_once("../includes/validationFunctions.php"); // *** move(d) to form.php ?>
 <?php 
 	require_once(LIB_PATH.DS.'form.php');  // use with form to be combined from addDish
 	require_once(LIB_PATH.DS.'dish.php');
 	
 	$fields = array("fName", "lName", "dish", "email");
 	$requiredFields = array("fName", "lName", "dish", "email");
-	$fieldsWithMaxLengths = array('fName' => 17, 'lName' => 17, 'dish' => 25, 'email' => 30);
+	$fieldsWithMaxLengths = array("fName" => 17, "lName" => 17, "dish" => 25, "email" => 30);
 	
 	
-	$formDish = new Form($fields, $requiredFields);
+	$formDish = new Form($fields, $requiredFields, $fieldsWithMaxLengths);
 	
 	// ** 1/26/15 Note in form.php: setObjVars(): $dbObject->$field = $_POST["{$field}"];
 	
@@ -27,7 +26,7 @@
 
 <?php if (!isset($_SESSION['userID'])){
 		$_SESSION["message"] = "You must log in before you may add a dish";
-		redirectTo("./priv/loginDM.php");
+		redirectTo("./admin/loginDM.php");
 }?>
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
   <?php include("./includes/layout/header.php"); ?>

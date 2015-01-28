@@ -6,7 +6,7 @@ require_once(LIB_PATH.DS.'database.php');  // called by initialize but require_o
 
 class User {
 
-	protected static $tableName="tbusers";
+	static protected $tableName="tbusers";
 	public $userID;
 	public $username;
 	public $password;
@@ -17,7 +17,7 @@ class User {
 	public $userTypeID;
 	
 	// 'userID', 
-	protected static $dbFields = array('username', 'password', 'fName', 'lName', 'email', 'userTypeID');	
+	static protected $dbFields = array('username', 'password', 'fName', 'lName', 'email', 'userTypeID');	
 	// 3/19/14 currently only fields in usufructdish::tbusers: 
 	//				userID, username, password, fName, lName, email, userTypeID
 

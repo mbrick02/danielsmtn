@@ -1,13 +1,11 @@
-<?php require_once('./includes/initialize.php'); ?>
 <?php
 // *** require_once(DIR_VAL, "initialize");
 class Form {
-	
 	private $errors = array();
-	private $fields=array();
-	private $requiredFields=array();
-	private $fieldsWithMaxLengths=array();
-	private $useTable = User::$tablename;  // default value is User table
+	private $fields = array();
+	private $requiredField = array();
+	private $fieldsWithMaxLengths = array();
+	private $tablename = User::tablename;  // default value is User table
 	
 	public function __construct($tablename="", $fields = array(), $requiredFields = array(), $fieldsWithMaxLengths = array()) {
 //         foreach($fields as $key => $value) {
@@ -17,7 +15,7 @@ class Form {
 		$this->requiredFields = $requiredFields;
 		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths;
 		if(!empty($tablename)){
-			$this->useTable = $tablename;
+			$this->tablename = $tablename;
 		}	
     }
     
@@ -34,7 +32,7 @@ class Form {
     				$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not a form field "); //** this only give last error rather than all errors
     			}
     		} else {
-    			$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not in " . User::$tableName);
+    			$session->setMessage(" Program error: " . $this->fieldnameAsText($field) . " not in " . $this->tableName);
     		}
     	}
     	
