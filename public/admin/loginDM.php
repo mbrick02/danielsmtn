@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
         <?php 
 			echo $session->message();
         ?>
-        <h2>Let us know who is bringing their dish</h2>
+        <!-- h2>Let us know who is bringing their dish</h2>  -->
         
         
         <form action="loginDM.php" name="adminLogin" method="post">

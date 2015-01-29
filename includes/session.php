@@ -108,7 +108,7 @@ class Session {
 */	
 //    ***** mine:
 	public function message($msg = "") {
-		if ($msg == "") {
+		if (empty($msg)) {
 			$this->putMessage();
 		} else {
 			$this->setMessage($msg);

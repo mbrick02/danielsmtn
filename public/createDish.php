@@ -22,10 +22,11 @@
 		mysqli_close($connection);
 	}
 ?>
-<?php if (!isset($_SESSION['userID'])){
-		$_SESSION["message"] = "You must log in before you may add a dish";
+<?php if (!$session->isLoggedIn()){
+		$session->message("You must log in before you may add a dish");
 		redirectTo("./admin/loginDM.php");
-}?>
+	  }
+?>
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
   <?php include("./includes/layout/header.php"); ?>
   <div id="main">
