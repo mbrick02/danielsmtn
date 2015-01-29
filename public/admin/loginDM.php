@@ -4,7 +4,6 @@ require_once('../../includes/initialize.php');
 if ($session->isLoggedIn()) {
 	redirectTo("manageAdmins.php");  // test debug ... should be mainAdmin.php
 }
-
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
 	$username = trim($_POST['username']);
@@ -39,7 +38,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
     </header>
     <div>
         <?php 
-			echo $session->message();
+        	echo $session->message();
         ?>
         <!-- h2>Let us know who is bringing their dish</h2>  -->
         

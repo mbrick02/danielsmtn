@@ -82,13 +82,14 @@ class Session {
 	// ********these functions were from non-object session.php (calls should be updated)*******
 	
 	private function putMessage() {
-		if (isset($_SESSION["message"])) {
+		if (!empty($this->message)) {
 			// $this->message = $_SESSION["message"];
-			$output = "<div class=\"message\">" . htmlentities($_SESSION["message"]) ."</div>";
-				
+			$output = "<div class=\"message\">" . htmlentities($this->message) ."</div>";
+			
 			// Clear Message
 			$_SESSION["message"] = null;
 			$this->message = "";
+			
 			return $output;
 		}
 	}
@@ -109,7 +110,7 @@ class Session {
 //    ***** mine:
 	public function message($msg = "") {
 		if (empty($msg)) {
-			$this->putMessage();
+			return $this->putMessage();
 		} else {
 			$this->setMessage($msg);
 		}
