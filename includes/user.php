@@ -197,10 +197,21 @@ class User {
 	
 	public static function findByID($id=0) {
 		global $database;
-		// change to array: $resultSet = self::findBySQL("SELECT * FROM  " . self::$tableName . " WHERE id={$id} LIMIT 1");
+		
 		$resultObjArray = self::findBySQL("SELECT * FROM " . self::$tableName ." WHERE userID={$id} LIMIT 1");
 		// no longer set: $found = $database->fetchArray($resultSet);
 		return !empty($resultObjArray) ? array_shift($resultObjArray) : false;
+	}
+	
+	public static function findItem($field="", $value) {
+		global $database;
+		
+		if (property_exists($this, $field)) {  // ***still need to create isValidField or use similar function
+			$resultObjArray = self::findBySQL("SELECT * FROM " . self::$tableName ." WHERE {$field}={$value}");
+		} else {
+			$resultObjArray = "";
+		}
+		return !empty($resultObjArray) ? $resultObjArray : false;
 	}
 	
 	public static function findBySQL($sql= "") {

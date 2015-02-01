@@ -24,7 +24,7 @@
 ?>
 <?php if (!$session->isLoggedIn()){
 		$session->message("You must log in before you may add a dish");
-		redirectTo("./admin/loginDM.php");
+		redirectTo("./dishAuthenticate.php");
 	  }
 ?>
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
