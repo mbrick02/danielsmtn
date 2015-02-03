@@ -1,26 +1,27 @@
 <?php 
 require_once('../includes/initialize.php');
 
-// if ($session->isLoggedIn()) {
+// ** 2/3/15 More accurate to call this dishEmailAuthenticate???
+
+// if ($session->isLoggedIn()) {  // ** this should never happen since came from createDish
 // 	redirectTo("manageAdmins.php"); 
 // }
 
 // Remember to give your form's submit tag a name="submit" attribute
 if (isset($_POST['submit'])) { // Form has been submitted
-	$username = trim($_POST['username']);
-	$password = trim($_POST['password']);
 	$email = trim($_POST['email']);
 	// ***this is admin login so we check for username/password ??chef login??
 	// Check database to see email exist.
-	$foundUser = User::findItem("email", $email)  //***??? 2/1/15
+	$foundUsers = User::findRecsByField("email", $email);
 	
-	if ($foundUser) {
+	if ($foundUsers) {
+		// ** 2/3/15 array_shift($foundUser) also should note if count($foundUser) > 1
 		$session->login($foundUser);
 		$session->message("Found User: ". $foundUser->fName . ", ID: " . $session->userID);
 		redirectTo("manageAdmins.php");
 	} else {
 		// username/password combo was not found in db
-		$session->message("Username/password combination incorrect");
+		$session->message("Could not find email, please use email you received Usufruct invite");
 	}
 } else { // Form has not been submitted
 	$username = "";
@@ -53,27 +54,6 @@ if (isset($_POST['submit'])) { // Form has been submitted
          	</tr>
          </thead>        
          <tbody>
-
- <!--         <tr>
-              	<td><label for ="fName">First Name: </label></td>
-              	<td><input name="fName" type="text" id="fName" 
-                placeholder="Enter first Name"/></td>
-              </tr>  -->
- <!--         <tr>
-              	<td><label for ="lName">lName: </label></td>
-              	<td><input name="lName" type="text" id="lName" 
-                placeholder="Enter Last Name"/></td>
-              </tr>  -->
-              <tr>
-              	<td><label for ="username">username: </label></td>
-              	<td><input name="username" type="text" id="username" 
-                placeholder="Leave Blank if unsure"/></td>
-              </tr>
-              <tr>
-              	<td><label for ="password">password: </label></td>
-              	<td><input name="password" type="password" id="password" 
-                placeholder="Leave Blank if unsure"/></td>
-              </tr>
               <tr>
               	<td><label for ="email">Email (the one your invitation was sent to): </label></td>
               	<td><input name="email" type="email" id="Text2" 

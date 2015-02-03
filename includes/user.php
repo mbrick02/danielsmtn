@@ -203,7 +203,7 @@ class User {
 		return !empty($resultObjArray) ? array_shift($resultObjArray) : false;
 	}
 	
-	public static function findItem($field="", $value) {
+	public static function findRecsByField($field="", $value) {
 		global $database;
 		
 		if (property_exists($this, $field)) {  // ***still need to create isValidField or use similar function
