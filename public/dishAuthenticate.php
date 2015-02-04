@@ -16,12 +16,13 @@ if (isset($_POST['submit'])) { // Form has been submitted
 	
 	if ($foundUsers) {
 		// ** 2/3/15 array_shift($foundUser) also should note if count($foundUser) > 1
+		// *** do we need to login ???????????????????????????? 
 		$session->login($foundUser);
 		$session->message("Found User: ". $foundUser->fName . ", ID: " . $session->userID);
-		redirectTo("manageAdmins.php");
+		redirectTo("createDish.php");
 	} else {
 		// username/password combo was not found in db
-		$session->message("Could not find email, please use email you received Usufruct invite");
+		$session->message("Could not find email, please use email of your Usufruct invite");
 	}
 } else { // Form has not been submitted
 	$username = "";
