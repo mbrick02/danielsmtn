@@ -7,7 +7,6 @@
 
 // ***Note: this is a change from my original non-object session.php
 class Session {
-
 	private $loggedIn=false;
 	public $userID;
 	// *** I will probably abandon this since I seem to only use _SESSION['message']
@@ -79,8 +78,6 @@ class Session {
 		$this->message = $_SESSION['message'] = $msg; 
 	}
 	
-	// ********these functions were from non-object session.php (calls should be updated)*******
-	
 	private function putMessage() {
 		if (!empty($this->message)) {
 			// $this->message = $_SESSION["message"];
@@ -94,20 +91,6 @@ class Session {
 		}
 	}
 	
-//	******** Skoglunds (see Beyond Basics 10-6, "Storing Messages in the Session")
-/*	
-	public function message($msg="") {
-		if(!empty($msg)) {
-			// then this is "set message"
-			//make sure you understand why $this->message=$msg wouldn't work
-			$_SESSION['message'] = $msg;
-		} else {
-			// then this is "get message"
-			return $this->message;
-		}
-	}
-*/	
-//    ***** mine:
 	public function message($msg = "") {
 		if (empty($msg)) {
 			return $this->putMessage();

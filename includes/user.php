@@ -31,9 +31,6 @@ class User {
 		return isset($this->id) ? $this->update() : $this->create();
 	}
 
-
-
-	
 	protected function attributes() {
 		// return an array of attribute names and their values
 		$attributes = array();
@@ -45,15 +42,6 @@ class User {
 		}
 	return $attributes;
 	}
-	
-	// ***below is old version***
-// 	protected function attributes() {
-// 		// return an array of attribute keys and their values
-// 		// get_object_vars returns associative array with attributes as keys and values
-// 		return get_object_vars($this);
-// 	}
-
-	
 
 	protected function sanitizedAttributes() {
 		global $database;
@@ -65,8 +53,6 @@ class User {
 	}
 	return $cleanAttributes;
 	}
-	
-	//  *** I think this is fixed???old save is the same as above public function save() {...
 
 	protected function create() {
 		global $database;
@@ -107,7 +93,19 @@ class User {
 		$database->query($sql);
 		return ($database->affected_rows() == 1) ? true : false;
 	}
-	
+
+	public function getUserType() {
+		global $db;
+		
+		$sql = "SELECT userType FROM tbUserType";
+		$sql .= " WHERE userTypeID = " . $self->userTypeID;
+		$sql .= " LIMIT 1";
+		
+		$resultSet = $db->query($sql);
+		$row = $database->fetchArray($resultSet);
+		$usertype = $row['usertype'];
+		return $usertype;
+	}
 	
 	// ======*** authenticate() method for User class used in loginDM.php ====
 	public static function authenticate($username="", $password="") {
