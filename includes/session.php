@@ -9,6 +9,7 @@
 class Session {
 	private $loggedIn=false;
 	public $userID;
+	public  $pastLocation=""; // **2/6/15 make PRIVATE - use this to keep track of where the user was
 	// *** I will probably abandon this since I seem to only use _SESSION['message']
 	public $message;
 
@@ -63,6 +64,42 @@ class Session {
 		}	
 	}
 	
+	private function checkPastLocation() {
+		// Is there a PastLocation stored in the session?
+		if(isset($_SESSION['pastLocation'])) {
+			// Add it as an attribute and erase the stored version
+			$this->pastLocation = $_SESSION['pastLocation'];
+			unset($_SESSION['pastLocation']);
+		} else {
+			$this->pastLocation = "";
+		}
+	}
+
+	private function setPastLocation($msg) {
+		$this->pastLocation = $_SESSION['pastLocation'] = $msg;
+	}
+	
+	private function putPastLocation() {
+		if (!empty($this->pastLocation)) {
+			// $this->pastLocation = $_SESSION["pastLocation"];
+			$output = htmlentities($this->pastLocation);
+				
+			// Clear PastLocation
+			$_SESSION["pastLocation"] = null;
+			$this->pastLocation = "";
+				
+			return $output;
+		}
+	}
+	
+	public function pastLocation($loc = "") {  // *** designed to be a toggle like "message()"
+		if (empty($loc)) {
+			return $this->putPastLocation();
+		} else {
+			$this->setPastLocation($loc);
+		}
+	}
+
 	private function checkMessage() {
 		// Is there a message stored in the session?
 		if(isset($_SESSION['message'])) {
@@ -73,7 +110,7 @@ class Session {
 			$this->message = "";
 		}
 	}
-
+	
 	private function setMessage($msg) {
 		$this->message = $_SESSION['message'] = $msg; 
 	}

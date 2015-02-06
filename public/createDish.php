@@ -17,18 +17,15 @@
 		$dish = Dish::make($formDish->fName, $formDish->lName, $formDish->dish, $formDish->email);
 	}
 ?>
-<?php 
-	if (isset($connection)) {
-		mysqli_close($connection);
-	}
-?>
 <?php if (!$session->isLoggedIn()){
 		$session->message("You must log in before you may add a dish");
-		redirectTo("./dishAuthenticate.php");
+		$session->pastLocation("createDish");
+		echo "in createDish 2_6_15 *** session-_pastLocation (MAKE PRIVATE) is: " . $session->pastLocation;
+		// redirectTo("./dishAuthenticate.php");  // *** 2/6/15 REMEMBER TO PUT THIS BACK
 	  }
 ?>
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
-  <?php include("./includes/layout/header.php"); ?>
+  <?php include("../includes/layout/header.php"); ?>
   <div id="main">
     <nav>
       <!-- php echo navigation($currentDMtnSect, $currentPage) **replace below** -->
@@ -38,7 +35,7 @@
 
     <div id="main_section">
         <?php
-			echo message();
+			echo $session->message();
         ?>
         <h2>What dish you will bring to the Usufruct</h2>
         <form action="createDish.php" method="post">
