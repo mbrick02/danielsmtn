@@ -20,7 +20,7 @@
 <?php if (!$session->isLoggedIn()){
 		$session->message("You must log in before you may add a dish");
 		$session->pastLocation("createDish");
-		echo "in createDish 2_6_15 *** session-_pastLocation (MAKE PRIVATE) is: " . $session->pastLocation;
+		// echo "in createDish 2_6_15 *** session-_pastLocation (MAKE PRIVATE) is: " . $session->pastLocation;
 		redirectTo("./dishAuthenticate.php");  // *** 2/6/15 REMEMBER TO PUT THIS BACK
 	  }
 ?>

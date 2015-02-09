@@ -201,17 +201,6 @@ class User {
 		return !empty($resultObjArray) ? array_shift($resultObjArray) : false;
 	}
 	
-	public static function findRecsByField($field="", $value) {
-		global $database;
-		
-		if (property_exists($this, $field)) {  // ***still need to create isValidField or use similar function
-			$resultObjArray = self::findBySQL("SELECT * FROM " . self::$tableName ." WHERE {$field}={$value}");
-		} else {
-			$resultObjArray = "";
-		}
-		return !empty($resultObjArray) ? $resultObjArray : false;
-	}
-	
 	public static function findBySQL($sql= "") {
 		global $database;
 		// ** debug: echo "<br />user-findBySQ SQL: <br />" . $sql . "<br />";
@@ -225,6 +214,17 @@ class User {
 		return $objectArray;
 	}
 	
+	public static function findRecsByField($field="", $value) {
+		global $database;
+		
+		if (property_exists($this, $field)) {  // ***still need to create isValidField or use similar function
+			$resultObjArray = self::findBySQL("SELECT * FROM " . self::$tableName ." WHERE {$field}={$value}");
+		} else {
+			$resultObjArray = "";
+		}
+		return !empty($resultObjArray) ? $resultObjArray : false;
+	}
+		
 	private static function instantiate($record) {
 		// Could check that $record exists and is an array
 		if (is_array($record)) {

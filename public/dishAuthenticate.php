@@ -42,10 +42,10 @@ if (isset($_POST['submit'])) { // Form has been submitted
     <div>
         <?php 
         	echo $session->message();
-        	$lastLocation = $session->pastLocation();
-        	echo "This should have come from createDish <br/>";
-        	echo $lastLocation;  // ** In the future this will be held as the return indicator/switch
-        	echo $session->pastLocation("dishAuthenticate");
+        	echo $session->pastLocation(); // **for now pastLocation is public
+        	// echo "This should have come from createDish <br/>";
+        	
+        	echo $session->pastLocation("dishAuthenticate"); // ** reset
         ?>
         <!-- h2>Let us know who is bringing their dish</h2>  -->
         

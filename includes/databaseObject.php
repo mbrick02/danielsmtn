@@ -36,7 +36,18 @@ class DatabaseObject {
 		}
 		return $objectArray;
 	}
+
+	public static function findRecsByField($field="", $value) {
+		global $database;
 	
+		if (property_exists($this, $field)) {  // ***still need to create isValidField or use similar function
+			$resultObjArray = static::findBySQL("SELECT * FROM " . static::$tableName ." WHERE {$field}={$value}");
+		} else {
+			$resultObjArray = "";
+		}
+		return !empty($resultObjArray) ? $resultObjArray : false;
+	}
+		
 	private static function instantiate($record) {
 		// Could check that $record exists and is an array
 		if (is_array($record)) {

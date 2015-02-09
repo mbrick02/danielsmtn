@@ -116,7 +116,7 @@ class Dish {
 	}
 	
 	// Common Database Methods
-	// *** below are Common Database Methods to be put in DatabaseObject (change self to static)
+	// *** below are Common Database Methods to be put in/extend databaseObject (change self to static::$tableName)
 	// Note these are class methods (static) to save from instantiating an object 
 	public static function findAll() {
 		// returns object array

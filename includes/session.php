@@ -9,13 +9,13 @@
 class Session {
 	private $loggedIn=false;
 	public $userID;
-	public  $pastLocation=""; // **2/6/15 make PRIVATE - use this to keep track of where the user was
-	// *** I will probably abandon this since I seem to only use _SESSION['message']
+	public  $pastLocation; // **2/6/15 make PRIVATE - use this to keep track of where the user was
 	public $message;
 
 	function __construct() {
 		session_start();
 		$this->checkMessage();
+		$this->checkPastLocation();
 		$this->checkLogin();
 		if($this->loggedIn) {
 			// actions to take right away if user is logged in
@@ -57,13 +57,12 @@ class Session {
 	private function checkLogin() {
 		if(isset($_SESSION['userID'])) {
 			$this->userID = $_SESSION['userID'];
-			$this-> loggedIn = true;
+			$this->loggedIn = true;
 		} else {
 			unset($this->userID);
 			$this->loggedIn = false;
 		}	
 	}
-	
 	private function checkPastLocation() {
 		// Is there a PastLocation stored in the session?
 		if(isset($_SESSION['pastLocation'])) {
@@ -81,8 +80,8 @@ class Session {
 	
 	private function putPastLocation() {
 		if (!empty($this->pastLocation)) {
-			// $this->pastLocation = $_SESSION["pastLocation"];
-			$output = htmlentities($this->pastLocation);
+			// Note: __construct() checkPastLocation call sets $this->pastLocation and clears $_SESSION['pastLocation']
+			$output = "<div class=\"message\">DEBUG last location: " . htmlentities($this->pastLocation) ."</div>";
 				
 			// Clear PastLocation
 			$_SESSION["pastLocation"] = null;
@@ -91,13 +90,12 @@ class Session {
 			return $output;
 		}
 	}
-	
 	public function pastLocation($loc = "") {  // *** designed to be a toggle like "message()"
 		if (empty($loc)) {
-			echo "location empty <br/> past location: {$this->pastLocation} <br/>";
+			// pastLocation not set until putPastLoc: echo "location empty <br/> past location: {$this->pastLocation} <br/>";
 			return $this->putPastLocation();
 		} else {
-			echo "location not empty <br/>";
+			// echo "location not empty <br/>";
 			$this->setPastLocation($loc);
 		}
 	}
@@ -119,7 +117,7 @@ class Session {
 	
 	private function putMessage() {
 		if (!empty($this->message)) {
-			// $this->message = $_SESSION["message"];
+			// Note: __construct() checkMessage call sets $this->message and clears $_SESSION['message']
 			$output = "<div class=\"message\">" . htmlentities($this->message) ."</div>";
 			
 			// Clear Message
