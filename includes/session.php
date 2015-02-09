@@ -75,8 +75,8 @@ class Session {
 		}
 	}
 
-	private function setPastLocation($msg) {
-		$this->pastLocation = $_SESSION['pastLocation'] = $msg;
+	private function setPastLocation($loc) {
+		$this->pastLocation = $_SESSION['pastLocation'] = $loc;
 	}
 	
 	private function putPastLocation() {
@@ -94,8 +94,10 @@ class Session {
 	
 	public function pastLocation($loc = "") {  // *** designed to be a toggle like "message()"
 		if (empty($loc)) {
+			echo "location empty <br/> past location: {$this->pastLocation} <br/>";
 			return $this->putPastLocation();
 		} else {
+			echo "location not empty <br/>";
 			$this->setPastLocation($loc);
 		}
 	}

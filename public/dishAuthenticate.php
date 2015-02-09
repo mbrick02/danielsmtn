@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) { // Form has been submitted
 		// *** do we need to login ???????????????????????????? 
 		$session->login($foundUser);
 		$session->message("Found User: ". $foundUser->fName . ", ID: " . $session->userID);
-		redirectTo("createDish.php");
+		redirectTo("createDish.php");  // ** 2/7/15 not sure I want this 
 	} else {
 		// username/password combo was not found in db
 		$session->message("Could not find email, please use email of your Usufruct invite");
@@ -43,9 +43,9 @@ if (isset($_POST['submit'])) { // Form has been submitted
         <?php 
         	echo $session->message();
         	$lastLocation = $session->pastLocation();
-        	echo "This should have come from createDish";
+        	echo "This should have come from createDish <br/>";
         	echo $lastLocation;  // ** In the future this will be held as the return indicator/switch
-        	$session->pastLocation("dishAuthenticate");
+        	echo $session->pastLocation("dishAuthenticate");
         ?>
         <!-- h2>Let us know who is bringing their dish</h2>  -->
         

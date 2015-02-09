@@ -21,7 +21,7 @@
 		$session->message("You must log in before you may add a dish");
 		$session->pastLocation("createDish");
 		echo "in createDish 2_6_15 *** session-_pastLocation (MAKE PRIVATE) is: " . $session->pastLocation;
-		// redirectTo("./dishAuthenticate.php");  // *** 2/6/15 REMEMBER TO PUT THIS BACK
+		redirectTo("./dishAuthenticate.php");  // *** 2/6/15 REMEMBER TO PUT THIS BACK
 	  }
 ?>
   <!--  *** note this addDish form is for entering data but createDish puts it in the dbDish -->
@@ -57,4 +57,4 @@
         </form>
      </div>
     </div>
-<?php include("./includes/layout/footer.php");	?>
+<?php include("../includes/layout/footer.php");	?>
