@@ -4,7 +4,7 @@
 // user.php called by initialize.php, so, LIB_PATH available
 require_once(LIB_PATH.DS.'database.php');  // called by initialize but require_once is safe
 
-class UsufructGuest extends DatabaseObject {
+class UsufructGuests extends DatabaseObject {
 
 	static $tableName="usufructGuests";
 	private $IDField = "guestID";

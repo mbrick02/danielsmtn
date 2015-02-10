@@ -6,6 +6,19 @@ require_once(LIB_PATH.DS.'database.php');  // called by initialize but require_o
 
 class DatabaseObject {
 
+	static protected $dbFields = array();
+
+	protected function attributes() {
+		// return an array of attribute names and their values
+		$attributes = array();
+		foreach(static::$dbFields as $field) {
+			if (property_exists($this, $field)) {
+				// note below: $this->$field dynamically naming the attribute by $field variable value
+				$attributes[$field] = $this->$field;
+			}
+		}
+		return $attributes;
+	}	
 	
 	// Common Database Methods
 	// *** below are Common Database now in DatabaseObject 
