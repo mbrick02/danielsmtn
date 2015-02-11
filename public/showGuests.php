@@ -24,12 +24,12 @@
 		<ul class="dishes">
 			<li><h3 class="listTitle">Guest&#40;s&#41; eMail</h3></li>
 		<?php 
-			while ($guest = mysqli_fetch_assoc($guestSet)){	
+			foreach ($guestSet as $guest){	
 		?>
 			<?php 
 			?>
 			<li>
-			<?php echo $guest["email"]; ?>
+			<?php echo $guest->email; ?>
 			</li>
 		<?php } ?>
 		</ul>

@@ -6,12 +6,12 @@ require_once(LIB_PATH.DS.'database.php');  // called by initialize but require_o
 
 class UsufructGuests extends DatabaseObject {
 
-	static $tableName="usufructGuests";
+	static protected  $tableName="usufructGuests";
 	private $IDField = "guestID";
 	public $guestID;
 	public $fName;
 	public $lName;
-	public $email;
+	static protected  $email;
 
 	
 	static protected $dbFields = array('guestID', 'fName', 'lName', 'email');	

@@ -32,7 +32,7 @@ class DatabaseObject {
 	public static function findByID($id=0) {
 		global $database;
 		// change to array: $resultSet = static::findBySQL("SELECT * FROM  " . static::$tableName . " WHERE id={$id} LIMIT 1");
-		$resultObjArray = static::findBySQL("SELECT * FROM " . static::$tableName ." WHERE userID={$id} LIMIT 1");
+		$resultObjArray = static::findBySQL("SELECT * FROM " . static::$tableName ." WHERE " . static::$IDField . "={$id} LIMIT 1");
 		// no longer set: $found = $database->fetchArray($resultSet);
 		return !empty($resultObjArray) ? array_shift($resultObjArray) : false;
 	}
@@ -54,7 +54,7 @@ class DatabaseObject {
 		global $database;
 	
 		if (property_exists($this, $field)) {  // ***still need to create isValidField or use similar function
-			$resultObjArray = static::findBySQL("SELECT * FROM " . static::$tableName ." WHERE {$field}={$value}");
+			$resultObjArray = static::findBySQL("SELECT * FROM " . static::$tableName ." WHERE ". static::$field . "={$value}");
 		} else {
 			$resultObjArray = "";
 		}
@@ -65,13 +65,8 @@ class DatabaseObject {
 		// Could check that $record exists and is an array
 		if (is_array($record)) {
 			$object = new self;
-			// $object->id = $record['id'];
-			// $object->username = $record['username'];
-			// $object->password = $record['password'];
-			// $object->firstName = $record['firstName'];
-			// $object->lastName = $record['lastName'];
 	
-			// INSTEAD of above:
+			// example for below: $object->lName = $record['lName'];  // $record as ['lName']=>"Doe"
 			foreach($record as $attribute=>$value){
 				if($object->hasAttribute($attribute)) {
 					$object->$attribute = $value;
