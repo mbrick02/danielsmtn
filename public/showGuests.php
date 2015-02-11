@@ -30,9 +30,13 @@
 			?>
 			<li>
 			<?php echo $guest->email; ?>
+			<?php var_dump($guest) ?>
+			</li>
+			<li>
+				<?php echo "stuff" . $guest->funcSQL // ** 2/11 DEBUG ?>
 			</li>
 		<?php } ?>
 		</ul>
 	</content>
-<?php mysqli_free_result($guestSet); ?>
+
 <?php includeLayoutTemplate('footer.php'); ?>
