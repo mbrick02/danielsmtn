@@ -6,9 +6,9 @@ require_once(LIB_PATH.DS.'database.php');  // called by initialize but require_o
 
 class UsufructGuests extends DatabaseObject {
 
-	protected static $tableName="usufructGuests";
-	public static $dbFields = array('guestID', 'fName', 'lName', 'email');	
-	private $IDField = "guestID";
+	protected static $tableName = "usufructguests";
+	protected static $dbFields = array('guestID', 'fName', 'lName', 'email');	
+	protected static $IDField = "guestID";
 	public $guestID;
 	// protected static $id =& $guestID; // make alias (by address) so any parent calls to $id will get $guestID? 
 	public $fName;

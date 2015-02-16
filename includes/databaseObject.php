@@ -6,30 +6,44 @@ require_once(LIB_PATH.DS.'database.php');  // called by initialize but require_o
 
 class DatabaseObject {
 
-	protected static $dbFields = array();
-
-	public static $funcSQL;
+	protected static $tableName;
 	
-	protected function attributes() {
+	protected static $dbFields = array('guestID', 'fName', 'lName', 'email');
+
+	protected static $funcSQL;
+
+	// Common Database Methods moved to DatabaseObject - other classes will extend DatabaseObject
+	// (code was/is in all db objects--no late binding before 5.4)
+	// Note these are class methods (static) so you don't have to instantiate an object
+	
+	protected function attributes() { // called by sanitizedAttributes() and hasAttribute()
 		// return an array of attribute names and their values
 		$attributes = array();
-		foreach($this->dbFields as $field) {
+		foreach(static::$dbFields as $field) {  // *** DEBUG 2/15/15 tried: foreach(static::$dbFields as $field) 
 			if (property_exists($this, $field)) {
 				// note below: $this->$field dynamically naming the attribute by $field variable value
 				$attributes[$field] = $this->$field;
 			}
 		}
 		return $attributes;
-	}	
+	}
+
+	protected static function sanitizedAttributes() {
+		global $database;
+		$cleanAttributes =  array();
+		// sanitize the values before submitting
+		// Note: does not alter the actual value of each attribute
+		foreach(attributes() as $key => $value){
+			$cleanAttributes[$key] = $database->escapeValue($value);
+		}
+		return $cleanAttributes;
+	}
 	
-	// Common Database Methods
-	// *** below are Common Database now in DatabaseObject 
-	// (code was/is in all db objects--no late binding before 5.4)
-	// Note these are class methods (static) so you don't have to instantiate an object 
 	public static function findAll() {
 		// returns object array
-		self::$funcSQL = "SELECT * FROM " . static::$tableName;
-		return static::findBySQL(self::$funcSQL);
+		static::$funcSQL = "SELECT * FROM " . static::$tableName;
+		return static::findBySQL(static::$funcSQL);
+		// return static::$funcSQL . " - *DEBUG* - class: " . get_called_class();
 	}
 	
 	public static function findByID($id=0) {
@@ -97,17 +111,7 @@ class DatabaseObject {
 		// A new record won't have an id yet.
 		return isset($this->id) ? $this->update() : $this->create();
 	}
-	
-	protected function sanitizedAttributes() {
-		global $database;
-		$cleanAttributes =  array();
-		// sanitize the values before submitting
-		// Note: does not alter the actual value of each attribute
-		foreach($this->attributes() as $key => $value){
-			$cleanAttributes[$key] = $database->escapeValue($value);
-		}
-		return $cleanAttributes;
-	}
+
 	
 	protected function create() {
 		global $database;
@@ -138,9 +142,9 @@ class DatabaseObject {
 		foreach($attributes as $key => $value) {
 			$attributePairs[] = "{$key}='{$value}'";
 		}
-		$sql = "UPDATE ". self::$table_name. " SET ";
+		$sql = "UPDATE ". static::$table_name. " SET ";
 		$sql .= join(", ", $attributePairs);
-		$sql .= " WHERE ". $this->IDField . "=". $database->escapeValue($this->$IDField);
+		$sql .= " WHERE ". static::$IDField . "=". $database->escapeValue($this->$IDField);
 	
 		$database->query($sql);
 		return ($database->affected_rows() == 1) ? true : false;
@@ -148,9 +152,13 @@ class DatabaseObject {
 	
 // **debug:
 // 	public function mbusertest($testvar = "") {
-// 		echo "<br /><br />Current user objectvars: <br />  ";
+// 		echo "<br /><br />Current databaseObject objectvars: <br />  ";
 // 		print_r(get_object_vars($this));
 // 	}
+	
+	public function debugDBObjTestStr() {
+				return static::$dbFields;		
+	}
 
 }
 

@@ -18,25 +18,21 @@
 		<?php $errors = $session->errors(); ?>
 		<?php // echo $guestForm->formErrors($errors); ?>
 		<?php 
-			$guestSet = UsufructGuests::findAll(); 
+			$guestSet = UsufructGuests::findAll();
 		?>
 		
 		<ul class="dishes">
 			<li><h3 class="listTitle">Guest&#40;s&#41; eMail</h3></li>
 		<?php 
-			foreach ($guestSet as $guest){	
+			// foreach ($guestSet as $guest){	
 		?>
-			<?php 
-			?>
 			<li>
-			<?php echo $guest->email; ?>
-			<?php var_dump($guest) ?>
+			<?php // var_dump($guestSet); // **2/15/15 ?>
+			<?php //var_dump($guest) ?>
+			<?php var_dump($guestSet[0]->debugDBObjTestStr()); // ** 2/11 DEBUG ?>
 			</li>
-			<li>
-				<?php echo "stuff" . $guest->funcSQL // ** 2/11 DEBUG ?>
-			</li>
-		<?php } ?>
+		<?php // } ?>
 		</ul>
 	</content>
-
+</div>
 <?php includeLayoutTemplate('footer.php'); ?>
