@@ -10,16 +10,11 @@ class UsufructGuests extends DatabaseObject {
 	protected static $dbFields = array('guestID', 'fName', 'lName', 'email');	
 	protected static $IDField = "guestID";
 	public $guestID;
-	// protected static $id =& $guestID; // make alias (by address) so any parent calls to $id will get $guestID? 
 	public $fName;
 	public $lName;
-	protected static $email;
-	
+	public $email;
+	// protected static $email;
 	// ***?? MAY WANT TO MAKE THIS EXTEND USER and have user extend databasObject
-	
-	
-
 }
-
 
 ?>

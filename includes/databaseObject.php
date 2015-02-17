@@ -9,20 +9,22 @@ class DatabaseObject {
 	protected static $tableName;
 	
 	protected static $dbFields = array('guestID', 'fName', 'lName', 'email');
-
+	
 	protected static $funcSQL;
 
 	// Common Database Methods moved to DatabaseObject - other classes will extend DatabaseObject
 	// (code was/is in all db objects--no late binding before 5.4)
-	// Note these are class methods (static) so you don't have to instantiate an object
+	// Note with class methods (static) you don't have to instantiate an object
 	
 	protected function attributes() { // called by sanitizedAttributes() and hasAttribute()
 		// return an array of attribute names and their values
 		$attributes = array();
 		foreach(static::$dbFields as $field) {  // *** DEBUG 2/15/15 tried: foreach(static::$dbFields as $field) 
+			echo "databaseObjects->attributes() - field = " . $field . "<br/>"; // debug 2/16/15 
 			if (property_exists($this, $field)) {
 				// note below: $this->$field dynamically naming the attribute by $field variable value
 				$attributes[$field] = $this->$field;
+				echo "databaseObjects->attributes() - attr[field] = " . $attributes[$field] . "<br/>"; // debug 2/16/15
 			}
 		}
 		return $attributes;
@@ -85,6 +87,8 @@ class DatabaseObject {
 	
 			// example for below: $object->lName = $record['lName'];  // $record as ['lName']=>"Doe"
 			foreach($record as $attribute=>$value){
+				// debug 2/16/15 
+				echo " in instantiate: " . $attribute . " - value: " . $value . "<br/>"; 
 				if($object->hasAttribute($attribute)) {
 					$object->$attribute = $value;
 				}
@@ -101,8 +105,12 @@ class DatabaseObject {
 		// get_object_vars returns an associative array with all attributes
 		// (incl. private ones!)
 		// *old: $objectVars = get_object_vars($this);
+		
+		var_dump($attribute); // debug 2/16/15
+		echo " from hasAttribute(attrib)<br/>";  // debug 2/16/15
+		
 		$objectVars = $this->attributes();
-	
+
 		// We don't care about the value, we just want to know if key exits
 		return array_key_exists($attribute, $objectVars);
 	}
@@ -157,7 +165,7 @@ class DatabaseObject {
 // 	}
 	
 	public function debugDBObjTestStr() {
-				return static::$dbFields;		
+				// return static::$dbFields;		
 	}
 
 }

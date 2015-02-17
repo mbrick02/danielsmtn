@@ -24,14 +24,14 @@
 		<ul class="dishes">
 			<li><h3 class="listTitle">Guest&#40;s&#41; eMail</h3></li>
 		<?php 
-			// foreach ($guestSet as $guest){	
+			foreach ($guestSet as $guest){	
 		?>
 			<li>
 			<?php // var_dump($guestSet); // **2/15/15 ?>
-			<?php //var_dump($guest) ?>
-			<?php var_dump($guestSet[0]->debugDBObjTestStr()); // ** 2/11 DEBUG ?>
+			<?php var_dump($guest) ?>
+			<?php // var_dump($guestSet[0]->debugDBObjTestStr()); // ** 2/11 DEBUG ?>
 			</li>
-		<?php // } ?>
+		<?php } ?>
 		</ul>
 	</content>
 </div>
