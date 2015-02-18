@@ -27,8 +27,10 @@
 			foreach ($guestSet as $guest){	
 		?>
 			<li>
+			<?php echo "showGuests getObjVars guest: "?>
 			<?php // var_dump($guestSet); // **2/15/15 ?>
-			<?php var_dump($guest) ?>
+			<?php var_dump(get_object_vars($guest)) ?>
+			<?php echo "<br/>"?>
 			<?php // var_dump($guestSet[0]->debugDBObjTestStr()); // ** 2/11 DEBUG ?>
 			</li>
 		<?php } ?>

@@ -11,23 +11,38 @@ class DatabaseObject {
 	protected static $dbFields = array('guestID', 'fName', 'lName', 'email');
 	
 	protected static $funcSQL;
+	public $email;
 
 	// Common Database Methods moved to DatabaseObject - other classes will extend DatabaseObject
 	// (code was/is in all db objects--no late binding before 5.4)
 	// Note with class methods (static) you don't have to instantiate an object
-	
-	protected function attributes() { // called by sanitizedAttributes() and hasAttribute()
+	protected function attributes() { // called by: sanitizedAttributes() and hasAttribute()
 		// return an array of attribute names and their values
 		$attributes = array();
-		foreach(static::$dbFields as $field) {  // *** DEBUG 2/15/15 tried: foreach(static::$dbFields as $field) 
-			echo "databaseObjects->attributes() - field = " . $field . "<br/>"; // debug 2/16/15 
-			if (property_exists($this, $field)) {
+		foreach(static::$dbFields as $field) {
+			if (property_exists(get_called_class(), $field)) {
+				echo $field . " property exists: TRUE <br/>";
 				// note below: $this->$field dynamically naming the attribute by $field variable value
 				$attributes[$field] = $this->$field;
-				echo "databaseObjects->attributes() - attr[field] = " . $attributes[$field] . "<br/>"; // debug 2/16/15
+			} else {
+				echo $field . " property exists: FALSE <br/>";
 			}
 		}
 		return $attributes;
+	}
+
+	private function hasAttribute($attribute) { // called by: instantiate
+		// get_object_vars returns an associative array with all attributes
+		// (incl. private ones!)
+		// *old: $objectVars = get_object_vars($this); // returns all attributes not just db also ?priv ?protected
+	
+		$objectVars = $this->attributes();
+		echo "Supposed to be in hasAttribute() <br/>   - Attributes: ";
+		var_dump($this->attributes());
+		var_dump(static::$dbFields);
+		echo "<br/>";
+		// We don't care about the value, we just want to know if key exits
+		return array_key_exists($attribute, $objectVars);
 	}
 
 	protected static function sanitizedAttributes() {
@@ -83,15 +98,19 @@ class DatabaseObject {
 	private static function instantiate($record) {
 		// Could check that $record exists and is an array
 		if (is_array($record)) {
-			$object = new self;
+			$className = get_called_class();
+			$object = new $className;
+			// **DOESNT WORK/HELP: $attributes = $object->attributes();   ** run this to set attributes? *
 	
 			// example for below: $object->lName = $record['lName'];  // $record as ['lName']=>"Doe"
 			foreach($record as $attribute=>$value){
-				// debug 2/16/15 
-				echo " in instantiate: " . $attribute . " - value: " . $value . "<br/>"; 
+				// debug 2/16/15
+				$dbgHsAttr = "Not an Attribute <br/>"; 
 				if($object->hasAttribute($attribute)) {
 					$object->$attribute = $value;
+					$dbgHsAttr = "Valid Attribute <br/>";
 				}
+				// DEBUG 2/17/15 echo "instantiate: " . $attribute . " - value: " . $value . "<br/>". $dbgHsAttr;
 				// mysqli_free_result($record); // ** 2/1/15 not sure if this will blow up but might save memory
 			}
 		
@@ -99,20 +118,6 @@ class DatabaseObject {
 		} else {
 			return NULL;  // ****NOT SURE THIS IS GRACEFUL FAIL**debug: echo "User::instantiate = null";
 		}
-	}
-	
-	private function hasAttribute($attribute) {
-		// get_object_vars returns an associative array with all attributes
-		// (incl. private ones!)
-		// *old: $objectVars = get_object_vars($this);
-		
-		var_dump($attribute); // debug 2/16/15
-		echo " from hasAttribute(attrib)<br/>";  // debug 2/16/15
-		
-		$objectVars = $this->attributes();
-
-		// We don't care about the value, we just want to know if key exits
-		return array_key_exists($attribute, $objectVars);
 	}
 	
 	public function save() {
@@ -129,7 +134,7 @@ class DatabaseObject {
 		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitizedAttributes();
 	
-		$sql = "INSERT INTO " . self::$tableName ." (";
+		$sql = "INSERT INTO " . static::$tableName ." (";
 		$sql .= join(", ", array_keys($attributes));
 		$sql .= ") VALUES ('";
 		$sql .= join("', '", array_values($attributes));
