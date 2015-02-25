@@ -13,7 +13,12 @@ class UsufructGuests extends DatabaseObject {
 	public $fName;
 	public $lName;
 	public $email;
-	// protected static $email;
+	
+	public function cleanEmail($email){
+		$output = preg_replace("/\"/", "", $email);
+		$output = preg_replace("/(\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.) ([A-Z]{2,4}\b)/", "$2", $output);
+		return $output;
+	}
 	// ***?? MAY WANT TO MAKE THIS EXTEND USER and have user extend databasObject
 }
 

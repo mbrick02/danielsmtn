@@ -21,11 +21,8 @@ class DatabaseObject {
 		$attributes = array();
 		foreach(static::$dbFields as $field) {
 			if (property_exists(get_called_class(), $field)) {
-				echo $field . " property exists: TRUE <br/>";
 				// note below: $this->$field dynamically naming the attribute by $field variable value
 				$attributes[$field] = $this->$field;
-			} else {
-				echo $field . " property exists: FALSE <br/>";
 			}
 		}
 		return $attributes;
@@ -34,13 +31,9 @@ class DatabaseObject {
 	private function hasAttribute($attribute) { // called by: instantiate
 		// get_object_vars returns an associative array with all attributes
 		// (incl. private ones!)
-		// *old: $objectVars = get_object_vars($this); // returns all attributes not just db also ?priv ?protected
-	
+		// *old: $objectVars = get_object_vars($this); // returned all attributes not just db
 		$objectVars = $this->attributes();
-		echo "Supposed to be in hasAttribute() <br/>   - Attributes: ";
-		var_dump($this->attributes());
-		var_dump(static::$dbFields);
-		echo "<br/>";
+		
 		// We don't care about the value, we just want to know if key exits
 		return array_key_exists($attribute, $objectVars);
 	}
@@ -162,17 +155,10 @@ class DatabaseObject {
 		$database->query($sql);
 		return ($database->affected_rows() == 1) ? true : false;
 	}
-	
-// **debug:
-// 	public function mbusertest($testvar = "") {
+// 	public function **debug**mbusertest($testvar = "") {
 // 		echo "<br /><br />Current databaseObject objectvars: <br />  ";
 // 		print_r(get_object_vars($this));
 // 	}
-	
-	public function debugDBObjTestStr() {
-				// return static::$dbFields;		
-	}
-
 }
 
 
