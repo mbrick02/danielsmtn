@@ -6,7 +6,7 @@ class Form {
 	private $requiredField = array();
 	private $fieldsWithMaxLengths = array();
 	
-	static $tablename ="tbusers";  // default value (currently set to User table)
+	private $tablename ="tbusers";  // default value (currently set to User table)
 	
 	public function __construct($tablename="", $fields = array(), $requiredFields = array(), $fieldsWithMaxLengths = array()) {
 //         foreach($fields as $key => $value) {
@@ -16,8 +16,8 @@ class Form {
 		$this->requiredFields = $requiredFields;
 		$this->fieldsWithMaxLengths = $fieldsWithMaxLengths;
 		if(empty($tablename)){
-			$this->tablename = $tablename;
-		}	
+			 $tablename = $this->tablename;
+		}
     }
     
     public function setObjectVals($dbObject) {
