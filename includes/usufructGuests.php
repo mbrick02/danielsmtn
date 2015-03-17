@@ -15,7 +15,7 @@ class UsufructGuests extends DatabaseObject {
 	public $email;
 	
 	public function cleanEmail($email){
-		$result = preg_replace("/\"/", "", $email);
+		$result = preg_replace('/[\'\"]/', "", $email);
 		$result = preg_replace('#^(\w+)(@)([A-Z]+)(\.)([A-Z]{2,5})(.*|\s+\d+)$#si', '\1\2\3\4\5x', $result);
 		return $result;
 	}
