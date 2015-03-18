@@ -25,9 +25,22 @@
 			<li><h3 class="listTitle">Guest&#40;s&#41; eMail</h3></li>
 		<?php 
 			foreach ($guestSet as $guest){	
+				$result = $guest->cleanEmail($guest->email);
 		?>
 			<li>
-			<?php echo $guest->email . " >change to:<  " . $guest->cleanEmail($guest->email); ?>
+			<?php echo $guest->email . " >change to:<  ";
+			$emailStr = "";
+			for ($i = 0; $i<count($result); $i++) {
+				if ($i>0) $emailStr = $emailStr . "; "; // separate email addresses 
+				$emailStr = $emailStr . $result[$i];
+			}
+			
+			$guest->email = $emailStr;
+			//**** $guest->save();
+			echo $emailStr; //  *** echo "updated " . $guest->fullName();
+			//  *** 03/18/15 with this working might want to set $this->email and db "save()"
+			
+			 ?>
 			</li>
 		<?php } ?>
 		</ul>

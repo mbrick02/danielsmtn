@@ -14,12 +14,48 @@ class UsufructGuests extends DatabaseObject {
 	public $lName;
 	public $email;
 	
-	public function cleanEmail($email){
-		$result = preg_replace('/[\'\"]/', "", $email);
-		$result = preg_replace('#^(\w+)(@)([A-Z]+)(\.)([A-Z]{2,5})(.*|\s+\d+)$#si', '\1\2\3\4\5x', $result);
+	private $resultAry=array();
+	
+	function splitEmails($match) {
+		$lastIndex = count($this->resultAry) - 1;
+		$result = $match[0]; //$match[1].$match[2].$match[3].$match[4].$match[5];
+		if ($match[6]){
+			$this->resultAry[lastIndex+1] = $match[6];
+		}
+		return $result;
+	}
+	
+	public function cleanEmail($email) {
+		$result = $this->resultAry;
+		$this->resultAry[] = preg_replace('/[\'\"\;]/', "", $email);
+		
+		// regular expression to find the first email 
+		$regExpEmail = '#^(\w+)(@)([A-Z]+)(\.)([A-Z]{2,5})(.*|\s+\d+)(.*)$#si';
+		
+		// loop to make sure there are not multiple email addresses and put emails in separate array indices
+		do {
+			// the last index in the array is always one less the the count of indices on zero based array
+			$lastIndex = count($this->resultAry) - 1;
+			
+			// if something is after the next email it is put in the next index 
+			// array($this, $fncName) structure must be used for a callback function in an object
+			$result[$lastIndex] = preg_replace_callback($regExpEmail, array($this, 'splitEmails'), $this->resultAry[$lastIndex]);
+		} while (array_key_exists(($lastIndex+1), $this->resultAry)); // if a value has been to the array, loop again
+		
+		$result = $this->resultAry;
+		$this->resultAry = array();
 		return $result;
 	}
 	// ***?? MAY WANT TO MAKE THIS EXTEND USER and have user extend databasObject
+	
+	// ** below method from user.php (so eliminate if extended)
+	public function fullName() {
+		if(isset($this->fName) && isset($this->lName)) {
+			return $this->fName . " " . $this->lName;
+		} else {
+			return " ";
+		}
+	}
 }
 
 ?>
