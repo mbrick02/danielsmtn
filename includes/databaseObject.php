@@ -22,7 +22,7 @@ class DatabaseObject {
 		foreach(static::$dbFields as $field) {
 			if (property_exists(get_called_class(), $field)) {
 				// note below: $this->$field dynamically naming the attribute by $field variable value
-				$attributes[$field] = $this->$field;
+				$attributes[$field] = $field;
 			}
 		}
 		return $attributes;
@@ -43,7 +43,7 @@ class DatabaseObject {
 		$cleanAttributes =  array();
 		// sanitize the values before submitting
 		// Note: does not alter the actual value of each attribute
-		foreach(attributes() as $key => $value){
+		foreach(self::attributes() as $key => $value){
 			$cleanAttributes[$key] = $database->escapeValue($value);
 		}
 		return $cleanAttributes;

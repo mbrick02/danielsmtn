@@ -31,14 +31,18 @@
 			<?php echo $guest->email . " >change to:<  ";
 			$emailStr = "";
 			for ($i = 0; $i<count($result); $i++) {
-				if ($i>0) $emailStr = $emailStr . "; "; // separate email addresses 
+				if ($i>0) $emailStr = $emailStr . "; "; // separate email addresses after 1st
 				$emailStr = $emailStr . $result[$i];
 			}
 			
 			$guest->email = $emailStr;
 			//**** $guest->save();
-			echo $emailStr; //  *** echo "updated " . $guest->fullName();
-			//  *** 03/18/15 with this working might want to set $this->email and db "save()"
+			echo $emailStr; //  ***
+			if ($guest->save()) {
+			echo " UPDATED " . $guest->fullName();
+			} else {
+				echo $guest->fullName() . " not updated.";
+			}
 			
 			 ?>
 			</li>
