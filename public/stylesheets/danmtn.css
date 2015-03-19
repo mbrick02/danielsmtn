@@ -133,6 +133,8 @@ h3.listTitle{
 
 content {
     border: 3px dashed green;
+    padding: 4px;
+    margin: 2px;
     float: left;
 }
 
