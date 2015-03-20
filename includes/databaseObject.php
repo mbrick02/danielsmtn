@@ -25,7 +25,7 @@ class DatabaseObject {
 		return static::$IDField;
 	}
 	
-	protected function attributes() { // called by: sanitizedAttributes() and hasAttribute()
+	protected static function attributes() { // called by: sanitizedAttributes() and hasAttribute()
 		// return an array of attribute names and their values
 		$attributes = array();
 		foreach(static::$dbFields as $field) {
@@ -52,7 +52,7 @@ class DatabaseObject {
 		$cleanAttributes =  array();
 		// sanitize the values before submitting
 		// Note: does not alter the actual value of each attribute
-		foreach(self::attributes() as $key => $value){
+		foreach(static::attributes() as $key => $value){
 			$cleanAttributes[$key] = $database->escapeValue($value);
 		}
 		return $cleanAttributes;
@@ -110,7 +110,7 @@ class DatabaseObject {
 				$dbgHsAttr = "Not an Attribute <br/>"; 
 				if($object->hasAttribute($attribute)) {
 					$object->$attribute = $value;
-					echo $attribute . " = ". strval($value) . " ,"; // *** DEBUG
+					// echo " in INSTATITE " . $attribute . " = " . strval($value) . "<br>"; // *** DEBUG
 					$dbgHsAttr = "Valid Attribute <br/>";
 				}
 				// DEBUG 2/17/15 echo "instantiate: " . $attribute . " - value: " . $value . "<br/>". $dbgHsAttr;
@@ -156,9 +156,12 @@ class DatabaseObject {
 	
 		$attributes = $this->sanitizedAttributes();
 		$attributePairs = array();
-		print_r($attributes);
+		
+		// print_r($attributes);  // *** DEBUG
+		
 		foreach($attributes as $key => $value) {
 			$attributePairs[] = "{$key}='{$value}'";
+			print_r($attributesPairs);  // *** DEBUG
 		}
 		$sql = "UPDATE ". static::$tableName . " SET ";
 		$sql .= join(", ", $attributePairs);
