@@ -16,7 +16,7 @@ class UsufructGuests extends DatabaseObject {
 	
 	private $resultAry=array();
 	
-	function splitEmails($match) {
+	public function splitEmails($match) {
 		$lastIndex = count($this->resultAry) - 1;
 		$result = $match[0]; //$match[1].$match[2].$match[3].$match[4].$match[5];
 		if ($match[6]){
@@ -26,7 +26,7 @@ class UsufructGuests extends DatabaseObject {
 	}
 	
 	public function cleanEmail($email) {
-		$result = $this->resultAry;
+		$result = $this->resultAry;  // have to use a "global" because callback does not accept parameters (other than default '$match')
 		$this->resultAry[] = preg_replace('/[\'\"\;]/', "", $email);
 		
 		// regular expression to find the first email 
@@ -41,6 +41,11 @@ class UsufructGuests extends DatabaseObject {
 			// array($this, $fncName) structure must be used for a callback function in an object
 			$result[$lastIndex] = preg_replace_callback($regExpEmail, array($this, 'splitEmails'), $this->resultAry[$lastIndex]);
 		} while (array_key_exists(($lastIndex+1), $this->resultAry)); // if a value has been to the array, loop again
+		
+		if ($this->resultAry[$lastIndex] == $email) {  // no change -- no need to updat/create
+			$this->resultAry = array();
+			return false;
+		}		
 		
 		$result = $this->resultAry;
 		$this->resultAry = array();

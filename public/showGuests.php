@@ -36,12 +36,14 @@
 			}
 			
 			$guest->email = $emailStr;
-			//**** $guest->save();
-			echo $emailStr; //  ***
+			
+			$thisIDField = $guest->getIDField();
+			
+			echo $emailStr . " " . $guest->fullName() . " ID " . $guest->guestID; //  ***DEBUG
 			if ($guest->save()) {
-			echo " UPDATED " . $guest->fullName();
+				echo " was saved ";
 			} else {
-				echo $guest->fullName() . " not updated.";
+				echo " could NOT be saved.";
 			}
 			
 			 ?>

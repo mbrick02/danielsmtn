@@ -8,14 +8,23 @@ class DatabaseObject {
 
 	protected static $tableName;
 	
-	protected static $dbFields = array('guestID', 'fName', 'lName', 'email');
+	protected static $dbFields = array('userID', 'fName', 'lName', 'email');
 	
 	protected static $funcSQL;
+	
+	protected static $IDField = "userID"; // *** default assumes table tbUsers
+	
 	public $email;
 
 	// Common Database Methods moved to DatabaseObject - other classes will extend DatabaseObject
 	// (code was/is in all db objects--no late binding before 5.4)
 	// Note with class methods (static) you don't have to instantiate an object
+	
+
+	public function getIDField() {
+		return static::$IDField;
+	}
+	
 	protected function attributes() { // called by: sanitizedAttributes() and hasAttribute()
 		// return an array of attribute names and their values
 		$attributes = array();
@@ -101,6 +110,7 @@ class DatabaseObject {
 				$dbgHsAttr = "Not an Attribute <br/>"; 
 				if($object->hasAttribute($attribute)) {
 					$object->$attribute = $value;
+					echo $attribute . " = ". strval($value) . " ,"; // *** DEBUG
 					$dbgHsAttr = "Valid Attribute <br/>";
 				}
 				// DEBUG 2/17/15 echo "instantiate: " . $attribute . " - value: " . $value . "<br/>". $dbgHsAttr;
@@ -114,8 +124,9 @@ class DatabaseObject {
 	}
 	
 	public function save() {
+		$idField = self::getIDField();
 		// A new record won't have an id yet.
-		return isset($this->id) ? $this->update() : $this->create();
+		return isset($this->$idField) ? $this->update($idField) : $this->create();
 	}
 
 	
@@ -140,21 +151,25 @@ class DatabaseObject {
 		}
 	}
 	
-	protected function update() {
+	protected function update($idField) {
 		global $database;
 	
 		$attributes = $this->sanitizedAttributes();
 		$attributePairs = array();
+		print_r($attributes);
 		foreach($attributes as $key => $value) {
 			$attributePairs[] = "{$key}='{$value}'";
 		}
-		$sql = "UPDATE ". static::$table_name. " SET ";
+		$sql = "UPDATE ". static::$tableName . " SET ";
 		$sql .= join(", ", $attributePairs);
-		$sql .= " WHERE ". static::$IDField . "=". $database->escapeValue($this->$IDField);
+		$sql .= " WHERE ". static::$IDField . "=". $database->escapeValue($this->$idField);
 	
-		$database->query($sql);
-		return ($database->affected_rows() == 1) ? true : false;
+		echo $sql; // *** debug
+		
+		// $database->query($sql);
+		return ($database->affectedRows() == 1) ? true : false;
 	}
+	
 // 	public function **debug**mbusertest($testvar = "") {
 // 		echo "<br /><br />Current databaseObject objectvars: <br />  ";
 // 		print_r(get_object_vars($this));
