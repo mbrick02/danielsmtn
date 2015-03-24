@@ -110,7 +110,7 @@ class DatabaseObject {
 				$dbgHsAttr = "Not an Attribute <br/>"; 
 				if($object->hasAttribute($attribute)) {
 					$object->$attribute = $value;
-					// echo " in INSTATITE " . $attribute . " = " . strval($value) . "<br>"; // *** DEBUG
+					echo " in INSTATITE " . $attribute . " = " . strval($value) . "<br>"; // *** DEBUG
 					$dbgHsAttr = "Valid Attribute <br/>";
 				}
 				// DEBUG 2/17/15 echo "instantiate: " . $attribute . " - value: " . $value . "<br/>". $dbgHsAttr;
@@ -161,7 +161,7 @@ class DatabaseObject {
 		
 		foreach($attributes as $key => $value) {
 			$attributePairs[] = "{$key}='{$value}'";
-			print_r($attributesPairs);  // *** DEBUG
+			echo " KEY = " . $key . " VALUE = " . $value . "<br>";  // *** DEBUG
 		}
 		$sql = "UPDATE ". static::$tableName . " SET ";
 		$sql .= join(", ", $attributePairs);
