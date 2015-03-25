@@ -25,7 +25,8 @@ class DatabaseObject {
 		return static::$IDField;
 	}
 	
-	protected static function attributes() { // called by: sanitizedAttributes() and hasAttribute()
+	// set up attributes (?but not values) for object******3/24/15
+	protected function attributes() { // ?static?called by: sanitizedAttributes() and hasAttribute()
 		// return an array of attribute names and their values
 		$attributes = array();
 		foreach(static::$dbFields as $field) {
@@ -102,7 +103,7 @@ class DatabaseObject {
 		if (is_array($record)) {
 			$className = get_called_class();
 			$object = new $className;
-			// **DOESNT WORK/HELP: $attributes = $object->attributes();   ** run this to set attributes? *
+			$attributes = $object->attributes();   // run this to set up attributes for object
 	
 			// example for below: $object->lName = $record['lName'];  // $record as ['lName']=>"Doe"
 			foreach($record as $attribute=>$value){
@@ -110,10 +111,9 @@ class DatabaseObject {
 				$dbgHsAttr = "Not an Attribute <br/>"; 
 				if($object->hasAttribute($attribute)) {
 					$object->$attribute = $value;
-					echo " in INSTATITE " . $attribute . " = " . strval($value) . "<br>"; // *** DEBUG
-					$dbgHsAttr = "Valid Attribute <br/>";
+					$dbgHsAttr = "Valid Attribute <br/>"; 
 				}
-				// DEBUG 2/17/15 echo "instantiate: " . $attribute . " - value: " . $value . "<br/>". $dbgHsAttr;
+				echo "in INSTANTIATE : " . $attribute . " - value: " . $value . "<br/>". $dbgHsAttr; // **** DEBUG 3/24/15
 				// mysqli_free_result($record); // ** 2/1/15 not sure if this will blow up but might save memory
 			}
 		
