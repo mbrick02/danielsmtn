@@ -27,27 +27,27 @@
 			foreach ($guestSet as $guest){	
 				$result = $guest->cleanEmail($guest->email);
 		?>
-			<li>
-			<?php echo $guest->email . " >change to:<  ";
-			$emailStr = "";
-			for ($i = 0; $i<count($result); $i++) {
-				if ($i>0) $emailStr = $emailStr . "; "; // separate email addresses after 1st
-				$emailStr = $emailStr . $result[$i];
-			}
-			
-			$guest->email = $emailStr;
-			
-			$thisIDField = $guest->getIDField();
-			
-			echo $emailStr . " " . $guest->fullName() . " ID " . $guest->guestID; //  ***DEBUG
-			if ($guest->save()) {
-				echo " was saved ";
-			} else {
-				echo " could NOT be saved.";
-			}
-			
-			 ?>
-			</li>
+				<li>
+				<?php echo $guest->email . " >change to:<  ";
+				$emailStr = "";
+				for ($i = 0; $i<count($result); $i++) {
+					if ($i>0) $emailStr = $emailStr . "; "; // separate email addresses after 1st
+					$emailStr = $emailStr . $result[$i];
+				}
+				
+				$guest->email = $emailStr;
+				
+				$thisIDField = $guest->getIDField();
+				
+				echo $emailStr . " " . $guest->fullName() . " ID " . $guest->guestID; //  ***DEBUG
+				if ($guest->save()) {
+					echo " was saved ";
+				} else {
+					echo " could NOT be saved.";
+				}
+				
+				 ?>
+				</li>
 		<?php } ?>
 		</ul>
 	</content>
