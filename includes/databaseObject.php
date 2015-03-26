@@ -14,7 +14,7 @@ class DatabaseObject {
 	
 	protected static $IDField = "userID"; // *** default assumes table tbUsers
 	
-	public $email;
+	static $email;
 
 	// Common Database Methods moved to DatabaseObject - other classes will extend DatabaseObject
 	// (code was/is in all db objects--no late binding before 5.4)
@@ -26,34 +26,35 @@ class DatabaseObject {
 	}
 	
 	// set up attributes (?but not values) for object******3/24/15
-	protected function attributes() { // ?static?called by: sanitizedAttributes() and hasAttribute()
+	protected function attributes($obj) { // ?static?called by: sanitizedAttributes() and hasAttribute() ???
 		// return an array of attribute names and their values
 		$attributes = array();
 		foreach(static::$dbFields as $field) {
-			if (property_exists(get_called_class(), $field)) {
+			if (property_exists(get_called_class(), $field)) { // ???instead of $this: get_called_class()
 				// note below: $this->$field dynamically naming the attribute by $field variable value
-				$attributes[$field] = $field;
+				// *** DEBUG NOT able to use $this->$field because I was using a static?????????
+				$attributes[$field] = $obj->$field;	// *** should work: $this->$field;
 			}
 		}
 		return $attributes;
 	}
 
-	private function hasAttribute($attribute) { // called by: instantiate
+	private function hasAttribute($attribute, $obj) { // called by: instantiate  ***DONT KNOW WHY I HAVE TO PASS IN $obj
 		// get_object_vars returns an associative array with all attributes
 		// (incl. private ones!)
 		// *old: $objectVars = get_object_vars($this); // returned all attributes not just db
-		$objectVars = $this->attributes();
+		$objectVars = $this->attributes($obj);
 		
 		// We don't care about the value, we just want to know if key exits
 		return array_key_exists($attribute, $objectVars);
 	}
 
-	protected static function sanitizedAttributes() {
+	protected static function sanitizedAttributes($obj) {  //   ***DONT KNOW WHY I HAVE TO PASS IN $obj
 		global $database;
 		$cleanAttributes =  array();
 		// sanitize the values before submitting
 		// Note: does not alter the actual value of each attribute
-		foreach(static::attributes() as $key => $value){
+		foreach(static::attributes($obj) as $key => $value){
 			$cleanAttributes[$key] = $database->escapeValue($value);
 		}
 		return $cleanAttributes;
@@ -101,15 +102,15 @@ class DatabaseObject {
 	private static function instantiate($record) {
 		// Could check that $record exists and is an array
 		if (is_array($record)) {
-			$className = get_called_class();
-			$object = new $className;
-			$attributes = $object->attributes();   // run this to set up attributes for object
+			// ***kind of worked but changed to static: $className = get_called_class();
+			$object = new static; // *** bind late (OLD: $className;
+			$attributes = $object->attributes($object);   // run this to set up attributes for object
 	
 			// example for below: $object->lName = $record['lName'];  // $record as ['lName']=>"Doe"
 			foreach($record as $attribute=>$value){
 				// debug 2/16/15
 				$dbgHsAttr = "Not an Attribute <br/>"; 
-				if($object->hasAttribute($attribute)) {
+				if($object->hasAttribute($attribute, $object)) {
 					$object->$attribute = $value;
 					$dbgHsAttr = "Valid Attribute <br/>"; 
 				}
@@ -136,7 +137,7 @@ class DatabaseObject {
 		//  - INSERT INTO table (key, key) VALUES ('value', 'value')
 		// - single-quotes around all values
 		// - escape all values to prevent SQL injection
-		$attributes = $this->sanitizedAttributes();
+		$attributes = $this->sanitizedAttributes($this);
 	
 		$sql = "INSERT INTO " . static::$tableName ." (";
 		$sql .= join(", ", array_keys($attributes));
@@ -154,7 +155,7 @@ class DatabaseObject {
 	protected function update($idField) {
 		global $database;
 	
-		$attributes = $this->sanitizedAttributes();
+		$attributes = $this->sanitizedAttributes($this);
 		$attributePairs = array();
 		
 		// print_r($attributes);  // *** DEBUG
