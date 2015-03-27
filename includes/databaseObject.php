@@ -108,7 +108,7 @@ class DatabaseObject {
 		if (is_array($record)) {
 			// ***kind of worked but changed to static: $className = get_called_class();
 			$object = new static; // *** bind late (OLD: $className;
-			$attributes = $object->attributes($object);   // run this to set up attributes for object
+			// *** SHOULD NOT NEED THIS: $attributes = $object->attributes($object);   // ? to set up attributes for object
 	
 			// example for below: $object->lName = $record['lName'];  // $record as ['lName']=>"Doe"
 			foreach($record as $attribute=>$value){
