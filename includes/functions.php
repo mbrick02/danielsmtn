@@ -29,6 +29,10 @@ function includeLayoutTemplate($template="") {
 	include(LIB_PATH.DS.'layout'.DS.$template);
 }
 
+function rmvQts($strng) {
+	return preg_replace('/[\'\"\;]/', "", $strng);
+}
+
 /* // Below not used - use escapeValue in database.php
 function mysqlPrep($string) {
 	global $db;

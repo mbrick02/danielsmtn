@@ -27,8 +27,8 @@ class UsufructGuests extends DatabaseObject {
 	
 	public function cleanEmail($email) {
 		$result = $this->resultAry;  // have to use a "global" because callback does not accept parameters (other than default '$match')
-		$this->resultAry[] = preg_replace('/[\'\"\;]/', "", $email);
-		
+		// $this->resultAry[] = preg_replace('/[\'\"\;]/', "", $email);
+		$this->resultAry[] = rmvQts($email);
 		// regular expression to find the first email 
 		$regExpEmail = '#^(\w+)(@)([A-Z]+)(\.)([A-Z]{2,5})(.*|\s+\d+)(.*)$#si';
 		

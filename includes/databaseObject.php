@@ -25,6 +25,10 @@ class DatabaseObject {
 		return static::$IDField;
 	}
 	
+	public function getDBFieldsAry() {
+		return static::$dbFields;
+	}
+	
 	// set up attributes (?but not values) for object******3/24/15
 	protected function attributes($obj) { // ?static?called by: sanitizedAttributes() and hasAttribute() ???
 		// return an array of attribute names and their values

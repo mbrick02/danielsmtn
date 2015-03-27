@@ -37,6 +37,10 @@
 				
 				$guest->email = $emailStr;
 				
+				foreach ($guest->getDBFieldsAry() as $field) {
+					$guest->$field = rmvQts($guest->$field);
+				}
+				
 				$thisIDField = $guest->getIDField();
 				
 				echo $emailStr . " " . $guest->fullName() . " ID " . $guest->guestID; //  ***DEBUG
