@@ -44,11 +44,11 @@
 				$thisIDField = $guest->getIDField();
 				
 				echo $emailStr . " " . $guest->fullName() . " ID " . $guest->guestID; //  ***DEBUG
-				if ($guest->save()) {
-					echo " was saved ";
-				} else {
-					echo " could NOT be saved.";
-				}
+// 				if ($guest->save()) {
+// 					echo " was saved ";
+// 				} else {
+// 					echo " could NOT be saved.";
+// 				}
 				
 				 ?>
 				</li>
