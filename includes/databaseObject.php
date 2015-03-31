@@ -14,7 +14,7 @@ class DatabaseObject {
 	
 	protected static $IDField = "userID"; // *** default assumes table tbUsers
 	
-	static $email;
+	// ***DEBUG (hopefully this isn't needed): static $email;
 
 	// Common Database Methods moved to DatabaseObject - other classes will extend DatabaseObject
 	// (code was/is in all db objects--no late binding before 5.4)

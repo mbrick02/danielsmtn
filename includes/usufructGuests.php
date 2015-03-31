@@ -9,10 +9,10 @@ class UsufructGuests extends DatabaseObject {
 	protected static $tableName = "usufructguests";
 	protected static $dbFields = array('guestID', 'fName', 'lName', 'email');	
 	protected static $IDField = "guestID";
-	static $guestID;
-	static $fName;
-	static  $lName;
-	static  $email;
+	// ***DEBUG (hopefully this isn't needed): static $guestID;
+	// ***DEBUG (hopefully this isn't needed):  static $fName;
+	// ***DEBUG (hopefully this isn't needed):  static  $lName;
+	// ***DEBUG (hopefully this isn't needed):  static  $email;
 	
 	private $resultAry=array();
 	
