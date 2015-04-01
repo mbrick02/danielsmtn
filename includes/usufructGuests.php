@@ -20,7 +20,7 @@ class UsufructGuests extends DatabaseObject {
 		$lastIndex = count($this->resultAry) - 1;
 		$result = $match[0]; //$match[1].$match[2].$match[3].$match[4].$match[5];
 		if ($match[6]){
-			$this->resultAry[lastIndex+1] = $match[6];
+			$this->resultAry[$lastIndex+1] = $match[6];
 		}
 		return $result;
 	}
