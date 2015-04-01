@@ -37,18 +37,18 @@ class UsufructGuests extends DatabaseObject {
 			// the last index in the array is always one less the the count of indices on zero based array
 			$lastIndex = count($this->resultAry) - 1;
 			
-			// if something is after the next email it is put in the next index 
+			// if something is after the next email it is put in the next (new) index (new result is put in $lastIndex)
 			// array($this, $fncName) structure must be used for a callback function in an object
-			$result[$lastIndex] = preg_replace_callback($regExpEmail, array($this, 'splitEmails'), $this->resultAry[$lastIndex]);
+			$this->resultAry[$lastIndex] = preg_replace_callback($regExpEmail, array($this, 'splitEmails'), $this->resultAry[$lastIndex]);
 		} while (array_key_exists(($lastIndex+1), $this->resultAry)); // if a value has been to the array, loop again
 		
-		if ($this->resultAry[$lastIndex] == $email) {  // no change -- no need to updat/create
+		if ($this->resultAry[$lastIndex] == $email) {  // no change -- no need to update/create
 			$this->resultAry = array();
 			return false;
 		}		
 		
 		$result = $this->resultAry;
-		$this->resultAry = array();
+		$this->resultAry = array();  // empty out global result array for next use
 		return $result;
 	}
 	// ***?? MAY WANT TO MAKE THIS EXTEND USER and have user extend databasObject
