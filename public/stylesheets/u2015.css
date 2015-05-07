@@ -126,6 +126,7 @@ div#tabs div#tabs-1 div.tabContent section.container div h2 {
 div.tabContent section.container div.backgroundImage {
 		float: left;
 		padding-top: 0;
+		margin-bottom: 3%;
 }
 
 div#tabs div.tabContent section.container div.backgroundImage img {
