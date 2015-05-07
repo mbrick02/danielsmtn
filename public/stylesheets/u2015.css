@@ -12,6 +12,7 @@
   #1A446C - blue grey
   #8D0D19 - bugundy
 */
+// I have a "id=u44tab" in usufruct2015...not sure why I have it or if used??????????????
 /* probably don't need these since I'm using Normalize.css
 html, body{
 	margin: 0;
@@ -133,15 +134,6 @@ div#tabs div.tabContent section.container div.backgroundImage img {
 	position: fixed;
 }
 
-
-/* ************************ERORRRRRRRRRRRRRR**************5/2*********
-div#tabs div.tabContent section.container div#progTabImg img {
- 	z-index: 0;
-	width: 100%;
-	position: absolute;
-}
-*/
-
 div.tabContent section.container {
 	float: left;
 	width: 100%;
@@ -191,7 +183,7 @@ div.clear {
 
 div.titleBoxL {
 	float: left;
-	display: inline-block;
+	display: inline;
 	margin-left: 10%;
 	position: relative;
 	z-index: 10;
