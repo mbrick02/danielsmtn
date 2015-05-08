@@ -41,7 +41,7 @@ html{
 }
 
 body {
-	background-color: #FFFF00;
+	background-color: lime;
 	max-width: 1024px;
 	min-width: 640px;
 	font: 100% 'Paddington LT W01', 'Combo', cursive;
