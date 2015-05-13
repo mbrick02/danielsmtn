@@ -35,6 +35,13 @@ section.container img {
 	position: absolute;
 }
 
+/*
+section.container img#mapBkgrnd {
+	float: left;
+	width: 80%;
+	height: 80%;
+}
+*/
 
 html{
 	/* ?????? */
@@ -131,7 +138,7 @@ div.tabContent section.container div.backgroundImage {
 
 div#tabs div.tabContent section.container div.backgroundImage img {
  	z-index: 0;  /* was 0 which worked on tab 3 but NO OTHER why???????????? */
-	height: 100%;
+	height: 80%;
 	position: fixed;
 }
 
