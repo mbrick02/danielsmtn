@@ -9,7 +9,7 @@ if(!empty ($_GET['location'])){
 	$lat = $maps_array['results'][0]['geometry']['location']['lat'];
 	$lng = $maps_array['results'][0]['geometry']['location']['lng'];
 
-	// 0624 app: testMashCode
+	//  0624 app: testMashCode
 	$instagram_url = 'https://api.instagram.com/v1/media/search?lat=' . $lat . '&lng=' .$lng;
 	$instagram_url .= '&client_id=db58737c6196475685a3de434ee544b0';
 	// 062415 secret: 798ae44d3dc84b399351d76af7370fff
